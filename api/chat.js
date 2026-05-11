@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
         'X-Title': 'Iron Logic Demo'
       },
       body: JSON.stringify({
-        model: 'anthropic/claude-haiku-4-5-20251001',
+        model: 'meta-llama/llama-3.1-8b-instruct:free',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         max_tokens: 130,
         temperature: 0.72

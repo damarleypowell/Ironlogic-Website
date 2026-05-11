@@ -2233,22 +2233,18 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
     return getFallback(text,ind);
   }
 
-  async function speakResponse(text){
-    if(!voiceOn)return;
-    try{
-      if(curAudio){curAudio.pause();curAudio=null;}
-      const res=await fetch('/api/tts',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({text:text.slice(0,400)})
-      });
-      if(!res.ok)return;
-      const blob=await res.blob();
-      const url=URL.createObjectURL(blob);
-      curAudio=new Audio(url);
-      curAudio.play();
-      curAudio.onended=()=>{URL.revokeObjectURL(url);curAudio=null;};
-    }catch(e){}
+  function speakResponse(text){
+    if(!voiceOn||!window.speechSynthesis)return;
+    window.speechSynthesis.cancel();
+    const utt=new SpeechSynthesisUtterance(text);
+    utt.rate=1.0;utt.pitch=1.0;
+    const pick=()=>{
+      const vs=window.speechSynthesis.getVoices();
+      const v=vs.find(v=>v.name.includes('Google')&&v.lang.startsWith('en'))||vs.find(v=>v.lang.startsWith('en-'));
+      if(v)utt.voice=v;
+      window.speechSynthesis.speak(utt);
+    };
+    window.speechSynthesis.getVoices().length?pick():window.speechSynthesis.onvoiceschanged=pick;
   }
 
   // ── State
@@ -2375,131 +2371,72 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
     });
   }
 
-  // Mic — tap to record, tap again to stop & send via Whisper
+  // Mic — Web Speech API (free, browser-native)
   if(micBtn){
-    if(!navigator.mediaDevices||!window.MediaRecorder){
-      micBtn.style.display='none';
-    }else{
-      const waBar=document.getElementById('wa-bar');
-      const recUI=document.getElementById('wa-rec-ui');
-      const waveCanvas=document.getElementById('wa-wave-canvas');
-      const recTimer=document.getElementById('wa-rec-timer');
-      let mediaRec=null,chunks=[],recording=false,stream=null;
-      let animFrame=null,timerInterval=null,recStart=0;
-      let audioCtx=null,analyser=null,sourceNode=null;
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    const waBar=document.getElementById('wa-bar');
+    const recUI=document.getElementById('wa-rec-ui');
+    const waveCanvas=document.getElementById('wa-wave-canvas');
+    const recTimer=document.getElementById('wa-rec-timer');
+    if(!SR){micBtn.style.display='none';}
+    else{
+      const rec=new SR();
+      rec.continuous=false;rec.interimResults=true;rec.lang='en-US';
+      let recActive=false,animFrame=null,timerInterval=null,recStart=0,waveT=0;
 
-      function bufToBase64(buffer){
-        const bytes=new Uint8Array(buffer);
-        const chunk=8192;let b='';
-        for(let i=0;i<bytes.length;i+=chunk)
-          b+=String.fromCharCode(...bytes.subarray(i,Math.min(i+chunk,bytes.length)));
-        return btoa(b);
-      }
-
-      function startWave(str){
-        audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-        analyser=audioCtx.createAnalyser();
-        analyser.fftSize=128;
-        sourceNode=audioCtx.createMediaStreamSource(str);
-        sourceNode.connect(analyser);
-        const data=new Uint8Array(analyser.frequencyBinCount);
+      function drawFakeWave(){
+        if(!waveCanvas)return;
         const ctx2d=waveCanvas.getContext('2d');
-        function draw(){
-          animFrame=requestAnimationFrame(draw);
-          const W=waveCanvas.width,H=waveCanvas.height;
-          analyser.getByteFrequencyData(data);
-          ctx2d.clearRect(0,0,W,H);
-          const bars=36,bw=Math.floor(W/bars)-1;
-          for(let i=0;i<bars;i++){
-            const val=data[Math.floor(i*data.length/bars)];
-            const h=Math.max(3,val/255*H*.88);
-            const y=(H-h)/2;
-            const alpha=.35+val/255*.65;
-            ctx2d.fillStyle=`rgba(220,38,38,${alpha})`;
-            ctx2d.beginPath();
-            ctx2d.roundRect?ctx2d.roundRect(i*(bw+1),y,bw,h,2):ctx2d.rect(i*(bw+1),y,bw,h);
-            ctx2d.fill();
-          }
+        waveT+=0.12;
+        const W=waveCanvas.width,H=waveCanvas.height;
+        ctx2d.clearRect(0,0,W,H);
+        const bars=36,bw=Math.floor(W/bars)-1;
+        for(let i=0;i<bars;i++){
+          const v=Math.sin(waveT+i*0.45)*0.5+0.5;
+          const h=Math.max(3,v*H*.82);
+          const y=(H-h)/2;
+          ctx2d.fillStyle=`rgba(220,38,38,${.3+v*.7})`;
+          ctx2d.beginPath();
+          ctx2d.roundRect?ctx2d.roundRect(i*(bw+1),y,bw,h,2):ctx2d.rect(i*(bw+1),y,bw,h);
+          ctx2d.fill();
         }
-        draw();
-      }
-
-      function stopWave(){
-        if(animFrame){cancelAnimationFrame(animFrame);animFrame=null;}
-        if(sourceNode){sourceNode.disconnect();}
-        if(audioCtx){audioCtx.close();audioCtx=null;}
-      }
-
-      function startTimer(){
-        recStart=Date.now();
-        timerInterval=setInterval(()=>{
-          const s=Math.floor((Date.now()-recStart)/1000);
-          recTimer.textContent=Math.floor(s/60)+':'+(s%60<10?'0':'')+(s%60);
-        },500);
-      }
-
-      function stopTimer(){
-        clearInterval(timerInterval);timerInterval=null;
-        recTimer.textContent='0:00';
+        animFrame=requestAnimationFrame(drawFakeWave);
       }
 
       function setRecState(on){
-        recording=on;
+        recActive=on;
         micBtn.classList.toggle('recording',on);
         waBar.classList.toggle('recording',on);
-        if(waveCanvas&&on){
-          waveCanvas.width=recUI.clientWidth-50||180;
+        if(on){
+          if(waveCanvas)waveCanvas.width=recUI?recUI.clientWidth-50||180:180;
+          drawFakeWave();
+          recStart=Date.now();
+          timerInterval=setInterval(()=>{
+            const s=Math.floor((Date.now()-recStart)/1000);
+            if(recTimer)recTimer.textContent=Math.floor(s/60)+':'+(s%60<10?'0':'')+(s%60);
+          },500);
+        }else{
+          if(animFrame){cancelAnimationFrame(animFrame);animFrame=null;}
+          clearInterval(timerInterval);
+          if(recTimer)recTimer.textContent='0:00';
+          if(waveCanvas){const c=waveCanvas.getContext('2d');c.clearRect(0,0,waveCanvas.width,waveCanvas.height);}
         }
       }
 
-      async function startRec(){
-        if(recording||isTyping)return;
-        try{
-          stream=await navigator.mediaDevices.getUserMedia({audio:true});
-          chunks=[];
-          const mime=MediaRecorder.isTypeSupported('audio/webm;codecs=opus')?'audio/webm;codecs=opus':'audio/webm';
-          mediaRec=new MediaRecorder(stream,{mimeType:mime});
-          mediaRec.ondataavailable=e=>{if(e.data.size>0)chunks.push(e.data);};
-          mediaRec.onstop=async()=>{
-            stopWave();stopTimer();
-            stream.getTracks().forEach(t=>t.stop());
-            setRecState(false);
-            const blob=new Blob(chunks,{type:mediaRec.mimeType});
-            if(blob.size<2000)return;
-            micBtn.disabled=true;
-            waStatus&&(waStatus.textContent='Transcribing...');
-            try{
-              const buf=await blob.arrayBuffer();
-              const b64=bufToBase64(buf);
-              const res=await fetch('/api/stt',{
-                method:'POST',
-                headers:{'Content-Type':'application/json'},
-                body:JSON.stringify({audio:b64,mimeType:blob.type})
-              });
-              if(res.ok){
-                const d=await res.json();
-                if(d.transcript&&d.transcript.trim()){
-                  waInput.value=d.transcript.trim();
-                  sendMsg();
-                }
-              }
-            }catch(e){}
-            micBtn.disabled=false;
-            waStatus&&(waStatus.textContent=IND[currentInd].status);
-          };
-          mediaRec.start();
-          setRecState(true);
-          startWave(stream);
-          startTimer();
-        }catch(e){setRecState(false);}
-      }
+      rec.onresult=(e)=>{
+        const t=Array.from(e.results).map(r=>r[0].transcript).join('');
+        waInput.value=t;
+        if(e.results[e.results.length-1].isFinal){
+          setRecState(false);sendMsg();
+        }
+      };
+      rec.onerror=()=>setRecState(false);
+      rec.onend=()=>{if(recActive)setRecState(false);};
 
-      function stopRec(){
-        if(!recording)return;
-        if(mediaRec&&mediaRec.state!=='inactive')mediaRec.stop();
-      }
-
-      micBtn.addEventListener('click',()=>{recording?stopRec():startRec();});
+      micBtn.addEventListener('click',()=>{
+        if(recActive){rec.stop();setRecState(false);}
+        else{waInput.value='';setRecState(true);rec.start();}
+      });
     }
   }
 
