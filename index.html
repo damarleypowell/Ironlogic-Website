@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iron Logic — AI Revenue Infrastructure</title>
-<meta name="description" content="Iron Logic installs AI systems that respond to every lead in seconds and turn them into booked appointments automatically. Built for high-ticket service businesses.">
+<meta name="description" content="Iron Logic builds AI systems that reply to your WhatsApp and Instagram messages instantly — 24/7. Set up in 3–5 days. No tech skills needed. Built for local businesses in Jamaica.">
 <link rel="canonical" href="https://ironlogic.ai/">
 <meta property="og:title" content="Iron Logic — AI Revenue Infrastructure">
 <meta property="og:description" content="We install AI systems that answer every lead in seconds and turn them into booked appointments automatically.">
@@ -265,13 +265,12 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 #serve{background:var(--bg)}
 .serve-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .serve-list{margin-top:8px}
-.sr{display:grid;grid-template-columns:52px 1fr 80px;gap:12px;align-items:center;padding:18px 14px;border-radius:10px;transition:background .2s;cursor:default}
+.sr{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center;padding:18px 14px;border-radius:10px;transition:background .2s;cursor:default}
 .sr:hover{background:var(--bg2)}
-.sr-badge{font-family:var(--mono);font-size:10px;font-weight:600;background:var(--bg3);color:var(--ink3);border-radius:6px;padding:3px 8px;text-align:center}
-.sr-badge.t1{background:var(--red-bg);color:var(--red)}
+.sr-badge{font-size:18px;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:var(--bg3);flex-shrink:0}
+.sr-badge.t1{background:var(--red-bg)}
 .sr-n{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:-.01em}
 .sr-d{font-size:13px;color:var(--ink2)}
-.sr-v{font-family:var(--mono);font-size:11px;color:var(--ink3);text-align:right;white-space:nowrap}
 .serve-aside{padding:32px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;margin-top:16px}
 .sa-label{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
 .sa-rule{font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:0}
@@ -720,6 +719,7 @@ footer{background:var(--ink);padding:72px 40px 40px}
   .footer-top{grid-template-columns:1fr 1fr}
   .demo-content{grid-template-columns:1fr;gap:48px}
   .pricing-nums{grid-template-columns:1fr}
+  .hwb-grid{gap:40px}
 }
 @media(max-width:768px){
   #nav .nav-i{padding:0 20px;height:60px}
@@ -729,21 +729,52 @@ footer{background:var(--ink);padding:72px 40px 40px}
   #hero{padding:96px 20px 56px;min-height:auto}
   .hero-inner{gap:40px}
   .hero-badge{font-size:11px}
-  .hero-h{font-size:clamp(36px,10vw,52px);letter-spacing:-.03em;line-height:1.06}
+  .hero-h{font-size:clamp(32px,10vw,48px);letter-spacing:-.03em;line-height:1.06}
   .hero-p{font-size:16px;max-width:100%}
   .hero-ctas{flex-direction:column;align-items:stretch;gap:10px;margin-bottom:32px}
-  .hero-ctas .btn-primary,.hero-ctas .btn-ghost{justify-content:center;width:100%;padding:14px 20px}
-  .hero-trust{gap:12px}
+  .hero-ctas .btn-primary,.hero-ctas .btn-ghost,.hero-ctas .btn-play{justify-content:center;width:100%;padding:14px 20px}
+  .hero-trust{gap:12px;flex-wrap:wrap}
   .trust-item{font-size:12px}
   .word-cycle{display:inline}
 
   /* sections */
-  .sec{padding:72px 20px}
+  .sec{padding:64px 20px}
+  .sec-h{font-size:clamp(26px,8vw,40px)}
+  .sec-p{font-size:15px}
   #case{padding-left:20px;padding-right:20px}
   #testi{padding:80px 20px}
   #cta{padding:80px 20px}
   .case-w{padding:0 20px}
-  .demo-content{padding-left:20px;padding-right:20px}
+
+  /* demo */
+  #demo-section{padding:72px 20px}
+  .demo-content{padding:0;gap:36px}
+  .demo-h{font-size:clamp(28px,8vw,40px)}
+  .demo-p{font-size:15px;margin-bottom:24px}
+  #demo-tabs{gap:6px}
+  .demo-tab{font-size:12px;padding:6px 12px}
+  .wa-phone{max-width:100%}
+  .demo-voice-row{margin-bottom:12px}
+
+  /* systems */
+  .sys-hdr{margin-bottom:36px}
+  .sc{padding:28px 22px}
+  .sys-bottom{flex-direction:column;align-items:flex-start;gap:16px}
+  .sys-bottom a,.sys-bottom button{width:100%;justify-content:center}
+
+  /* how we build */
+  #how-we-build{padding:64px 20px}
+  .hwb-grid{gap:40px}
+  .hwb-panel{padding:28px 22px}
+  .hwb-row{grid-template-columns:1fr 1fr;gap:8px}
+  .hwb-item{padding:12px}
+  .hwb-item-v{font-size:14px}
+
+  /* who we serve */
+  .serve-layout{gap:36px}
+  .serve-aside{padding:20px}
+  .sr{padding:14px 10px}
+  .sr-badge{width:36px;height:36px;font-size:16px}
 
   /* grids */
   .results-grid{grid-template-columns:1fr 1fr}
@@ -753,30 +784,55 @@ footer{background:var(--ink);padding:72px 40px 40px}
   .ro-stats{grid-template-columns:1fr 1fr}
   .form-2col{grid-template-columns:1fr}
 
+  /* ROI calculator */
+  .roi-wrap{gap:24px}
+  .roi-out{padding:28px 22px}
+  .roi-big{font-size:clamp(32px,9vw,48px)}
+
+  /* ticker */
+  #ticker{flex-wrap:wrap;gap:0}
+
   /* cta */
   .cta-btns{flex-direction:column;align-items:stretch}
   .cta-btns .btn-primary,.cta-btns .btn-ghost{justify-content:center;width:100%}
-  .cta-h{font-size:clamp(36px,10vw,52px)}
+  .cta-h{font-size:clamp(32px,9vw,48px)}
 
   /* case study */
-  .case-h{font-size:clamp(32px,9vw,48px)}
+  .case-h{font-size:clamp(28px,8vw,42px)}
   .case-cta-strip{flex-direction:column;gap:16px}
   .case-cta-strip .btn-primary{width:100%;justify-content:center}
+  .ro-stat{padding:16px}
 
   /* modal */
-  .modal{border-radius:16px}
-  .modal-hdr{padding:20px 20px 0}
-  .modal-body{padding:18px 20px 24px}
+  .modal{border-radius:16px;margin:16px}
+  .modal-hdr{padding:16px 18px}
+  .modal-step{padding:22px 20px 28px}
+  .modal-step-title{font-size:18px}
 
   /* proof grid */
   .pg{grid-template-columns:1fr}
-
-  /* section headers */
-  .sec-h{font-size:clamp(28px,8vw,44px)}
+  .pf-filters{flex-wrap:wrap;gap:6px}
+  .pf-btn{font-size:12px;padding:6px 14px}
 
   /* pricing */
   .pricing-footer{flex-direction:column;gap:16px}
   .pricing-footer .btn-primary{width:100%;justify-content:center}
+  .pricing-nums{gap:12px}
+
+  /* testimonial */
+  .testi-q{font-size:clamp(18px,5vw,24px)}
+
+  /* WA float — move up on mobile so sticky bar doesn't overlap */
+  #wa-float{bottom:80px;right:16px;width:48px;height:48px}
+
+  /* exit intent card */
+  .exit-card{padding:28px 22px}
+  .exit-stat-items{flex-direction:column;gap:0}
+  .exit-stat-sep{display:none}
+  .exit-stat-item{padding:8px 14px}
+
+  /* clarity section */
+  .clarity-layout{gap:24px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -1073,12 +1129,12 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
               <label for="f-industry">Industry</label>
               <select id="f-industry" name="industry" required>
                 <option value="">Select…</option>
-                <option>Real Estate</option>
-                <option>Medical / Dental</option>
-                <option>Law Firm</option>
-                <option>Home Services</option>
-                <option>Consulting / Coaching</option>
-                <option>Financial Services</option>
+                <option>Barber Shop / Hair Salon</option>
+                <option>Gym / Fitness / Personal Training</option>
+                <option>Restaurant / Food Business</option>
+                <option>Beauty / Nail Salon</option>
+                <option>Freelancer / Service Provider</option>
+                <option>Retail / Shop</option>
                 <option>Other</option>
               </select>
             </div>
@@ -1092,13 +1148,13 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
             <div class="modal-step-sub">We use this to calculate your actual revenue leak before we speak.</div>
             <div class="form-2col">
               <div class="form-row">
-                <label for="f-deal">Average Deal Value</label>
+                <label for="f-deal">Average Sale Value</label>
                 <select id="f-deal" name="deal_value" required>
                   <option value="">Select…</option>
-                  <option>$2,000 – $5,000</option>
-                  <option>$5,000 – $15,000</option>
-                  <option>$15,000 – $50,000</option>
-                  <option>$50,000+</option>
+                  <option>J$500 – J$2,000</option>
+                  <option>J$2,000 – J$10,000</option>
+                  <option>J$10,000 – J$50,000</option>
+                  <option>J$50,000+</option>
                 </select>
               </div>
               <div class="form-row">
@@ -1129,11 +1185,11 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
                 <label for="f-monthly-rev">Monthly Revenue (approx)</label>
                 <select id="f-monthly-rev" name="monthly_revenue">
                   <option value="">Select…</option>
-                  <option>Under $10k</option>
-                  <option>$10k – $30k</option>
-                  <option>$30k – $80k</option>
-                  <option>$80k – $200k</option>
-                  <option>$200k+</option>
+                  <option>Under J$100k</option>
+                  <option>J$100k – J$500k</option>
+                  <option>J$500k – J$2M</option>
+                  <option>J$2M – J$10M</option>
+                  <option>J$10M+</option>
                 </select>
               </div>
             </div>
@@ -1218,7 +1274,7 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
         <div class="ms-steps" style="margin-top:16px">
           <div class="ms-step">
             <div class="ms-step-num">1</div>
-            <div><div class="ms-step-h">We review your application</div><p class="ms-step-p">We check your industry, deal value, and lead volume to confirm you're a fit.</p></div>
+            <div><div class="ms-step-h">We review your details</div><p class="ms-step-p">We check your business type and message volume to plan your system setup.</p></div>
           </div>
           <div class="ms-step">
             <div class="ms-step-num">2</div>
@@ -1323,13 +1379,13 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
       <span class="logo-name">IronLogic</span>
     </a>
     <ul class="nav-links">
-      <li><a data-scroll="systems" href="#systems">The System</a></li>
-      <li><a data-scroll="how-we-build" href="#how-we-build">How We Build</a></li>
+      <li><a data-scroll="systems" href="#systems">How It Works</a></li>
+      <li><a data-scroll="how-we-build" href="#how-we-build">The Setup</a></li>
       <li><a data-scroll="case" href="#case">Case Study</a></li>
-      <li><a data-scroll="roi" href="#roi">ROI Calculator</a></li>
-      <li><a data-scroll="proof" href="#proof">Proof</a></li>
+      <li><a data-scroll="serve" href="#serve">Who We Serve</a></li>
+      <li><a data-scroll="proof" href="#proof">Results</a></li>
     </ul>
-    <button class="nav-cta mag" data-modal="open" type="button">Apply for Audit</button>
+    <button class="nav-cta mag" data-modal="open" type="button">Get Free Setup Call</button>
   </div>
 </nav>
 
@@ -1347,17 +1403,17 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
       <div class="hero-badge rv">
         <span class="hero-badge-dot"></span>
         <span class="hero-badge-pill">New</span>
-        AI builds your system — live in 3–5 days
+        Live in 3–5 days · No tech skills needed
       </div>
       <h1 class="hero-h rv">
-        You're not losing<br>
-        deals on price.<br>
-        You're losing them on<br>
-        <span class="word-cycle" id="word-cycle" aria-live="polite"><span class="cycle-word" id="cycle-word">speed.</span><span class="cycle-bar" id="cycle-bar"></span></span>
+        Your customers message.<br>
+        You don't reply.<br>
+        They go<br>
+        <span class="word-cycle" id="word-cycle" aria-live="polite"><span class="cycle-word" id="cycle-word">elsewhere.</span><span class="cycle-bar" id="cycle-bar"></span></span>
       </h1>
-      <p class="hero-p rv">We install AI systems that capture, qualify, and convert every lead automatically — built by AI, deployed in 3–5 days, managed entirely by Iron Logic.</p>
+      <p class="hero-p rv">We build AI systems that respond to every WhatsApp and Instagram message instantly — 24/7 — so you never lose a customer to a slow reply again.</p>
       <div class="hero-ctas rv">
-        <a href="#" data-modal="open" class="btn-primary mag">Apply for System Audit <span class="arr">→</span></a>
+        <a href="#" data-modal="open" class="btn-primary mag">Get Free Setup Call <span class="arr">→</span></a>
         <button class="btn-ghost mag" data-scroll="roi" type="button">See What You're Losing</button>
         <button class="btn-play mag" data-scroll="demo-section" type="button">
           <span class="btn-play-icon"><svg width="8" height="10" viewBox="0 0 8 10" fill="none"><path d="M1 1l6 4-6 4V1z" fill="white"/></svg></span>
@@ -1367,15 +1423,15 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
       <div class="hero-trust rv">
         <div class="trust-item">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Live in 3–5 days
+          Replies in under 60 seconds
         </div>
         <div class="trust-item">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Done-for-you system
+          WhatsApp &amp; Instagram
         </div>
         <div class="trust-item">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          No pitch if no ROI
+          Works while you sleep
         </div>
       </div>
     </div>
@@ -1386,7 +1442,7 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
         </div>
         <div>
           <div class="hf-n">+340%</div>
-          <div class="hf-l">Conversion lift · 21 days</div>
+          <div class="hf-l">More bookings · 21 days</div>
         </div>
       </div>
       <div class="hero-card rv" id="hero-card">
@@ -1401,10 +1457,10 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
         <div class="hc-body" id="hc-body">
           <div class="hc-msg hidden" id="hm0">
             <div class="msg-row">
-              <div class="msg-av p">JD</div>
-              <div class="msg-bub in">Hi, I'm looking to buy a property around $1.2M.</div>
+              <div class="msg-av p">KL</div>
+              <div class="msg-bub in">Hi, do you have any slots available this Saturday for a haircut?</div>
             </div>
-            <div class="msg-meta">11:47 PM · Missed call → AI activated</div>
+            <div class="msg-meta">10:42 PM · Message received while you slept</div>
           </div>
           <div class="hc-typing" id="hc-typing" style="display:none">
             <div class="msg-row"><div class="msg-av a">AI</div><div class="msg-bub in hc-dots-anim"><span></span><span></span><span></span></div></div>
@@ -1412,23 +1468,23 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
           <div class="hc-msg hidden" id="hm1" style="margin-top:14px">
             <div class="msg-row right">
               <div class="msg-av a">AI</div>
-              <div class="msg-bub out">Hi! I saw your message — great timing. Are you pre-approved, and what's your ideal move timeline?</div>
+              <div class="msg-bub out">Hey! Yes — we have Saturday at 10am and 1pm available. Which works for you?</div>
             </div>
-            <div class="msg-meta right">11:47 PM · 23 seconds after inquiry</div>
+            <div class="msg-meta right">10:42 PM · 18 seconds after message</div>
           </div>
           <div class="hc-msg hidden" id="hm2" style="margin-top:14px">
             <div class="msg-row">
-              <div class="msg-av p">JD</div>
-              <div class="msg-bub in">Pre-approved. Want to move in 60 days.</div>
+              <div class="msg-av p">KL</div>
+              <div class="msg-bub in">10am perfect. How much is it?</div>
             </div>
           </div>
           <div class="hc-msg hidden" id="hm3" style="margin-top:14px">
             <div class="msg-row right">
               <div class="msg-av a">AI</div>
-              <div class="msg-bub out">Perfect — I have 4 matches. Tuesday 9am or Wednesday 2pm for a showing?</div>
+              <div class="msg-bub out">J$1,500. You're booked for Saturday 10am — we'll send a reminder Friday. See you then! ✂️</div>
             </div>
           </div>
-          <div class="hc-result" id="hc-result" style="opacity:0">Deal closed · $28,000 commission from a missed call</div>
+          <div class="hc-result" id="hc-result" style="opacity:0">Booking confirmed · while owner was asleep at 10:42pm</div>
         </div>
       </div>
       <div class="hero-float f2 rv delay-3">
@@ -1436,8 +1492,8 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.5 3.5 6.5-7" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div>
-          <div class="hf-n">8.4×</div>
-          <div class="hf-l">Average client ROI</div>
+          <div class="hf-n">&lt; 60s</div>
+          <div class="hf-l">Reply time · 24/7</div>
         </div>
       </div>
     </div>
@@ -1449,24 +1505,22 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
   <div class="ticker-label">Live Results</div>
   <div class="ticker-rail">
     <div class="tw">
-      <span class="ti"><span class="ti-n">+340%</span>Conversion lift · DNA Testing Lab · 21 days</span>
-      <span class="ti"><span class="ti-n">$28K</span>Commission recovered · Single missed call · Real estate</span>
-      <span class="ti"><span class="ti-n">62%</span>Reduction in missed appointments · Dental clinic · 14 days</span>
-      <span class="ti"><span class="ti-n">3.8×</span>Intake qualification rate · Personal injury firm · 30 days</span>
-      <span class="ti"><span class="ti-n">$18K</span>Revenue recovered in 14 days · Roofing company</span>
-      <span class="ti"><span class="ti-n">94%</span>Reduction in unqualified calls · Business consultant</span>
-      <span class="ti"><span class="ti-n">8.4×</span>ROI on full system · Financial advisor · 90 days</span>
-      <span class="ti"><span class="ti-n">47s</span>AI response time vs 3-hour previous · HVAC company</span>
-      <span class="ti"><span class="ti-n">3 days</span>Express build live · Real estate voice agent · full system</span>
-      <span class="ti"><span class="ti-n">+340%</span>Conversion lift · DNA Testing Lab · 21 days</span>
-      <span class="ti"><span class="ti-n">$28K</span>Commission recovered · Single missed call · Real estate</span>
-      <span class="ti"><span class="ti-n">62%</span>Reduction in missed appointments · Dental clinic · 14 days</span>
-      <span class="ti"><span class="ti-n">3.8×</span>Intake qualification rate · Personal injury firm · 30 days</span>
-      <span class="ti"><span class="ti-n">$18K</span>Revenue recovered in 14 days · Roofing company</span>
-      <span class="ti"><span class="ti-n">94%</span>Reduction in unqualified calls · Business consultant</span>
-      <span class="ti"><span class="ti-n">8.4×</span>ROI on full system · Financial advisor · 90 days</span>
-      <span class="ti"><span class="ti-n">47s</span>AI response time vs 3-hour previous · HVAC company</span>
-      <span class="ti"><span class="ti-n">3 days</span>Express build live · Real estate voice agent · full system</span>
+      <span class="ti"><span class="ti-n">+340%</span>Conversion lift · DNA Testing Lab · Kingston, Jamaica · 21 days</span>
+      <span class="ti"><span class="ti-n">3×</span>More bookings in first month · Barber shop · WhatsApp AI</span>
+      <span class="ti"><span class="ti-n">62%</span>Fewer missed messages · Beauty salon · 14 days</span>
+      <span class="ti"><span class="ti-n">47s</span>Average reply time vs 3 hours before · Local gym · Jamaica</span>
+      <span class="ti"><span class="ti-n">J$2.4M</span>Added monthly revenue · 876 DNA Test · Kingston, Jamaica</span>
+      <span class="ti"><span class="ti-n">5 days</span>From setup call to live · Restaurant booking system</span>
+      <span class="ti"><span class="ti-n">24/7</span>Replies even at 2am · Nail salon · Instagram DMs</span>
+      <span class="ti"><span class="ti-n">0 missed</span>Messages since go-live · Fitness coach · WhatsApp</span>
+      <span class="ti"><span class="ti-n">+340%</span>Conversion lift · DNA Testing Lab · Kingston, Jamaica · 21 days</span>
+      <span class="ti"><span class="ti-n">3×</span>More bookings in first month · Barber shop · WhatsApp AI</span>
+      <span class="ti"><span class="ti-n">62%</span>Fewer missed messages · Beauty salon · 14 days</span>
+      <span class="ti"><span class="ti-n">47s</span>Average reply time vs 3 hours before · Local gym · Jamaica</span>
+      <span class="ti"><span class="ti-n">J$2.4M</span>Added monthly revenue · 876 DNA Test · Kingston, Jamaica</span>
+      <span class="ti"><span class="ti-n">5 days</span>From setup call to live · Restaurant booking system</span>
+      <span class="ti"><span class="ti-n">24/7</span>Replies even at 2am · Nail salon · Instagram DMs</span>
+      <span class="ti"><span class="ti-n">0 missed</span>Messages since go-live · Fitness coach · WhatsApp</span>
     </div>
   </div>
 </div>
@@ -1477,35 +1531,35 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
     <div class="prob-layout">
       <div>
         <span class="eyebrow rv">The Problem</span>
-        <h2 class="sec-h rv">Every unanswered call is revenue<br><span class="muted">transferred to your competitor.</span></h2>
-        <p class="sec-p rv" style="margin-top:16px">Speed-to-lead is the entire game. The business that responds first wins 78% of the time. You don't have a sales problem — you have a systems gap.</p>
+        <h2 class="sec-h rv">You're losing customers<br><span class="muted">every single day.</span></h2>
+        <p class="sec-p rv" style="margin-top:16px">Most businesses lose more than half their leads — not because of price, not because of quality — but because nobody replied fast enough.</p>
         <div class="prob-items" style="margin-top:32px">
           <div class="pi rv">
             <div class="pi-num">01</div>
             <div>
-              <div class="pi-h">A customer calls you ready to buy.</div>
-              <p class="pi-p">You don't answer. They call the next result on Google. That deal belongs to your competitor in under three minutes.</p>
+              <div class="pi-h">Slow replies = lost customers.</div>
+              <p class="pi-p">Someone messages you on WhatsApp at 8pm. You see it at 9am. They already booked somewhere else.</p>
             </div>
           </div>
           <div class="pi rv delay-1">
             <div class="pi-num">02</div>
             <div>
-              <div class="pi-h">A lead fills out your form at 9pm.</div>
-              <p class="pi-p">You see it the next morning. Someone who responded at 9:04pm already has the appointment.</p>
+              <div class="pi-h">Missed messages = missed money.</div>
+              <p class="pi-p">You can't watch your phone all day. But every unanswered message is a customer walking straight to your competitor.</p>
             </div>
           </div>
           <div class="pi rv delay-2">
             <div class="pi-num">03</div>
             <div>
-              <div class="pi-h">You follow up once. Then life gets busy.</div>
-              <p class="pi-p">The lead was interested but not ready. You didn't follow up again. They spent $8,000 with someone else.</p>
+              <div class="pi-h">Too many chats to manage manually.</div>
+              <p class="pi-p">Answering the same questions over and over takes hours out of your day — time you should spend running your business.</p>
             </div>
           </div>
           <div class="pi rv delay-3">
             <div class="pi-num">04</div>
             <div>
-              <div class="pi-h">The worst part: you can't see the damage.</div>
-              <p class="pi-p">You only see what you closed — never what you almost had. The number is larger than you think.</p>
+              <div class="pi-h">Customers expect instant responses.</div>
+              <p class="pi-p">The bar has been raised. If you don't reply in minutes, they assume you're unprofessional — and they move on.</p>
             </div>
           </div>
         </div>
@@ -1535,71 +1589,71 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
 <section id="systems" class="sec" style="background:var(--bg2)">
   <div class="sec-w">
     <div class="sys-hdr">
-      <span class="eyebrow rv">Iron Logic IP</span>
-      <h2 class="sec-h rv">Three proprietary systems.<br><span class="muted">One outcome.</span></h2>
-      <p class="sec-p rv" style="margin-top:16px">Purpose-built revenue infrastructure. Each system replaces a specific manual operation — deployed in days, managed entirely by Iron Logic.</p>
+      <span class="eyebrow rv">How It Works</span>
+      <h2 class="sec-h rv">Set up in 3–5 days.<br><span class="muted">You do nothing.</span></h2>
+      <p class="sec-p rv" style="margin-top:16px">No tech skills. No complicated setup. We handle everything from start to finish — you just answer a few questions and approve the result.</p>
     </div>
     <div class="sys-grid">
-      <!-- System 01 -->
+      <!-- Step 01 -->
       <div class="sc rv tilt">
-        <div class="sc-num"><span class="sc-num-badge">System 01</span></div>
+        <div class="sc-num"><span class="sc-num-badge">Step 01</span></div>
         <div class="sc-icon">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 4a2 2 0 012-2h2.5a1 1 0 01.95.68l1.1 3.3a1 1 0 01-.23 1.02L8.91 8.41A13 13 0 0013.6 13.1l1.41-1.41a1 1 0 011.02-.23l3.3 1.1A1 1 0 0120 13.5V16a2 2 0 01-2 2c-7.73 0-14-6.27-14-14z" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="5" r="3" fill="#dc2626" opacity=".25"/><circle cx="17" cy="5" r="1.5" fill="#dc2626"/></svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#dc2626" stroke-width="1.6"/><path d="M8 11l2 2 4-4" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="sc-explainer">For every missed call</div>
-        <h3 class="sc-h">Missed Call Recovery</h3>
-        <p class="sc-p">Someone calls your business. No one answers. Instead of going to voicemail and calling a competitor, they get a text back in under 30 seconds — from your AI — starting a conversation that ends in a booked appointment.</p>
+        <div class="sc-explainer">Day 1</div>
+        <h3 class="sc-h">We Build It For You</h3>
+        <p class="sc-p">Tell us about your business — your hours, your prices, the questions customers always ask. We build the AI, write the scripts, and set up everything. You don't touch any tech.</p>
         <ul class="sc-list">
-          <li>Triggers the instant a call goes unanswered</li>
-          <li>AI texts back, qualifies the lead, books the slot</li>
-          <li>Works after hours, weekends, holidays — always on</li>
-          <li>You get notified only when an appointment is confirmed</li>
+          <li>Short setup call — about 30 minutes</li>
+          <li>We write all the messages in your brand's tone</li>
+          <li>Handles pricing questions, hours, bookings, FAQs</li>
+          <li>Built specifically for your type of business</li>
         </ul>
-        <div class="sc-result">Avg. 23% of missed calls converted to bookings</div>
+        <div class="sc-result">Ready to connect in 24–48 hours</div>
       </div>
 
-      <!-- System 02 — Featured -->
+      <!-- Step 02 — Featured -->
       <div class="sc featured rv tilt">
-        <div class="sc-num"><span class="sc-num-badge">System 02 · Core Engine</span></div>
+        <div class="sc-num"><span class="sc-num-badge">Step 02 · The Connection</span></div>
         <div class="sc-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="14" rx="3" stroke="#f87171" stroke-width="1.6"/><path d="M7 9h8M7 13h5" stroke="#f87171" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="4" r="3" fill="#dc2626"/></svg>
         </div>
-        <div class="sc-explainer">For every new inbound lead</div>
-        <h3 class="sc-h">AI Appointment Booking Engine</h3>
-        <p class="sc-p">A lead fills out your form, sends a DM, or texts your number. Within 30 seconds — at any hour — your AI replies, asks the right qualifying questions, and books a slot directly into your calendar. No human involvement until the appointment is confirmed.</p>
+        <div class="sc-explainer">Day 2–3</div>
+        <h3 class="sc-h">We Connect WhatsApp &amp; Instagram</h3>
+        <p class="sc-p">We link the AI directly to your existing accounts. No new apps. No extra phone numbers. Customers message your normal number — the AI replies instantly, even at 2am.</p>
         <ul class="sc-list">
-          <li>Responds to web forms, WhatsApp, SMS, Instagram DMs</li>
-          <li>Asks qualifying questions in natural conversation</li>
-          <li>Books into your calendar and sends reminders</li>
-          <li>Unqualified leads filtered out before they waste your time</li>
+          <li>Works with your existing WhatsApp business number</li>
+          <li>Connects to Instagram DMs too</li>
+          <li>Nothing new to download or manage</li>
+          <li>You review and approve before it goes live</li>
         </ul>
-        <div class="sc-result">9× higher conversion vs. 30-min response time</div>
+        <div class="sc-result">Live and replying within 3–5 days</div>
       </div>
 
-      <!-- System 03 -->
+      <!-- Step 03 -->
       <div class="sc rv tilt">
-        <div class="sc-num"><span class="sc-num-badge">System 03</span></div>
+        <div class="sc-num"><span class="sc-num-badge">Step 03</span></div>
         <div class="sc-icon">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 12s2-4 8-4 8 4 8 4-2 4-8 4-8-4-8-4z" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12" r="2" fill="#dc2626" opacity=".3" stroke="#dc2626" stroke-width="1.6"/><path d="M11 4v2M11 18v-2M4 6l1.5 1.5M18 6l-1.5 1.5" stroke="#dc2626" stroke-width="1.4" stroke-linecap="round"/></svg>
         </div>
-        <div class="sc-explainer">For your existing database</div>
-        <h3 class="sc-h">Lead Reactivation System</h3>
-        <p class="sc-p">You have leads in your CRM — people who showed interest, got busy, and went quiet. They didn't say no. They just stopped hearing from you. This system re-engages all of them automatically, over 90 days, with personalised follow-up that feels human.</p>
+        <div class="sc-explainer">Day 5 onwards</div>
+        <h3 class="sc-h">It Works While You Sleep</h3>
+        <p class="sc-p">Every message gets a reply in under 60 seconds — day or night, weekends included. It answers questions, takes bookings, and follows up automatically. You focus on running your business.</p>
         <ul class="sc-list">
-          <li>AI reaches out to every cold lead in your database</li>
-          <li>Personalised sequences — not mass blasts</li>
-          <li>90-day follow-up cadence, zero manual effort</li>
-          <li>Re-activated leads booked straight into your calendar</li>
+          <li>Instant replies 24/7 — even at 2am on a Sunday</li>
+          <li>Books appointments straight into your calendar</li>
+          <li>Follows up with customers who didn't book</li>
+          <li>You get notified when someone's ready to pay</li>
         </ul>
-        <div class="sc-result">Average client recovers $8–22K in first 30 days</div>
+        <div class="sc-result">Avg. 3× more bookings in the first 30 days</div>
       </div>
     </div>
     <div class="sys-bottom rv">
       <div>
-        <div class="sys-bottom-t">Not sure which system you need?</div>
-        <div class="sys-bottom-s">Calculate your exact revenue leak first.</div>
+        <div class="sys-bottom-t">Ready to see it working for your business?</div>
+        <div class="sys-bottom-s">Book a free setup call — takes 30 minutes.</div>
       </div>
-      <button class="btn-ghost mag" data-scroll="roi" type="button">Calculate Revenue Leak →</button>
+      <a href="#" data-modal="open" class="btn-primary mag" style="text-decoration:none">Get Free Setup Call →</a>
     </div>
   </div>
 </section>
@@ -1609,69 +1663,69 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
   <div class="sec-w">
     <div class="hwb-grid">
       <div>
-        <span class="eyebrow rv">How We Build</span>
-        <h2 class="sec-h rv">AI builds your system.<br><span class="muted">You review, approve, go live.</span></h2>
-        <p class="sec-p rv" style="margin-top:16px">Traditional agencies take 3–6 weeks and charge $15K–$30K to build manually. We use Claude API to generate your automation workflows in 24 hours — same quality, 5× faster, at a fraction of the cost.</p>
+        <span class="eyebrow rv">The Setup Process</span>
+        <h2 class="sec-h rv">From zero to live<br><span class="muted">in 3–5 days.</span></h2>
+        <p class="sec-p rv" style="margin-top:16px">We handle the entire setup. You don't need to be technical. You don't need to install anything. Just show up for a 30-minute call and we take it from there.</p>
         <div class="hwb-steps" style="margin-top:32px">
           <div class="hwb-step rv">
             <div class="hwb-step-num">01</div>
             <div>
-              <div class="hwb-step-time">Hour 0 — Day 1</div>
-              <div class="hwb-step-h">Discovery Call</div>
-              <p class="hwb-step-p">We spend 60 minutes mapping your business logic — qualification questions, calendar, CRM, preferred channels. Everything AI needs to build your exact system.</p>
+              <div class="hwb-step-time">Day 1 · 30 minutes</div>
+              <div class="hwb-step-h">Setup Call</div>
+              <p class="hwb-step-p">We ask you about your business — your hours, your prices, the questions customers always ask. That's all we need to build your system.</p>
             </div>
           </div>
           <div class="hwb-step rv delay-1">
             <div class="hwb-step-num">02</div>
             <div>
-              <div class="hwb-step-time">Day 1 → Day 2</div>
-              <div class="hwb-step-h">AI Generates Your System</div>
-              <p class="hwb-step-p">Claude API builds your automation workflows overnight — voice agents, qualification flows, booking logic, CRM connections. What used to take 3 weeks takes 24 hours.</p>
+              <div class="hwb-step-time">Day 1 → Day 3</div>
+              <div class="hwb-step-h">We Build It</div>
+              <p class="hwb-step-p">We write all the messages, set up the flows, and configure everything. You don't lift a finger. We build it to sound like you — not like a robot.</p>
             </div>
           </div>
           <div class="hwb-step rv delay-2">
             <div class="hwb-step-num">03</div>
             <div>
-              <div class="hwb-step-time">Day 2 → Day 3</div>
+              <div class="hwb-step-time">Day 3 → Day 4</div>
               <div class="hwb-step-h">You Review &amp; Approve</div>
-              <p class="hwb-step-p">We walk you through exactly how your system works — every message, every decision point. You approve or request changes. Takes about an hour.</p>
+              <p class="hwb-step-p">We show you exactly how it works. You can test it, change any wording, and approve before anything goes live. Full control — no surprises.</p>
             </div>
           </div>
           <div class="hwb-step rv delay-3">
             <div class="hwb-step-num">04</div>
             <div>
-              <div class="hwb-step-time">Day 3 → Day 5</div>
-              <div class="hwb-step-h">Live. Capturing Leads.</div>
-              <p class="hwb-step-p">System goes live. Every inbound lead gets a response in under 47 seconds — around the clock, without you touching anything.</p>
+              <div class="hwb-step-time">Day 5 onwards</div>
+              <div class="hwb-step-h">Live. Every Message Answered.</div>
+              <p class="hwb-step-p">Connected to WhatsApp and Instagram. Every customer message gets a reply in under 60 seconds — including at 2am on a Sunday.</p>
             </div>
           </div>
         </div>
       </div>
       <div class="rv delay-1">
         <div class="hwb-panel">
-          <div class="hwb-panel-eyebrow">Traditional Agency vs. Iron Logic</div>
+          <div class="hwb-panel-eyebrow">Before vs. After Iron Logic</div>
           <div style="margin-bottom:12px">
-            <div class="hwb-col-label">Before (Manual Builds)</div>
+            <div class="hwb-col-label">Before</div>
             <div class="hwb-row">
-              <div class="hwb-item"><div class="hwb-item-k">Build Time</div><div class="hwb-item-v">3–6 weeks</div></div>
-              <div class="hwb-item"><div class="hwb-item-k">Setup Cost</div><div class="hwb-item-v">$15k–$30k</div></div>
-              <div class="hwb-item" style="margin-top:10px"><div class="hwb-item-k">Developer Hours</div><div class="hwb-item-v">30–39 hrs</div></div>
-              <div class="hwb-item" style="margin-top:10px"><div class="hwb-item-k">Capacity/Month</div><div class="hwb-item-v">3–4 clients</div></div>
+              <div class="hwb-item"><div class="hwb-item-k">Response time</div><div class="hwb-item-v">Hours later</div></div>
+              <div class="hwb-item"><div class="hwb-item-k">After hours</div><div class="hwb-item-v">No reply</div></div>
+              <div class="hwb-item" style="margin-top:10px"><div class="hwb-item-k">Weekends</div><div class="hwb-item-v">Missed leads</div></div>
+              <div class="hwb-item" style="margin-top:10px"><div class="hwb-item-k">Bookings</div><div class="hwb-item-v">Manual only</div></div>
             </div>
           </div>
           <div class="hwb-divider"></div>
           <div style="margin-bottom:20px">
-            <div class="hwb-col-label" style="color:rgba(248,113,113,.7)">After (AI-Powered Builds)</div>
+            <div class="hwb-col-label" style="color:rgba(248,113,113,.7)">After</div>
             <div class="hwb-row">
-              <div class="hwb-item accent"><div class="hwb-item-k">Build Time</div><div class="hwb-item-v">3–5 days</div></div>
-              <div class="hwb-item accent"><div class="hwb-item-k">Setup Cost</div><div class="hwb-item-v">$3k–$12k</div></div>
-              <div class="hwb-item accent" style="margin-top:10px"><div class="hwb-item-k">AI Build Hours</div><div class="hwb-item-v">5–8 hrs</div></div>
-              <div class="hwb-item accent" style="margin-top:10px"><div class="hwb-item-k">Capacity/Month</div><div class="hwb-item-v">16 clients</div></div>
+              <div class="hwb-item accent"><div class="hwb-item-k">Response time</div><div class="hwb-item-v">&lt; 60 seconds</div></div>
+              <div class="hwb-item accent"><div class="hwb-item-k">After hours</div><div class="hwb-item-v">Always replies</div></div>
+              <div class="hwb-item accent" style="margin-top:10px"><div class="hwb-item-k">Weekends</div><div class="hwb-item-v">Fully covered</div></div>
+              <div class="hwb-item accent" style="margin-top:10px"><div class="hwb-item-k">Bookings</div><div class="hwb-item-v">Automatic</div></div>
             </div>
           </div>
           <div class="hwb-advantage">
-            <strong>5× faster. 50–70% cheaper. Same custom quality.</strong>
-            AI generates your workflows in 24 hours. No waiting for developer availability. Changes take minutes, not days. You go live while your competitors are still on week two of their build.
+            <strong>More bookings. Less stress. No extra staff.</strong>
+            Your customers get instant replies around the clock — while you focus on actually running your business.
           </div>
         </div>
       </div>
@@ -1748,19 +1802,19 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
     <div class="serve-layout">
       <div>
         <span class="eyebrow rv">Who We Serve</span>
-        <h2 class="sec-h rv">Built for high-ticket<br><span class="muted">service businesses.</span></h2>
-        <p class="sec-p rv" style="margin-top:16px">We install systems for operations where one missed lead represents thousands in lost revenue. If your average deal value is below $2,000, we're not the right fit.</p>
+        <h2 class="sec-h rv">If customers message you<br><span class="muted">before buying — this is for you.</span></h2>
+        <p class="sec-p rv" style="margin-top:16px">We work with local businesses of all sizes. If you're getting WhatsApp or Instagram messages from potential customers and you're not always able to reply fast enough — we fix that.</p>
         <div class="serve-aside rv" style="margin-top:32px">
-          <div class="sa-label">Minimum Requirement</div>
-          <p class="sa-rule">We work with businesses where a <strong>single missed lead costs $2,000 or more.</strong> Below that threshold, the math doesn't support the investment — and we'll tell you upfront.</p>
+          <div class="sa-label">Simple rule</div>
+          <p class="sa-rule">If customers message before they buy, <strong>every unanswered message is a sale you didn't make.</strong> We stop that from happening — automatically.</p>
         </div>
       </div>
       <div class="serve-list rv">
-        <div class="sr"><div class="sr-badge t1">T1</div><div><div class="sr-n">Real Estate</div><p class="sr-d">One missed call is a missed commission.</p></div><div class="sr-v">$5k–$50k</div></div>
-        <div class="sr"><div class="sr-badge t1">T1</div><div><div class="sr-n">Medical &amp; Dental</div><p class="sr-d">Every missed call is a missed patient.</p></div><div class="sr-v">$800–$15k</div></div>
-        <div class="sr"><div class="sr-badge t1">T1</div><div><div class="sr-n">Law Firms</div><p class="sr-d">Intake quality determines case quality.</p></div><div class="sr-v">$3k–$100k</div></div>
-        <div class="sr"><div class="sr-badge">T2</div><div><div class="sr-n">Home Services</div><p class="sr-d">Jobs go to whoever answers first.</p></div><div class="sr-v">$2k–$25k</div></div>
-        <div class="sr"><div class="sr-badge">T2</div><div><div class="sr-n">Consultants &amp; Coaches</div><p class="sr-d">Qualified buyers only. No time-wasters.</p></div><div class="sr-v">$2.5k–$25k</div></div>
+        <div class="sr"><div class="sr-badge t1">✂</div><div><div class="sr-n">Barber Shops &amp; Salons</div><p class="sr-d">Never miss a booking request again.</p></div></div>
+        <div class="sr"><div class="sr-badge t1">💪</div><div><div class="sr-n">Gyms &amp; Fitness Coaches</div><p class="sr-d">Signups, class info, memberships — answered instantly.</p></div></div>
+        <div class="sr"><div class="sr-badge t1">🍽</div><div><div class="sr-n">Restaurants &amp; Food Businesses</div><p class="sr-d">Reservations, menus, catering quotes — 24/7.</p></div></div>
+        <div class="sr"><div class="sr-badge">💅</div><div><div class="sr-n">Beauty &amp; Nail Salons</div><p class="sr-d">Fill your calendar without living on your phone.</p></div></div>
+        <div class="sr"><div class="sr-badge">🔧</div><div><div class="sr-n">Freelancers &amp; Small Businesses</div><p class="sr-d">Any business that gets leads from social media or WhatsApp.</p></div></div>
       </div>
     </div>
   </div>
@@ -2020,9 +2074,9 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
         </div>
       </div>
       <div class="pricing-footer">
-        <p class="pf-note"><strong>Application-based onboarding.</strong> Every engagement opens with a system audit. If we can't identify a clear path to 5× ROI within 90 days, we decline the engagement. Expected return: <strong>5–20× ROI within 30–60 days.</strong></p>
+        <p class="pf-note"><strong>Free setup call — no commitment.</strong> Book a 30-minute call, we map out your system, and you decide if you want to go ahead. No pressure, no pitch. Expected result: <strong>more bookings, less missed messages, within 30 days.</strong></p>
         <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-          <button class="btn-primary mag" data-modal="open" type="button">Apply for Audit →</button>
+          <button class="btn-primary mag" data-modal="open" type="button">Get Free Setup Call →</button>
           <button onclick="Calendly.initPopupWidget({url:'https://calendly.com/ironlogic-business/ai-audit'});return false" type="button" style="font-family:var(--sans);font-size:12px;color:var(--ink3);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px">or book a call directly</button>
         </div>
       </div>
@@ -2033,21 +2087,21 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
 <!-- CTA -->
 <section id="cta">
   <div class="cta-inner">
-    <div class="cta-badge rv"><span class="cta-badge-dot"></span>Free · No pitch · 24hr response</div>
-    <h2 class="cta-h rv">Apply for your<br><em>free</em> System Audit</h2>
-    <p class="cta-p rv">Most businesses qualify within 5 minutes. If we can't identify at least 5× ROI in your first audit, we tell you — and you pay nothing.</p>
+    <div class="cta-badge rv"><span class="cta-badge-dot"></span>Free · No pressure · 30 minutes</div>
+    <h2 class="cta-h rv">Stop losing customers<br>to <em>slow replies.</em></h2>
+    <p class="cta-p rv">Book a free 30-minute setup call. We'll show you exactly how the system works for your business — and you decide if you want to go ahead.</p>
     <div class="cta-btns rv">
-      <a href="#" data-modal="open" class="btn-primary mag" style="font-size:16px;padding:14px 28px">Apply for System Audit →</a>
-      <button class="btn-ghost mag" data-scroll="roi" type="button">Calculate My Loss First</button>
+      <a href="#" data-modal="open" class="btn-primary mag" style="font-size:16px;padding:14px 28px">Get Free Setup Call →</a>
+      <button class="btn-ghost mag" data-scroll="demo-section" type="button">Try the Live Demo First</button>
     </div>
     <div class="cta-divider rv"><span>or</span></div>
     <div class="rv">
       <button class="btn-ghost mag" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ironlogic-business/ai-audit'});return false" type="button" style="font-size:14px">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 6h14M5 1v2M11 1v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Book a 15-min discovery call directly
+        Book a call directly
       </button>
     </div>
-    <div class="cta-note rv" style="margin-top:16px">Application reviewed within 24 hours · Qualifying businesses only</div>
+    <div class="cta-note rv" style="margin-top:16px">Response within 24 hours · No commitment · Works for any local business</div>
   </div>
 </section>
 
@@ -2066,33 +2120,32 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
             <span style="font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:-.01em">IronLogic</span>
           </a>
         </div>
-        <p class="footer-tagline">Revenue infrastructure for high-ticket service businesses.</p>
+        <p class="footer-tagline">AI that replies to your customers — 24/7, on WhatsApp &amp; Instagram.</p>
       </div>
       <div class="fc">
-        <h4>Services</h4>
+        <h4>What We Do</h4>
         <ul>
-          <li><button data-scroll="systems" type="button">AI Voice Agents</button></li>
-          <li><button data-scroll="systems" type="button">WhatsApp AI</button></li>
-          <li><button data-scroll="systems" type="button">Follow-Up Systems</button></li>
-          <li><button data-scroll="systems" type="button">Lead Qualification</button></li>
+          <li><button data-scroll="systems" type="button">How It Works</button></li>
+          <li><button data-scroll="how-we-build" type="button">The Setup Process</button></li>
+          <li><button data-scroll="demo-section" type="button">Try the Live Demo</button></li>
+          <li><button data-scroll="roi" type="button">ROI Calculator</button></li>
         </ul>
       </div>
       <div class="fc">
         <h4>Who We Serve</h4>
         <ul>
-          <li><button data-scroll="serve" type="button">Real Estate</button></li>
-          <li><button data-scroll="serve" type="button">Medical Clinics</button></li>
-          <li><button data-scroll="serve" type="button">Law Firms</button></li>
-          <li><button data-scroll="serve" type="button">Home Services</button></li>
+          <li><button data-scroll="serve" type="button">Barber Shops &amp; Salons</button></li>
+          <li><button data-scroll="serve" type="button">Gyms &amp; Fitness Coaches</button></li>
+          <li><button data-scroll="serve" type="button">Restaurants &amp; Food</button></li>
+          <li><button data-scroll="serve" type="button">Small Businesses</button></li>
         </ul>
       </div>
       <div class="fc">
         <h4>Contact</h4>
         <ul>
-          <li><a href="#" data-modal="open">Apply for Audit</a></li>
+          <li><a href="#" data-modal="open">Get Free Setup Call</a></li>
           <li><a href="mailto:ironlogic.business@gmail.com">ironlogic.business@gmail.com</a></li>
           <li><a href="https://wa.me/18768600442" target="_blank" rel="noopener">WhatsApp us</a></li>
-          <li><button data-scroll="roi" type="button">ROI Calculator</button></li>
           <li><button data-scroll="case" type="button">Case Study</button></li>
         </ul>
       </div>
@@ -2148,34 +2201,34 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 (function(){
 
   const IND={
-    re:{label:'Real Estate',name:'Sarah · Premier Realty',status:'AI Lead System · online',av:'PR',
-      greeting:"Hi there! 👋 Thanks for reaching out to Premier Realty Group. Are you looking to buy, sell, or rent a property?",
-      system:`You are Sarah, a 24/7 AI sales assistant for Premier Realty Group, built by Iron Logic. Qualify leads and book showings. Be warm, concise (2–3 sentences max), WhatsApp-style — no long paragraphs. Flow: understand what they want → ask if pre-approved (buyers) → offer 2 specific showing slots. If asked if you're AI, say yes — built to respond instantly so no lead is missed.`,
-      steps:[{h:'Instant response',p:'The moment a lead reaches out, the AI replies — day or night, in under 30 seconds.'},{h:'Smart qualification',p:'Asks the right questions naturally: budget, timeline, pre-approval status.'},{h:'Books the showing',p:'Offers specific slots, confirms the booking, notifies the agent.'},{h:'Zero missed leads',p:'Every inquiry handled — the agent only steps in for confirmed appointments.'}]},
-    dental:{label:'Dental Clinic',name:'Bright Smile Dental · AI',status:'Booking System · online',av:'BSD',
-      greeting:"Hi! 😊 You've reached Bright Smile Dental. Are you looking to book an appointment, or do you have a quick question?",
-      system:`You are an AI booking assistant for Bright Smile Dental, built by Iron Logic. Book appointments and answer questions. Be warm, brief (2–3 sentences), WhatsApp-style. Flow: what do they need → insurance question → offer 2 appointment slots.`,
-      steps:[{h:'After-hours booking',p:'Patient texts at 9pm. The AI captures them instantly — no voicemail, no missed call.'},{h:'Insurance qualification',p:'Checks coverage, confirms the plan, matches them to the right service.'},{h:'Slot confirmed',p:'Offers real availability, books the slot, sends an automatic reminder.'},{h:'Full patient pipeline',p:'Every inquiry becomes a booked appointment.'}]},
-    law:{label:'Law Firm',name:'Harrison Law · Intake AI',status:'Case Intake · online',av:'HL',
-      greeting:"Hi, you've reached Harrison Law Group. I'm the intake assistant — available 24/7. Can you briefly describe the legal matter you're dealing with?",
-      system:`You are an AI intake assistant for Harrison Law Group, built by Iron Logic. Qualify clients and book free consultations. Be empathetic, brief (2–3 sentences), WhatsApp-style. Flow: understand situation → key details (injury, fault, documentation) → book free consult. Never give legal advice.`,
-      steps:[{h:'24/7 intake',p:'Client reaches out at 11pm. AI captures them before they call a competitor.'},{h:'Case pre-qualification',p:'Extracts injury details, fault, and documentation naturally in conversation.'},{h:'Consultation booked',p:'Offers specific times, books the free consult, sends confirmation.'},{h:'Attorneys see only qualified cases',p:'Every call has context — no cold intros.'}]},
-    hvac:{label:'Home Services',name:"Mike's HVAC · Dispatch AI",status:'Service Dispatch · online',av:'MH',
-      greeting:"Hey! 🔧 Mike's HVAC here. What's going on — AC issue, heating problem, or something else? We've got same-day slots available.",
-      system:`You are an AI dispatcher for Mike's HVAC, built by Iron Logic. Book service calls quickly. Be friendly, brief (2–3 sentences), WhatsApp-style. Flow: what's the issue → location/availability → confirm a slot with a price estimate. Mention same-day slots when relevant.`,
-      steps:[{h:'Missed call captured',p:'Customer calls at 2pm, no answer. AI texts back in seconds — before they call anyone else.'},{h:'Job scoped fast',p:'Captures issue type, location, and urgency without back-and-forth.'},{h:'Tech dispatched',p:'Books the slot, gives a price estimate, confirms the technician name.'},{h:'Revenue recovered',p:'Jobs that would have gone to a competitor are booked and paid.'}]},
-    consult:{label:'Consulting',name:'Peak Advisory · AI',status:'Strategy Intake · online',av:'PA',
-      greeting:"Hey 👋 Thanks for reaching out to Peak Advisory. Quick question — what's the main thing slowing your business growth right now?",
-      system:`You are an AI intake assistant for Peak Advisory Group, built by Iron Logic. Qualify consulting leads and book strategy sessions. Be confident, peer-like (not salesy), brief (2–3 sentences), WhatsApp-style. Flow: business + main bottleneck → revenue/size qualifier → book a free strategy session.`,
-      steps:[{h:'High-intent captured',p:'Prospect reaches out at 7pm. AI is there instantly — no delay, no missed opportunity.'},{h:'Business qualified',p:'Revenue, bottleneck, readiness — extracted naturally in conversation.'},{h:'Session booked',p:'Offers a strategy session (not a sales call), confirms, sends prep form.'},{h:'Advisor only meets qualified leads',p:'Every call has full context — warm, pre-qualified conversations only.'}]}
+    re:{label:'Barber Shop',name:"Marcus Cuts · AI Assistant",status:'Booking System · online',av:'MC',
+      greeting:"Hey! ✂️ Thanks for hitting us up at Marcus Cuts. Looking to book a cut, or got a question about our services?",
+      system:`You are an AI booking assistant for Marcus Cuts barber shop, built by Iron Logic. Book haircut appointments and answer questions. Be friendly, brief (2–3 sentences max), WhatsApp-style — no long paragraphs. Flow: what do they want → available day/time → confirm the booking. Prices: Haircut J$1,500 · Shape-up J$800 · Full cut + beard J$2,200. Hours: Mon–Sat 9am–7pm. If asked if you're AI, say yes — built by Iron Logic so no booking is ever missed.`,
+      steps:[{h:'Instant reply',p:'Customer messages at 10pm. AI replies in 18 seconds — booking locked before they try someone else.'},{h:'Handles everything',p:'Prices, availability, services — answered automatically.'},{h:'Booking confirmed',p:'Slot booked, reminder sent — owner gets notified with no manual work.'},{h:'Zero missed bookings',p:'Every message handled around the clock.'}]},
+    dental:{label:'Gym / Fitness',name:'FitLife Jamaica · AI',status:'Membership System · online',av:'FL',
+      greeting:"Hey! 💪 Welcome to FitLife Jamaica. Are you interested in joining, asking about classes, or something else?",
+      system:`You are an AI assistant for FitLife Jamaica gym, built by Iron Logic. Help with memberships, class info, and bookings. Be energetic, brief (2–3 sentences), WhatsApp-style. Flow: what are they interested in → relevant info → book a trial or sign them up. Monthly membership: J$8,000. Day pass: J$1,200. Classes: Zumba, CrossFit, Boxing. Trial session is free.`,
+      steps:[{h:'24/7 enquiries handled',p:'Prospect messages at 6am before work. AI captures them instantly with pricing and class info.'},{h:'Trial session booked',p:'Offers a free trial, picks a time, locks it in — no back and forth.'},{h:'Membership upsell',p:'Explains plans, answers questions, guides them to sign up.'},{h:'More members, less admin',p:'Every DM and WhatsApp enquiry turned into a booking.'}]},
+    law:{label:'Restaurant',name:'Jerk Palace · Reservations',status:'Booking System · online',av:'JP',
+      greeting:"Yow! 🍽️ Welcome to Jerk Palace. Looking to make a reservation, ask about our menu, or order for pickup/delivery?",
+      system:`You are an AI assistant for Jerk Palace restaurant, built by Iron Logic. Handle reservations, menu questions, and delivery/pickup orders. Be friendly, Jamaican-warm, brief (2–3 sentences), WhatsApp-style. Flow: what do they need → details → confirm. Reservations: up to 10 people, call for groups. Hours: Daily 11am–10pm. Delivery available via in-house delivery.`,
+      steps:[{h:'No missed reservations',p:'Customer messages at 9pm for a Saturday table. AI books it instantly — no phone tag needed.'},{h:'Menu questions answered',p:'Pricing, allergens, specials — handled without a staff member.'},{h:'Orders captured',p:'Delivery and pickup orders confirmed and passed to the kitchen system.'},{h:'More tables filled',p:'Every enquiry becomes a confirmed booking or order.'}]},
+    hvac:{label:'Nail Salon',name:'Glam Nails · AI Booking',status:'Booking System · online',av:'GN',
+      greeting:"Hi gorgeous! 💅 Welcome to Glam Nails. Ready to book, or do you have a question about our services?",
+      system:`You are an AI booking assistant for Glam Nails salon, built by Iron Logic. Book nail appointments and answer questions. Be warm, friendly, brief (2–3 sentences), WhatsApp-style. Flow: what service → availability → confirm booking. Services: Full set J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000 · Nail art from J$500 extra. Hours: Tue–Sat 9am–6pm.`,
+      steps:[{h:'Instant booking reply',p:'Client messages at 8pm about a Saturday full set. AI books her slot before the weekend fills up.'},{h:'Service questions handled',p:'Prices, nail art options, aftercare — answered automatically.'},{h:'Appointment confirmed',p:'Slot booked with the right technician, reminder sent, owner notified.'},{h:'Calendar filled automatically',p:'Every DM and WhatsApp message becomes a booking.'}]},
+    consult:{label:'Small Business',name:'Any Business · AI Assistant',status:'Lead System · online',av:'AI',
+      greeting:"Hey! 👋 Thanks for reaching out. How can I help you today — pricing, availability, or booking?",
+      system:`You are a friendly AI assistant for a local small business, built by Iron Logic. Help customers with pricing, availability, and bookings. Be warm, brief (2–3 sentences max), WhatsApp-style. Flow: understand what they need → give relevant info → offer to book or connect them. If asked if you're AI, say yes — built to reply instantly so no customer is ever missed.`,
+      steps:[{h:'Works for any business',p:'No matter what you sell — the AI answers questions and books customers 24/7.'},{h:'Custom-built for you',p:'We write all the messages to match your brand, prices, and services.'},{h:'Connects to WhatsApp & Instagram',p:'Same accounts your customers already use — no new apps needed.'},{h:'Set up in 3–5 days',p:'From setup call to live — faster than you think.'}]}
   };
 
   const FB={
-    re:{buy:["Got it — are you pre-approved for financing? And what area and price range are you working with?","Perfect. What neighborhood and what's your timeline to move? I can check current availability."],sell:["Sure — what's the property address? I can get our senior agent to pull a market comp this week.","Happy to help. What area is the property in, and have you had a valuation done recently?"],price:["Our listings run $400K–$2M+ depending on neighborhood. What's your target range?","Depends on the area — what zone are you focused on and what's your budget?"],timeline:["We move fast — showings available as early as tomorrow. Mornings or afternoons better?","We can work with any timeline. Are you pre-approved and ready to view, or still exploring?"],book:["I have Tuesday 10am or Thursday 3pm for a showing. Which works?","How about Monday 9am or Wednesday 4pm? I can hold the slot right now."],confirm:["Confirmed! 👍 I'll send property details and the agent will reach out 30 minutes before.","Perfect — booked. Our senior agent will have everything ready for your visit."],identity:null,default:["What are you looking for — buying, selling, or exploring the market?","Happy to help. Are you buying or selling, and what area are you focused on?"]},
-    dental:{pain:["Sorry to hear that 😟 We can get you in today for an emergency visit. Which tooth and how long has it been bothering you?","We prioritize pain cases — are you free this afternoon? I have a 2:30pm slot."],routine:["Great — we're accepting new patients. Do you have dental insurance, and are mornings or afternoons better?","We have openings this week. Do you have Delta Dental, Cigna, or another plan?"],price:["A checkup + cleaning is $150–$220 without insurance, usually just your copay with coverage. Want to check what's available?","New patient exam + X-rays runs $95–$200 depending on your insurance. Want to see this week's slots?"],book:["I have Thursday 10am or Friday 3pm available. Which works for you?","We have Tuesday 11am or Wednesday 4pm. Which is better?"],confirm:["Booked! 🎉 You'll get a reminder the day before. See you soon!","Appointment confirmed — new patient forms will come by text. Takes about 3 minutes to fill out."],identity:null,default:["Are you looking to schedule a checkup, or do you have a specific concern?","What brings you in — routine cleaning, something bothering you, or a cosmetic question?"]},
-    law:{accident:["I'm sorry that happened. Was a police report filed and were you injured? Our attorneys handle these on contingency — no fee unless you win.","Sorry to hear that. How long ago did this happen? Time matters — let's get you on with our attorney quickly."],injury:["Have you seen a doctor and documented the injuries? That's important for your case. Want to book a free consult?","Sounds like something our team can look at. Were there witnesses, and do you have a police report?"],price:["We work on contingency — no upfront fees, we only get paid if you win. Want to set up a free case review?","Injury cases are no-win-no-fee. The first consultation is always free. Want to book?"],book:["I can put you in for a free 30-min consultation — tomorrow 11am or Friday 2pm. Which works?","Attorney available Wednesday 3pm or Thursday 10am for a free case review. Which would you prefer?"],confirm:["Consultation confirmed. You'll get a text reminder. The attorney will review everything before the call.","Locked in — our attorney will have reviewed your details in advance. Talk soon!"],identity:null,default:["Can you give me a brief overview? I want to connect you with the right attorney.","What type of matter — personal injury, family law, or something else?"]},
-    hvac:{ac:["AC issues in this heat — we feel you. Are you in our service area and is someone home today? We have afternoon slots.","Not cooling or not turning on at all? And your zip code so I can match you with the nearest tech?"],heat:["Heating out is urgent — what's your address and are you home? We can likely get someone there today.","Is it not turning on, or on but not heating? And what's your general area?"],price:["Diagnostic is $89 (waived if you go with the repair). Most jobs run $150–$800. We quote before touching anything.","We give a full quote before starting — no surprises. Diagnostic is $89, credited toward the repair. Want to book?"],book:["We have a 2–4pm slot today or 9–11am tomorrow. Which works?","Tech available 4–6pm today or 8–10am tomorrow. Want me to lock that in?"],confirm:["Booked! 🔧 You'll get a text when he's on his way. Payment is after the job — no upfront charges.","Locked in. His name is Carlos — he'll text when he's 20 minutes out. See you soon!"],identity:null,default:["What's the issue — AC, heating, or something else? And are you residential or commercial?","Is this a repair or a maintenance tune-up? And what area are you in?"]},
-    consult:{revenue:["Got it — is the issue more about generating revenue, or converting what you already have?","At that level there are usually 2–3 clear leverage points. Is the bottleneck lead flow, your offer, or ops?"],leads:["Lead issues usually fall into two buckets — not enough, or losing them too fast. Which is it?","What channels are you using and what does your current follow-up look like?"],growth:["What does growth look like right now — more clients, better margins, or scaling the team?","Are you trying to hit a revenue target, reduce your hours, or both?"],price:["The strategy session is free — honest look at your business, no pitch. We scope from there only if there's a fit.","The call itself is free. We only propose an engagement if we can show you clear ROI first."],book:["I have Wednesday 2pm or Friday 10am for a 45-min strategy session. Which works?","How about Tuesday 11am or Thursday 3pm? Actual strategy — not a sales call."],confirm:["Perfect 👊 You'll get a short prep form by email. Come ready to talk numbers. See you then!","Confirmed. Our advisor will have reviewed your situation before the call. Talk soon!"],identity:null,default:["What's the main thing slowing your business growth right now?","What do you do, and what's the biggest friction point today?"]}
+    re:{buy:["We have morning and afternoon slots this week. Which day works for you?","We're open Mon–Sat 9am–7pm. Want me to check what's available?"],sell:["No problem! Walk-ins welcome, or I can book you a specific slot. What service are you looking for?","Sure — haircut, shape-up, or the full package? And which day works best?"],price:["Haircut is J$1,500 · Shape-up J$800 · Full cut + beard J$2,200. Which service are you going with?","Prices start from J$800. The full cut + beard combo is J$2,200. What are you going for?"],timeline:["We can usually fit you in same day or next day. Morning or afternoon better for you?","We're pretty flexible — what day are you thinking, and morning or afternoon?"],book:["I have Saturday 10am or 1pm available. Which works for you?","How about Friday 3pm or Saturday morning at 10am?"],confirm:["Locked in! ✅ We'll send you a reminder the day before. See you then! ✂️","Booked! 👍 Looking forward to seeing you. Any cancellations, just message us here."],identity:null,default:["Looking to book a cut, or got a question about pricing or hours?","What can I help with — booking, pricing, or services?"]},
+    dental:{pain:["We have morning and evening classes this week. Want a free trial session first?","No worries — we offer a free trial so you can check the vibe before committing. Interested?"],routine:["Monthly membership is J$8,000 — that's unlimited access to all equipment and group classes. Want to try a free session first?","We have Zumba, CrossFit, and Boxing classes. Which one sounds like you?"],price:["Monthly membership: J$8,000 · Day pass: J$1,200 · Free trial session available. Want to book the trial?","Trial session is free — no commitment. Membership after is J$8,000/month. Want to book a trial?"],book:["I have a free trial slot Tuesday 6am or Thursday 5pm. Which works?","We have Saturday morning at 8am or Wednesday evening at 5pm. Which is better?"],confirm:["Trial session booked! 💪 See you then — just wear comfortable clothes and bring water.","Confirmed! Come as you are — we'll show you around and get you into the right class."],identity:null,default:["Interested in joining, asking about classes, or want to book a free trial?","What are you looking to do — lose weight, build muscle, or just stay active?"]},
+    law:{accident:["We can seat up to 10 people — what date and time are you thinking?","We're open daily 11am–10pm. How many people in your party and which day?"],injury:["No problem! Jerk chicken, curry goat, oxtail — what's calling you today?","We have dine-in, takeout, and delivery. What are you in the mood for?"],price:["Our plates start from J$1,200. The full Jerk experience combo is J$2,800. Want to see the full menu?","Jerk chicken from J$1,200 · Oxtail J$1,800 · Vegetarian options available too. What sounds good?"],book:["I can book you for Saturday at 7pm — how many people?","Sunday brunch at 12pm is great — shall I reserve a table? How many guests?"],confirm:["Table reserved! 🍽️ See you then — we'll have your spot ready. Any dietary needs?","Confirmed! Your table will be set. Let us know if anything changes."],identity:null,default:["Looking to make a reservation, check the menu, or order for delivery?","What can I help with — dine-in, takeout, or catering?"]},
+    hvac:{ac:["We have full set, gel manicure, and pedicure. Which service are you going for?","Full set is J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000 · Nail art from J$500 extra. What are you thinking?"],heat:["We have slots Tue–Sat 9am–6pm. Which day works for you?","Morning or afternoon better for you? I can check what's available this week."],price:["Full set J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000. Any nail art is J$500+ depending on design. Which service?","Prices: Full set J$3,500 · Gel J$2,500 · Pedicure J$2,000. Want to book?"],book:["I have Saturday 11am or 2pm available. Which slot works?","How about Thursday 3pm or Friday 10am? Both have availability."],confirm:["Appointment confirmed! 💅 We'll send a reminder. See you soon!","Booked! 👏 If you have nail art inspo, send us a pic beforehand. See you then!"],identity:null,default:["Looking to book an appointment, check prices, or ask about our services?","What can I help with — booking, pricing, or availability?"]},
+    consult:{revenue:["What kind of business do you run? I can give you the right info straight away.","Happy to help! Are you asking about pricing, availability, or something specific?"],leads:["What service are you interested in? I can check availability right now.","No problem — are you looking to book, get a price, or find out more?"],growth:["We're open and ready to help. What are you looking for today?","Great! What service do you need and which day works for you?"],price:["The setup call is free and takes about 30 minutes. From there we build your system and you pay monthly. Want to book a call?","First call is free — no commitment. We only move forward if it makes sense for your business. Want to book?"],book:["I have a free setup call available Tuesday 2pm or Thursday 11am. Which works?","How about Monday 10am or Wednesday 3pm for a free 30-min setup call?"],confirm:["Perfect! 👊 You'll get a confirmation text shortly. See you on the call!","Confirmed — talk soon! We'll prep a few questions before the call."],identity:null,default:["What can I help with — pricing, availability, or booking?","Happy to help! What's your question?"]}
   };
 
   function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
@@ -2184,27 +2237,27 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
     msg=msg.toLowerCase();
     if(/who are you|are you (an )?ai|are you (a )?bot|are you human|are you real|what are you/i.test(msg))return'identity';
     if(ind==='re'){
-      if(/buy|purchas|looking for|home|house|property|condo|apart/i.test(msg))return'buy';
-      if(/sell|selling|list|my home|my house|my property/i.test(msg))return'sell';
-      if(/price|cost|afford|budget|much|rate|value/i.test(msg))return'price';
-      if(/when|timeline|soon|ready|fast|quickly/i.test(msg))return'timeline';
+      if(/walk.?in|slot|cut|haircut|trim|fade|shape|style/i.test(msg))return'buy';
+      if(/how long|wait|walk in|same day|today/i.test(msg))return'sell';
+      if(/price|cost|much|rate|charge|fee|how much/i.test(msg))return'price';
+      if(/when|open|hour|available|today|tomorrow|weekend/i.test(msg))return'timeline';
     }else if(ind==='dental'){
-      if(/pain|hurt|ache|emergenc|broken|chip|crack|abscess|swell|tooth/i.test(msg))return'pain';
-      if(/checkup|clean|routine|annual|whitening|cosmetic|veneer|implant|new patient/i.test(msg))return'routine';
-      if(/price|cost|much|insurance|covered|pay|fee/i.test(msg))return'price';
+      if(/trial|free|try|test|first time|visit|join|tour/i.test(msg))return'pain';
+      if(/class|zumba|crossfit|boxing|group|schedule|program/i.test(msg))return'routine';
+      if(/price|cost|much|membership|monthly|fee|rate/i.test(msg))return'price';
     }else if(ind==='law'){
-      if(/accident|crash|car|vehicle|collision|hit|slip|fall/i.test(msg))return'accident';
-      if(/injur|hurt|pain|medical|hospital|whiplash|broken|fracture/i.test(msg))return'injury';
-      if(/price|fee|cost|charge|pay|contingency|free/i.test(msg))return'price';
+      if(/reserv|table|seat|book|dine|dinner|lunch|brunch|group|party|people/i.test(msg))return'accident';
+      if(/menu|food|dish|jerk|oxtail|curry|chicken|vegetarian|option/i.test(msg))return'injury';
+      if(/price|cost|how much|rate|charge|delivery|fee/i.test(msg))return'price';
     }else if(ind==='hvac'){
-      if(/\bac\b|air conditioner|cooling|cool|not cool|too hot/i.test(msg))return'ac';
-      if(/heat|furnace|not warm|too cold/i.test(msg))return'heat';
-      if(/price|cost|fee|diagnos|charge|much/i.test(msg))return'price';
+      if(/nail|full set|gel|acrylic|manicure|pedicure|nail art|design/i.test(msg))return'ac';
+      if(/when|available|slot|open|hour|day|week|saturday|sunday/i.test(msg))return'heat';
+      if(/price|cost|much|rate|charge|fee|how much/i.test(msg))return'price';
     }else if(ind==='consult'){
-      if(/revenue|money|income|earn|profit|sales|make/i.test(msg))return'revenue';
-      if(/lead|traffic|client|customer|prospect|market|ads/i.test(msg))return'leads';
-      if(/grow|scale|expand|bigger|next level|team|hire/i.test(msg))return'growth';
-      if(/price|cost|fee|much|invest|charge|service/i.test(msg))return'price';
+      if(/how|work|tell me|explain|more|info|what do/i.test(msg))return'revenue';
+      if(/lead|traffic|client|customer|prospect|market|message/i.test(msg))return'leads';
+      if(/grow|scale|expand|help|business|problem|issue/i.test(msg))return'growth';
+      if(/price|cost|fee|much|invest|charge|service|plan/i.test(msg))return'price';
     }
     if(/book|schedul|appoint|slot|time|available|meeting|call|visit|consult|session/i.test(msg))return'book';
     if(/yes|sure|okay|ok|perfect|great|works|confirm|deal|let.s|sounds good|go ahead|lock/i.test(msg))return'confirm';
@@ -2660,7 +2713,7 @@ if(auditForm){
 
 /* ─── WORD CYCLE ─── */
 (function(){
-  const words=['speed.','follow-up.','availability.','consistency.','systems.','response.','execution.','automation.','infrastructure.','urgency.','timing.','pipeline.','follow-through.','conversion.','nurturing.','outreach.','missed calls.','callback time.','booking rate.','lead capture.','qualification.','process.','capacity.','bandwidth.','reaction time.','closing rate.','momentum.','coverage.','scalability.','precision.','reach.','discipline.','structure.','retention.','activation.','traction.','clarity.','intent.','volume.','velocity.','persistence.','visibility.','attention.','delivery.','reliability.','commitment.','leverage.','positioning.','trust.','communication.','presence.','focus.','efficiency.','responsiveness.','agility.','throughput.','intelligence.','strategy.','accountability.','readiness.'];
+  const words=['elsewhere.','to a competitor.','without replying.','without booking.','without coming back.'];
   let idx=0;
   // Re-fetch on each tick — hero word-wrap IIFE cloneNodes the hero-h children,
   // so cached references point to detached nodes after that pass.
