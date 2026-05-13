@@ -1321,8 +1321,8 @@ a.ow-web-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(220,38,38
 /* DEMO PIPELINE */
 .demo-pipeline{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:16px;display:none}
 .demo-pipeline.active{display:block}
-.dp-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--mono);font-size:10px;color:var(--ink4);text-transform:uppercase;letter-spacing:.07em}
-.dp-hdr-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+.pipeline-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-family:var(--mono);font-size:10px;color:var(--ink4);text-transform:uppercase;letter-spacing:.07em}
+.pipeline-hdr-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
 .dp-stages{display:flex;flex-direction:column;gap:3px}
 .dp-stage{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:7px;transition:background .15s}
 .dp-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .2s,box-shadow .2s}
@@ -1534,3 +1534,82 @@ body{background:linear-gradient(180deg,rgba(253,240,238,.6) 0%,#fff 200px)}
 .about-play-btn:hover .about-play-icon{transform:scale(1.1);box-shadow:0 4px 16px rgba(220,38,38,.4)}
 .about-play-ring{position:absolute;width:40px;height:40px;border-radius:50%;border:2px solid rgba(220,38,38,.3);animation:playRing 2s ease-out infinite;pointer-events:none}
 @keyframes playRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+
+/* ─── PROOF GRID CHARTS ─── */
+.pc{cursor:pointer;display:flex;flex-direction:column;gap:0}
+.pc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:4px}
+.pc-proj-badge{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#b45309;background:#fef3c7;border:1px solid #fde68a;border-radius:100px;padding:2px 8px;flex-shrink:0;margin-top:2px}
+/* Mini before/after bars inside proof cards */
+.pc-chart{margin:10px 0 8px;display:flex;flex-direction:column;gap:5px}
+.pcb-row{display:flex;align-items:center;gap:6px}
+.pcb-lbl{font-family:var(--mono);font-size:9px;color:var(--ink4);width:32px;flex-shrink:0;text-transform:uppercase;letter-spacing:.04em}
+.pcb-track{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.pcb-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+.pcb-fill.pcb-before{background:var(--border2)}
+.pcb-fill.pcb-after{background:var(--red)}
+.pcb-val{font-family:var(--mono);font-size:9px;color:var(--ink3);width:44px;text-align:right;flex-shrink:0}
+/* Trigger bar animation when card enters view */
+.rv.in .pcb-fill{width:var(--w)}
+
+/* Disclaimer strip */
+.pf-disclaimer{display:flex;align-items:center;gap:8px;background:#fef9ec;border:1px solid #fde68a;border-radius:10px;padding:10px 16px;font-family:var(--mono);font-size:12px;color:#92400e;margin:16px 0;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* ─── PROOF CARD CLICK → DETAIL PANEL ─── */
+/* Make detail panel way more readable */
+.dp-body{padding:28px 32px 32px}
+.dp-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.dp-col{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 16px}
+.dp-col-label{font-family:var(--mono);font-size:10px;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.dp-col-val{font-size:15px;font-weight:700;color:var(--ink)}
+/* Bar rows inside detail panel */
+.dp-bar-row{margin-bottom:16px}
+.dp-bar-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.dp-bar-pair{display:flex;flex-direction:column;gap:4px}
+.dp-bar-item{display:flex;align-items:center;gap:8px}
+.dp-bar-tag{font-family:var(--mono);font-size:10px;color:var(--ink4);width:36px;flex-shrink:0}
+.dp-bar-track{flex:1;height:10px;background:var(--bg3);border-radius:5px;overflow:hidden}
+.dp-bar-fill{height:100%;border-radius:5px;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.dp-bar-fill.before-fill{background:var(--border2)}
+.dp-bar-fill.after-fill{background:var(--red)}
+.dp-bar-val{font-family:var(--mono);font-size:11px;color:var(--ink3);min-width:52px;text-align:right}
+.dp-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.dp-kpi{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center}
+.dp-kpi-n{font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.03em}
+.dp-kpi-l{font-size:11px;color:var(--ink4);font-family:var(--mono);margin-top:4px}
+
+/* ─── TEXT CONTRAST FIXES ─── */
+/* PSR text in our-work cards — was too faint */
+.ow-psr-text{font-family:var(--mono);font-size:13px;color:var(--ink2);line-height:1.6;margin:2px 0 0}
+.ow-card.dark .ow-psr-text{color:rgba(255,255,255,.65)}
+/* Proof card industry label */
+.pc-i{font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:.04em;text-transform:uppercase;font-family:var(--mono)}
+/* Proof card number */
+.pc-n{font-size:clamp(32px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1;margin:4px 0}
+/* Proof card label */
+.pc-l{font-size:13px;color:var(--ink2);font-weight:500;line-height:1.4}
+/* Proof card meta */
+.pc-m{font-family:var(--mono);font-size:10px;color:var(--ink4);margin-top:8px}
+/* Click hint */
+.pc::after{content:'Click for breakdown →';font-family:var(--mono);font-size:9px;color:var(--red);opacity:0;transition:opacity .2s;margin-top:6px;letter-spacing:.04em;font-weight:600;display:block}
+.pc:hover::after{opacity:1}
+
+/* Detail panel compare grid */
+.dp-compare-grid{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:20px}
+.dp-compare-hdr{display:grid;grid-template-columns:1fr 1fr 1fr;padding:10px 16px;background:var(--bg3);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em}
+.dp-compare-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:12px 16px;border-bottom:1px solid var(--border);align-items:center}
+.dp-compare-row:last-child{border-bottom:none}
+.dcr-k{font-size:13px;font-weight:600;color:var(--ink)}
+.dcr-b{font-family:var(--mono);font-size:12px;color:var(--ink4)}
+.dcr-a{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700}
+.dp-proj-notice{grid-column:span 1;font-family:var(--mono);font-size:10px;color:#92400e;background:#fef9ec;border:1px solid #fde68a;border-radius:8px;padding:6px 12px;margin-top:4px;width:100%;grid-column:span 3}
+/* Redefine dp-meta to accept the new col layout */
+.dp-meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;align-items:flex-start}
+.dp-proj-notice{font-family:var(--mono);font-size:10px;color:#92400e;background:#fef9ec;border:1px solid #fde68a;border-radius:8px;padding:6px 12px;width:100%}
+/* Bar section */
+.dp-bar-section{margin-bottom:16px}
+.dp-bars-title{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+@media(max-width:540px){
+  .dp-compare-hdr,.dp-compare-row{grid-template-columns:1fr 80px 80px}
+  .dp-bottom{grid-template-columns:1fr 1fr}
+  .detail-panel{border-radius:16px!important}
+}

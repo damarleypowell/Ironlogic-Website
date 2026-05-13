@@ -803,51 +803,74 @@ if(auditForm){
 
   function openDetail(idx){
     const d=PD[idx];
-    if(!d)return;
+    if(!d||!detailOverlay)return;
+
+    // Header
     document.getElementById('dp-tag').textContent=d.industry;
     document.getElementById('dp-metric').textContent=d.metric;
     document.getElementById('dp-metric-label').textContent=d.metricLabel;
+
+    // Meta row
     document.getElementById('dp-meta').innerHTML=
-      `<span class="dp-tag-pill tl">⏱ ${d.tl}</span><span class="dp-tag-pill sys">${d.sys}</span>`;
+      `<div class="dp-col"><div class="dp-col-label">Timeline</div><div class="dp-col-val">${d.tl}</div></div>`+
+      `<div class="dp-col"><div class="dp-col-label">System</div><div class="dp-col-val">${d.sys}</div></div>`+
+      `<div class="dp-proj-notice">⚠ Projected estimate — not a confirmed client result</div>`;
+
+    // Before/after compare
+    const rows=[
+      {k:'Response Time',b:d.before.response,a:d.after.response},
+      {k:'Conversion',b:d.before.conversion,a:d.after.conversion},
+      {k:'Missed Leads',b:d.before.missed,a:d.after.missed},
+      {k:'Bookings',b:d.before.bookings,a:d.after.bookings},
+    ];
     document.getElementById('dp-compare').innerHTML=`
-      <div class="dp-col before">
-        <div class="dp-col-label">Before</div>
-        <div class="dp-stat"><div class="dp-stat-k">Response Time</div><div class="dp-stat-v">${d.before.response}</div></div>
-        <div class="dp-stat"><div class="dp-stat-k">Conversion</div><div class="dp-stat-v">${d.before.conversion}</div></div>
-        <div class="dp-stat"><div class="dp-stat-k">Missed Leads</div><div class="dp-stat-v">${d.before.missed}</div></div>
-        <div class="dp-stat"><div class="dp-stat-k">Bookings</div><div class="dp-stat-v">${d.before.bookings}</div></div>
-      </div>
-      <div class="dp-col after">
-        <div class="dp-col-label">After</div>
-        <div class="dp-stat"><div class="dp-stat-k">Response Time</div><div class="dp-stat-v">${d.after.response}</div></div>
-        <div class="dp-stat"><div class="dp-stat-k">Conversion</div><div class="dp-stat-v">${d.after.conversion}</div></div>
-        <div class="dp-stat"><div class="dp-stat-k">Missed Leads</div><div class="dp-stat-v">${d.after.missed}</div></div>
-        <div class="dp-stat"><div class="dp-stat-k">Bookings</div><div class="dp-stat-v">${d.after.bookings}</div></div>
+      <div class="dp-compare-grid">
+        <div class="dp-compare-hdr"><span>Metric</span><span>Before</span><span>After</span></div>
+        ${rows.map(r=>`
+        <div class="dp-compare-row">
+          <span class="dcr-k">${r.k}</span>
+          <span class="dcr-b">${r.b}</span>
+          <span class="dcr-a">${r.a}</span>
+        </div>`).join('')}
       </div>`;
+
+    // Animated bars
     const barsEl=document.getElementById('dp-bars');
-    barsEl.innerHTML=d.bars.map(b=>{
+    barsEl.innerHTML=`<div class="dp-bars-title">Performance Shift</div>`+d.bars.map(b=>{
       const bPct=Math.min(b.b,100);
       const aPct=Math.min(b.a,100);
-      return`<div class="dp-bar-row">
-        <div class="dp-bar-labels"><span>${b.l}</span><span style="color:var(--red)">${b.al}</span></div>
-        <div style="position:relative;height:6px;background:var(--bg3);border-radius:3px;margin-bottom:3px">
-          <div class="dp-bar-ghost" data-w="${bPct}" style="background:var(--border2)"></div>
-          <div class="dp-bar-fill" data-w="${aPct}"></div>
+      return`<div class="dp-bar-section">
+        <div class="dp-bar-label">${b.l}</div>
+        <div class="dp-bar-pair">
+          <div class="dp-bar-item">
+            <span class="dp-bar-tag">Before</span>
+            <div class="dp-bar-track"><div class="dp-bar-fill before-fill" style="width:0" data-w="${bPct}"></div></div>
+            <span class="dp-bar-val">${b.bl}</span>
+          </div>
+          <div class="dp-bar-item">
+            <span class="dp-bar-tag">After</span>
+            <div class="dp-bar-track"><div class="dp-bar-fill after-fill" style="width:0" data-w="${aPct}"></div></div>
+            <span class="dp-bar-val" style="color:var(--red)">${b.al}</span>
+          </div>
         </div>
-        <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--ink4)"><span>Before: ${b.bl}</span><span style="color:var(--red)">After: ${b.al}</span></div>
       </div>`;
     }).join('');
-    document.getElementById('dp-bottom').innerHTML=`
-      <div class="dp-kpi"><div class="dp-kpi-n" style="color:var(--green)">${d.roi}</div><div class="dp-kpi-l">ROI</div></div>
-      <div class="dp-kpi"><div class="dp-kpi-n">${d.revenue}</div><div class="dp-kpi-l">Added Revenue</div></div>
-      <div class="dp-kpi"><div class="dp-kpi-n">${d.payback}</div><div class="dp-kpi-l">Payback Period</div></div>`;
+
+    // KPIs
+    document.getElementById('dp-bottom').innerHTML=
+      `<div class="dp-kpi"><div class="dp-kpi-n" style="color:#16a34a">${d.roi}</div><div class="dp-kpi-l">Projected ROI</div></div>`+
+      `<div class="dp-kpi"><div class="dp-kpi-n">${d.revenue}</div><div class="dp-kpi-l">Added Revenue</div></div>`+
+      `<div class="dp-kpi"><div class="dp-kpi-n">${d.payback}</div><div class="dp-kpi-l">Payback Period</div></div>`;
+
     detailOverlay.classList.add('open');
     document.body.style.overflow='hidden';
-    // animate bars after open
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      document.querySelectorAll('.dp-bar-ghost').forEach(el=>{el.style.width=el.dataset.w+'%'});
-      document.querySelectorAll('.dp-bar-fill').forEach(el=>{el.style.width=el.dataset.w+'%'});
-    }));
+
+    // Animate bars in after panel appears
+    setTimeout(()=>{
+      barsEl.querySelectorAll('.dp-bar-fill[data-w]').forEach(el=>{
+        el.style.width=el.dataset.w+'%';
+      });
+    },120);
   }
 
   function closeDetail(){detailOverlay.classList.remove('open');document.body.style.overflow='';}
