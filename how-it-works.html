@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Iron Logic</title>
+<meta name="description" content="See exactly how Iron Logic builds and deploys your AI system in 3–5 days. No tech skills required. Works on WhatsApp and Instagram.">
+<link rel="canonical" href="https://ironlogic.ai/how-it-works">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'><rect x='12' y='2' width='30' height='30' rx='4' fill='%23C8201A'/><rect x='2' y='14' width='22' height='22' rx='4' fill='%23E8735A'/><rect x='12' y='14' width='12' height='12' fill='%23111827'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- AUDIT MODAL -->
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div id="modal-form-view">
+      <div class="modal-hdr">
+        <div class="modal-hdr-left">
+          <div class="modal-hdr-mark"><svg width="18" height="18" viewBox="0 0 44 44" fill="none"><rect x="14" y="2" width="28" height="28" rx="3" fill="#C8201A"/><rect x="2" y="14" width="28" height="28" rx="3" fill="#E8735A"/><rect x="14" y="14" width="16" height="16" rx="2" fill="#111827"/></svg></div>
+          <div class="modal-hdr-info">
+            <div class="modal-hdr-name">Iron Logic</div>
+            <div class="modal-hdr-step" id="modal-hdr-step">Step 1 of 3 · About you</div>
+          </div>
+        </div>
+        <button class="modal-progress-close" id="modal-close" aria-label="Close" type="button"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="modal-pbar"><div class="modal-pbar-fill" id="modal-pbar-fill" style="width:33.3%"></div></div>
+      <form id="audit-form" novalidate>
+        <div class="modal-steps-wrap">
+          <div class="modal-step active" id="step1">
+            <div class="modal-step-title" id="modal-title">Start your application.</div>
+            <div class="modal-step-sub">Takes 2 minutes · Free audit · Reviewed within 24 hours</div>
+            <div class="form-2col">
+              <div class="form-row"><label for="f-name">Your Name</label><input id="f-name" name="name" type="text" placeholder="John Smith" required></div>
+              <div class="form-row"><label for="f-biz">Business Name</label><input id="f-biz" name="business" type="text" placeholder="Acme Realty" required></div>
+            </div>
+            <div class="form-2col">
+              <div class="form-row"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="you@company.com" required></div>
+              <div class="form-row"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" required></div>
+            </div>
+            <div class="form-row"><label for="f-industry">Industry</label><select id="f-industry" name="industry" required><option value="">Select…</option><option>Barber Shop / Hair Salon</option><option>Gym / Fitness / Personal Training</option><option>Restaurant / Food Business</option><option>Beauty / Nail Salon</option><option>Real Estate</option><option>Medical / Dental / Clinic</option><option>Law Firm / Legal Services</option><option>Home Services (HVAC, Roofing, etc.)</option><option>Freelancer / Consultant</option><option>Retail / eCommerce</option><option>Other</option></select></div>
+            <div class="modal-step-btns"><button class="modal-btn-next" id="next1" type="button">Continue →</button></div>
+          </div>
+          <div class="modal-step" id="step2">
+            <div class="modal-step-title">Your numbers.</div>
+            <div class="modal-step-sub">We use this to calculate your actual revenue leak before we speak.</div>
+            <div class="form-2col">
+              <div class="form-row"><label for="f-deal">Average Sale Value</label><select id="f-deal" name="deal_value" required><option value="">Select…</option><option>J$500 – J$2,000</option><option>J$2,000 – J$10,000</option><option>J$10,000 – J$50,000</option><option>J$50,000+</option></select></div>
+              <div class="form-row"><label for="f-leads">Monthly Inbound Leads</label><select id="f-leads-m" name="monthly_leads" required><option value="">Select…</option><option>Fewer than 20</option><option>20 – 50</option><option>50 – 150</option><option>150 – 500</option><option>500+</option></select></div>
+            </div>
+            <div class="form-2col">
+              <div class="form-row"><label for="f-response">Current Response Time</label><select id="f-response" name="response_time" required><option value="">Select…</option><option>Under 5 minutes</option><option>5 – 30 minutes</option><option>30 min – 2 hours</option><option>2 – 24 hours</option><option>Over 24 hours / missed</option></select></div>
+              <div class="form-row"><label for="f-monthly-rev">Monthly Revenue (approx)</label><select id="f-monthly-rev" name="monthly_revenue"><option value="">Select…</option><option>Under J$100k</option><option>J$100k – J$500k</option><option>J$500k – J$2M</option><option>J$2M – J$10M</option><option>J$10M+</option></select></div>
+            </div>
+            <div class="form-row"><label for="f-tools">Current tools / CRM (if any)</label><input id="f-tools" name="current_tools" type="text" placeholder="e.g. HubSpot, spreadsheets, nothing…"></div>
+            <div class="modal-step-btns"><button class="modal-btn-back" id="back2" type="button">← Back</button><button class="modal-btn-next" id="next2" type="button">Continue →</button></div>
+          </div>
+          <div class="modal-step" id="step3">
+            <div class="modal-step-title">Last step.</div>
+            <div class="modal-step-sub">This shapes what we bring to the call — be specific.</div>
+            <div class="form-row"><label for="f-gap">Biggest gap in your lead process</label><select id="f-gap" name="lead_gap" required><option value="">Select…</option><option>Missing calls / leads after hours</option><option>Slow follow-up losing deals to competitors</option><option>No system — following up manually</option><option>Too many unqualified leads wasting time</option><option>Old leads never re-engaged</option><option>All of the above</option></select></div>
+            <div class="form-2col">
+              <div class="form-row"><label for="f-budget">Project budget range</label><select id="f-budget" name="budget"><option value="">Select…</option><option>Under $2,000</option><option>$2,000 – $5,000</option><option>$5,000 – $10,000</option><option>$10,000+</option><option>Depends on ROI shown</option></select></div>
+              <div class="form-row"><label for="f-timeline">Ready to start</label><select id="f-timeline" name="timeline"><option value="">Select…</option><option>Immediately</option><option>Within 30 days</option><option>1 – 3 months</option><option>Just exploring</option></select></div>
+            </div>
+            <div class="form-row"><label for="f-goal">What does success look like in 90 days? <span style="color:var(--ink4);font-weight:400">(optional)</span></label><textarea id="f-goal" name="success_goal" placeholder="e.g. Double booked appointments…"></textarea></div>
+            <div class="modal-step-btns"><button class="modal-btn-back" id="back3" type="button">← Back</button><button class="modal-btn-next" id="modal-submit" type="submit">Submit Application →</button></div>
+            <div class="modal-note">Reviewed within 24 hours · Qualifying businesses only · No obligation</div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div id="modal-success-view" class="modal-success" style="display:none">
+      <div class="ms-top">
+        <div class="ms-check"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4.5 4.5L16 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Application received.</h3>
+        <p>You'll hear from us within 24 hours.</p>
+      </div>
+      <div class="ms-bottom">
+        <div class="ms-cal">
+          <div class="ms-cal-label">Skip the wait — reserve your audit slot right now:</div>
+          <button class="ms-cal-btn" onclick="Calendly.initPopupWidget({url:'https://calendly.com/ironlogic-business/ai-audit'});return false" type="button">Book your 30-min audit →</button>
+          <div class="ms-cal-note">30 min · Video call · Free · No obligation</div>
+        </div>
+        <button class="ms-close" id="ms-close-btn" type="button">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="video-overlay"><div class="video-modal"><video id="modal-video" controls playsinline preload="none"></video><div class="video-label" id="video-label"></div><button class="video-close" id="video-close" type="button"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div></div>
+
+<!-- STICKY CTA BAR -->
+<div id="sticky-bar"><div class="sticky-inner"><div class="sticky-text">Every hour without a system, <strong>you're losing leads to competitors.</strong></div><div class="sticky-right"><button class="btn-primary mag" data-modal="open" type="button" style="font-size:13px;padding:9px 18px">Apply for Free Audit →</button><button class="sticky-dismiss" id="sticky-dismiss" type="button" title="Dismiss"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button></div></div></div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/18768600442" target="_blank" rel="noopener" id="wa-float" title="Chat on WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M20.52 3.48A11.95 11.95 0 0012 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.22-1.57A11.96 11.96 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22c-1.85 0-3.67-.5-5.25-1.44l-.37-.22-3.89.98 1.02-3.77-.24-.39A9.96 9.96 0 012 12C2 6.48 6.48 2 12 2c2.67 0 5.18 1.04 7.07 2.93A9.93 9.93 0 0122 12c0 5.52-4.48 10-10 10zm5.44-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51-.17 0-.37-.02-.57-.02-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.08-.12-.27-.2-.57-.34z"/></svg></a>
+
+<!-- EXIT INTENT -->
+<div id="exit-overlay"><div class="exit-card"><button class="exit-close" id="exit-close" type="button"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button><div class="exit-eyebrow">Before you go</div><h3 class="exit-h">How much did you lose<br>this week?</h3><p class="exit-p">The average service business misses 62% of inbound leads. At $3,500 per deal, that's real money leaving every single day.</p><button class="btn-primary mag" data-modal="open" type="button" style="width:100%;justify-content:center;font-size:15px;padding:13px">Find My Revenue Leak →</button></div></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-i">
+    <a href="index.html" class="logo" aria-label="Iron Logic home">
+      <span class="logo-mark" aria-hidden="true"><svg width="36" height="36" viewBox="0 0 44 44" fill="none"><rect x="12" y="2" width="30" height="30" fill="#C8201A"/><rect x="2" y="14" width="22" height="22" fill="#E8735A"/><rect x="12" y="14" width="12" height="12" fill="#111827"/></svg></span>
+      <span class="logo-name">IronLogic</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="how-it-works.html" style="color:var(--ink)">How It Works</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="our-work.html">Our Work</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="nav-ham" id="nav-ham" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="nav-cta mag" data-modal="open" type="button">Get Free Setup Call</button>
+  </div>
+</nav>
+
+<!-- PAGE BANNER -->
+<div class="page-hero hiw">
+  <div class="page-hero-inner">
+    <span class="eyebrow rv">How It Works</span>
+    <h1 class="sec-h rv">Your AI system,<br><span class="word-cycle" data-words="live in 3 days.|built for you.|always on.|zero effort." data-interval="2600"><span class="cycle-word">live in 3 days.</span><span class="cycle-bar"></span></span></h1>
+    <p class="sec-p rv" style="margin-top:12px">No tech required. No setup headaches. We build it, connect it, and hand you something that works — from the first call to going live in days.</p>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem" class="sec">
+  <div class="sec-w">
+    <div class="prob-layout">
+      <div>
+        <span class="eyebrow rv">The Problem</span>
+        <h2 class="sec-h rv">You're not losing customers<br>because of your <span class="word-cycle" data-words="price.|product.|service.|speed.|follow-up.|availability." data-interval="2200"><span class="cycle-word">price.</span><span class="cycle-bar"></span></span></h2>
+        <div class="prob-items" style="margin-top:32px">
+          <div class="pi rv"><div class="pi-num">01</div><div><div class="pi-h">Slow replies = lost customers.</div></div></div>
+          <div class="pi rv delay-1"><div class="pi-num">02</div><div><div class="pi-h">Missed messages = missed money.</div></div></div>
+          <div class="pi rv delay-2"><div class="pi-num">03</div><div><div class="pi-h">Too many chats to manage manually.</div></div></div>
+          <div class="pi rv delay-3"><div class="pi-num">04</div><div><div class="pi-h">Customers expect instant responses.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="prob-stats rv tilt">
+          <div class="stat-item"><div class="stat-n">62<sub>%</sub></div><div class="stat-l">of inbound calls go unanswered at the average service business</div></div>
+          <div class="stat-item"><div class="stat-n">9<sub>×</sub></div><div class="stat-l">higher conversion when contacted within 5 minutes vs 30 minutes</div></div>
+          <div class="stat-item"><div class="stat-n">47<sub>hrs</sub></div><div class="stat-l">average business response time to a web lead</div></div>
+        </div>
+        <div class="prob-callout rv">That gap between 5 minutes and 47 hours — that's your revenue leak.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEMS -->
+<section id="systems" class="sec" style="background:var(--bg2)">
+  <div class="sec-w">
+    <div class="sys-hdr">
+      <span class="eyebrow rv">The Process</span>
+      <h2 class="sec-h rv">Set up in 3–5 days.<br><span class="muted">You do nothing.</span></h2>
+    </div>
+    <div class="sys-grid">
+      <div class="sc rv tilt">
+        <div class="sc-num"><span class="sc-num-badge">Step 01</span></div>
+        <div class="sc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2a9 9 0 100 18A9 9 0 0011 2z" stroke="#dc2626" stroke-width="1.6"/><path d="M8 11l2 2 4-4" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="sc-explainer">Day 1</div>
+        <h3 class="sc-h">We Build It For You</h3>
+        <p class="sc-p">Tell us about your business — your hours, your prices, the questions customers always ask. We build the AI, write the scripts, and set up everything. You don't touch any tech.</p>
+        <ul class="sc-list"><li>Short setup call — about 30 minutes</li><li>We write all the messages in your brand's tone</li><li>Handles pricing questions, hours, bookings, FAQs</li><li>Built specifically for your type of business</li></ul>
+        <div class="sc-result">Ready to connect in 24–48 hours</div>
+      </div>
+      <div class="sc featured rv tilt">
+        <div class="sc-num"><span class="sc-num-badge">Step 02 · The Connection</span></div>
+        <div class="sc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="4" width="18" height="14" rx="3" stroke="#f87171" stroke-width="1.6"/><path d="M7 9h8M7 13h5" stroke="#f87171" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="4" r="3" fill="#dc2626"/></svg></div>
+        <div class="sc-explainer">Day 2–3</div>
+        <h3 class="sc-h">We Connect WhatsApp &amp; Instagram</h3>
+        <p class="sc-p">We link the AI directly to your existing accounts. No new apps. No extra phone numbers. Customers message your normal number — the AI replies instantly, even at 2am.</p>
+        <ul class="sc-list"><li>Works with your existing WhatsApp business number</li><li>Connects to Instagram DMs too</li><li>Nothing new to download or manage</li><li>You review and approve before it goes live</li></ul>
+        <div class="sc-result">Live and replying within 3–5 days</div>
+      </div>
+      <div class="sc rv tilt">
+        <div class="sc-num"><span class="sc-num-badge">Step 03</span></div>
+        <div class="sc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 12s2-4 8-4 8 4 8 4-2 4-8 4-8-4-8-4z" stroke="#dc2626" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12" r="2" fill="#dc2626" opacity=".3" stroke="#dc2626" stroke-width="1.6"/><path d="M11 4v2M11 18v-2M4 6l1.5 1.5M18 6l-1.5 1.5" stroke="#dc2626" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+        <div class="sc-explainer">Day 5 onwards</div>
+        <h3 class="sc-h">It Works While You Sleep</h3>
+        <p class="sc-p">Every message gets a reply in under 60 seconds — day or night, weekends included. It answers questions, takes bookings, and follows up automatically.</p>
+        <ul class="sc-list"><li>Instant replies 24/7 — even at 2am on a Sunday</li><li>Books appointments straight into your calendar</li><li>Follows up with customers who didn't book</li><li>You get notified when someone's ready to pay</li></ul>
+        <div class="sc-result">Avg. 3× more bookings in the first 30 days</div>
+      </div>
+    </div>
+    <div class="sys-bottom rv">
+      <div><div class="sys-bottom-t">Ready to see it working for your business?</div><div class="sys-bottom-s">Book a free setup call — takes 30 minutes.</div></div>
+      <a href="#" data-modal="open" class="btn-primary mag" style="text-decoration:none">Get Free Setup Call →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE BUILD -->
+<section id="how-we-build" class="sec">
+  <div class="sec-w">
+    <div class="hwb-grid">
+      <div>
+        <span class="eyebrow rv">The Setup Process</span>
+        <h2 class="sec-h rv">From zero to live<br><span class="muted">in 3–5 days.</span></h2>
+        <div class="hwb-steps" style="margin-top:32px">
+          <div class="hwb-step rv"><div class="hwb-step-num">01</div><div><div class="hwb-step-time">Day 1 · 30 minutes</div><div class="hwb-step-h">Setup Call</div></div></div>
+          <div class="hwb-step rv delay-1"><div class="hwb-step-num">02</div><div><div class="hwb-step-time">Day 1 → Day 3</div><div class="hwb-step-h">We Build It</div></div></div>
+          <div class="hwb-step rv delay-2"><div class="hwb-step-num">03</div><div><div class="hwb-step-time">Day 3 → Day 4</div><div class="hwb-step-h">You Review &amp; Approve</div></div></div>
+          <div class="hwb-step rv delay-3"><div class="hwb-step-num">04</div><div><div class="hwb-step-time">Day 5 onwards</div><div class="hwb-step-h">Live. Every Message Answered.</div></div></div>
+        </div>
+      </div>
+      <div class="rv delay-1">
+        <div class="hwb-panel">
+          <div class="hwb-panel-eyebrow">Before vs. After Iron Logic</div>
+          <div style="margin-bottom:12px">
+            <div class="hwb-col-label">Before</div>
+            <div class="hwb-row">
+              <div class="hwb-item"><div class="hwb-item-k">Response time</div><div class="hwb-item-v">Hours later</div></div>
+              <div class="hwb-item"><div class="hwb-item-k">After hours</div><div class="hwb-item-v">No reply</div></div>
+              <div class="hwb-item" style="margin-top:10px"><div class="hwb-item-k">Weekends</div><div class="hwb-item-v">Missed leads</div></div>
+              <div class="hwb-item" style="margin-top:10px"><div class="hwb-item-k">Bookings</div><div class="hwb-item-v">Manual only</div></div>
+            </div>
+          </div>
+          <div class="hwb-divider"></div>
+          <div style="margin-bottom:20px">
+            <div class="hwb-col-label" style="color:rgba(248,113,113,.7)">After</div>
+            <div class="hwb-row">
+              <div class="hwb-item accent"><div class="hwb-item-k">Response time</div><div class="hwb-item-v">&lt; 60 seconds</div></div>
+              <div class="hwb-item accent"><div class="hwb-item-k">After hours</div><div class="hwb-item-v">Always replies</div></div>
+              <div class="hwb-item accent" style="margin-top:10px"><div class="hwb-item-k">Weekends</div><div class="hwb-item-v">Fully covered</div></div>
+              <div class="hwb-item accent" style="margin-top:10px"><div class="hwb-item-k">Bookings</div><div class="hwb-item-v">Automatic</div></div>
+            </div>
+          </div>
+          <div class="hwb-advantage"><strong>More bookings. Less stress. No extra staff.</strong>Your customers get instant replies around the clock — while you focus on actually running your business.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<div id="demo-section">
+  <div class="demo-content">
+    <div class="demo-left">
+      <div class="demo-eyebrow">Live Demo</div>
+      <h2 class="demo-h">Try the AI.<br><span class="accent">Right now.</span></h2>
+      <p class="demo-p">Pick an industry. Type your message. See exactly how Iron Logic responds to your leads — the same system, live.</p>
+      <div id="demo-tabs" style="margin-top:24px"></div>
+      <div id="demo-steps"></div>
+      <div class="demo-pipeline" id="demo-pipeline" style="display:none">
+        <div class="dp-hdr"><div class="dp-hdr-dot"></div><span>Processing</span></div>
+        <div class="dp-stages">
+          <div class="dp-stage" id="dp-stage-0"><div class="dp-dot"></div><div class="dp-stage-label">Reading message</div><div class="dp-check">✓</div></div>
+          <div class="dp-stage" id="dp-stage-1"><div class="dp-dot"></div><div class="dp-stage-label">Searching knowledge base</div><div class="dp-check">✓</div></div>
+          <div class="dp-stage" id="dp-stage-2"><div class="dp-dot"></div><div class="dp-stage-label">Classifying intent</div><div class="dp-check">✓</div></div>
+          <div class="dp-stage" id="dp-stage-3"><div class="dp-dot"></div><div class="dp-stage-label">Formulating response</div><div class="dp-check">✓</div></div>
+          <div class="dp-stage" id="dp-stage-4"><div class="dp-dot"></div><div class="dp-stage-label">Sending reply</div><div class="dp-check">✓</div></div>
+        </div>
+      </div>
+      <div class="demo-hint">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.4"/><path d="M7 6.5v3M7 4v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span>Try: "I need to book an appointment" · "How much does it cost?" · "Is there availability this week?"</span>
+      </div>
+    </div>
+    <div class="demo-right">
+      <div class="demo-voice-row">
+        <button class="wa-voice-btn" id="wa-voice-toggle" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Voice off</span></button>
+      </div>
+      <div class="wa-phone">
+        <div class="wa-hdr">
+          <div class="wa-hdr-left">
+            <div class="wa-av-wrap"><div class="wa-av" id="wa-av">PR</div><div class="wa-online-dot"></div></div>
+            <div class="wa-info"><div class="wa-name-line" id="wa-name">Sarah · Premier Realty</div><div class="wa-status-line" id="wa-status">online</div></div>
+          </div>
+          <div class="wa-hdr-actions">
+            <div class="wa-hdr-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="wa-hdr-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+        </div>
+        <div class="wa-body" id="wa-body"><div class="wa-date-div"><span>Today</span></div></div>
+        <div class="wa-bar" id="wa-bar">
+          <input type="text" class="wa-input" id="wa-input" placeholder="Message" maxlength="500" autocomplete="off">
+          <div class="wa-rec-ui" id="wa-rec-ui"><canvas class="wa-wave-canvas" id="wa-wave-canvas" height="36"></canvas><span class="wa-rec-timer" id="wa-rec-timer">0:00</span></div>
+          <button class="wa-mic-btn" id="wa-mic" type="button" title="Tap to record"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 1a4 4 0 014 4v7a4 4 0 01-8 0V5a4 4 0 014-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M19 11a7 7 0 01-14 0M12 19v4M8 23h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="wa-send-btn" id="wa-send" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHO WE SERVE -->
+<section id="serve" class="sec">
+  <div class="sec-w">
+    <div class="serve-layout">
+      <div>
+        <span class="eyebrow rv">Who We Serve</span>
+        <h2 class="sec-h rv">If customers message you<br><span class="muted">before buying — this is for you.</span></h2>
+        <p class="sec-p rv" style="margin-top:16px">We work with service businesses of all sizes — from Jamaica to the US. If customers message you before buying and you're not always fast enough to reply — we fix that.</p>
+        <div class="serve-aside rv" style="margin-top:32px">
+          <div class="sa-label">Simple rule</div>
+          <p class="sa-rule">If customers message before they buy, <strong>every unanswered message is a sale you didn't make.</strong> We stop that from happening — automatically.</p>
+        </div>
+      </div>
+      <div class="serve-list rv">
+        <div class="sr"><div class="sr-badge t1">✂</div><div><div class="sr-n">Barber Shops &amp; Salons</div><p class="sr-d">Never miss a booking request again.</p></div></div>
+        <div class="sr"><div class="sr-badge t1">💪</div><div><div class="sr-n">Gyms &amp; Fitness Coaches</div><p class="sr-d">Signups, class info, memberships — answered instantly.</p></div></div>
+        <div class="sr"><div class="sr-badge t1">🍽</div><div><div class="sr-n">Restaurants &amp; Food Businesses</div><p class="sr-d">Reservations, menus, catering quotes — 24/7.</p></div></div>
+        <div class="sr"><div class="sr-badge">💅</div><div><div class="sr-n">Beauty &amp; Nail Salons</div><p class="sr-d">Fill your calendar without living on your phone.</p></div></div>
+        <div class="sr"><div class="sr-badge">🔧</div><div><div class="sr-n">Freelancers &amp; Small Businesses</div><p class="sr-d">Any business that gets leads from social media or WhatsApp.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><a href="index.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px" aria-label="Iron Logic home"><svg width="28" height="28" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="12" y="2" width="30" height="30" fill="#C8201A"/><rect x="2" y="14" width="22" height="22" fill="#E8735A"/><rect x="12" y="14" width="12" height="12" fill="#111827"/></svg><span style="font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:500;color:rgba(255,255,255,.8);letter-spacing:-.01em">IronLogic</span></a></div>
+        <p class="footer-tagline">AI that replies to your customers — 24/7, on WhatsApp &amp; Instagram.</p>
+      </div>
+      <div class="fc"><h4>What We Do</h4><ul><li><a href="how-it-works.html">How It Works</a></li><li><a href="how-it-works.html#how-we-build">The Setup Process</a></li><li><a href="how-it-works.html#demo-section">Try the Live Demo</a></li><li><a href="pricing.html#roi">ROI Calculator</a></li><li><a href="our-work.html">Our Work</a></li></ul></div>
+      <div class="fc"><h4>Who We Serve</h4><ul><li><a href="how-it-works.html#serve">Barber Shops &amp; Salons</a></li><li><a href="how-it-works.html#serve">Gyms &amp; Fitness Coaches</a></li><li><a href="how-it-works.html#serve">Restaurants &amp; Food</a></li><li><a href="how-it-works.html#serve">Small Businesses</a></li></ul></div>
+      <div class="fc"><h4>Contact</h4><ul><li><a href="#" data-modal="open">Get Free Setup Call</a></li><li><a href="mailto:ironlogic.business@gmail.com">ironlogic.business@gmail.com</a></li><li><a href="https://wa.me/18768600442" target="_blank" rel="noopener">WhatsApp us</a></li><li><a href="case-study.html">Case Study</a></li></ul></div>
+    </div>
+    <div class="footer-bot"><span class="footer-copy">© 2026 Iron Logic. All rights reserved.</span><span class="footer-tl">Revenue infrastructure that never sleeps.</span></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</body>
+</html>
