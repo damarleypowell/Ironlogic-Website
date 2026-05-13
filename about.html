@@ -136,9 +136,10 @@
         <div class="as-l">never off, never late</div>
       </div>
       <div class="as-item">
-        <div class="as-n">J$2.4M</div>
-        <div class="as-l">added for first client</div>
+        <div class="as-n">100%</div>
+        <div class="as-l">messages answered</div>
       </div>
+    </div>
     <div class="about-play-wrap rv">
       <button class="about-play-btn" id="about-play-btn" type="button">
         <div class="about-play-ring"></div>
@@ -146,7 +147,6 @@
         Watch the AI handle a live lead
       </button>
       <div style="font-family:var(--mono);font-size:11px;color:var(--ink4)">30 seconds · No signup · Real example</div>
-    </div>
     </div>
   </div>
 </section>
@@ -265,6 +265,40 @@
           <div class="tf-box">Priority routing</div>
         </div>
       </div>
+
+      <div style="margin-top:24px">
+        <a href="playground.html" class="btn-primary mag" style="text-decoration:none;display:inline-flex">Try the ML Playground →</a>
+        <span style="font-family:var(--mono);font-size:11px;color:var(--ink4);margin-left:14px">Interactive linear regression, gradient descent &amp; Bayesian classification</span>
+      </div>
+
+      <!-- ML MATH FOUNDATIONS -->
+      <div class="tech-math-grid rv">
+        <div class="tmg-hdr">Mathematical Foundations</div>
+        <div class="tmg-card">
+          <div class="tmg-title">Linear Algebra</div>
+          <div class="tmg-desc">Messages are embedded as vectors in high-dimensional space. Cosine similarity finds semantically related queries. SVD reduces dimensionality in RAG retrieval.</div>
+          <div class="tmg-formula">sim(A,B) = (A·B) / (‖A‖ · ‖B‖)</div>
+          <div class="tmg-chips"><span class="tech-pill">Vector embeddings</span><span class="tech-pill">SVD</span><span class="tech-pill">Cosine similarity</span></div>
+        </div>
+        <div class="tmg-card">
+          <div class="tmg-title">Calculus — Gradient Descent</div>
+          <div class="tmg-desc">Prompt optimization uses gradient-based techniques to minimize loss on classification tasks. The chain rule propagates error signals through the LLM fine-tuning pipeline.</div>
+          <div class="tmg-formula">θ ← θ − α · ∇L(θ)</div>
+          <div class="tmg-chips"><span class="tech-pill">Backpropagation</span><span class="tech-pill">Learning rate</span><span class="tech-pill">Loss minimization</span></div>
+        </div>
+        <div class="tmg-card">
+          <div class="tmg-title">Probability — Bayesian Routing</div>
+          <div class="tmg-desc">Intent classification returns a probability distribution over classes (booking, price, FAQ, complaint). The highest posterior probability determines routing — Bayes' theorem updates priors from conversation history.</div>
+          <div class="tmg-formula">P(y|x) = P(x|y)·P(y) / P(x)</div>
+          <div class="tmg-chips"><span class="tech-pill">Softmax output</span><span class="tech-pill">Prior updating</span><span class="tech-pill">Confidence thresholds</span></div>
+        </div>
+        <div class="tmg-card">
+          <div class="tmg-title">Statistics — OLS Regression</div>
+          <div class="tmg-desc">Lead-to-booking conversion rates are modeled as a linear function of response time. OLS fits the line minimizing squared residuals — used to project per-business ROI in the audit.</div>
+          <div class="tmg-formula">β = (XᵀX)⁻¹ · Xᵀy</div>
+          <div class="tmg-chips"><span class="tech-pill">R² goodness-of-fit</span><span class="tech-pill">Residual analysis</span><span class="tech-pill">Confidence intervals</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -307,8 +341,41 @@
   </div>
 </section>
 
-<!-- WHY DIFFERENT -->
+<!-- FOUNDER -->
 <section class="sec" style="background:var(--bg)">
+  <div class="sec-w">
+    <span class="eyebrow rv" style="justify-content:center">The Founder</span>
+    <div class="about-founder-grid rv">
+      <div class="about-founder-left">
+        <h2 class="sec-h" style="margin:0 0 16px">Damarley Powell.</h2>
+        <p style="color:var(--ink2);line-height:1.75;font-size:16px;margin:0 0 24px">Founder of Iron Logic and Gotham Holdings LLC. I handle everything — client acquisition, system architecture, development, and deployment. Full-stack execution from first call to live system.</p>
+        <p style="color:var(--ink3);line-height:1.75;font-size:15px;margin:0 0 28px">Iron Logic operates under <strong style="color:var(--ink2)">Gotham Holdings LLC</strong>, a Wyoming-registered holding company. We build AI automation systems for service businesses that want to stop losing leads to slow replies.</p>
+        <div class="about-founder-tags">
+          <span class="about-tag">Jamaica-based</span>
+          <span class="about-tag">Wyoming LLC</span>
+          <span class="about-tag">Solo-founded</span>
+          <span class="about-tag">USD + JMD</span>
+        </div>
+      </div>
+      <div class="about-founder-right">
+        <div class="about-why-card tilt" style="height:100%">
+          <div class="about-why-num">What I do</div>
+          <div class="about-why-h" style="font-size:18px;line-height:1.5">Client acquisition → scoping → build → deployment → support.</div>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:10px">
+            <div style="font-size:13px;color:var(--ink3);display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-weight:600;min-width:16px">→</span>WhatsApp AI systems &amp; chatbots</div>
+            <div style="font-size:13px;color:var(--ink3);display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-weight:600;min-width:16px">→</span>Voice AI agents (inbound + outbound)</div>
+            <div style="font-size:13px;color:var(--ink3);display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-weight:600;min-width:16px">→</span>Automated booking &amp; appointment systems</div>
+            <div style="font-size:13px;color:var(--ink3);display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-weight:600;min-width:16px">→</span>Email automation &amp; lead follow-up</div>
+            <div style="font-size:13px;color:var(--ink3);display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-weight:600;min-width:16px">→</span>Full website builds + payments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DIFFERENT -->
+<section class="sec" style="background:var(--bg2)">
   <div class="sec-w">
     <span class="eyebrow rv" style="justify-content:center">Why Iron Logic</span>
     <h2 class="sec-h rv" style="text-align:center">Built different.<br><span class="muted">Deployed faster.</span></h2>
@@ -332,7 +399,7 @@
         </div>
       </div>
       <div class="about-why-card tilt">
-        <div class="about-why-num">03 · Market</div>
+        <div class="about-why-num">03 · Reach</div>
         <div class="about-why-h">Caribbean roots.<br>Global reach.</div>
         <div class="about-why-tags">
           <span class="about-tag">WhatsApp-first</span>
@@ -345,7 +412,7 @@
 </section>
 
 <!-- HOW WE WORK -->
-<section class="sec" style="background:var(--bg2)">
+<section class="sec" style="background:var(--bg)">
   <div class="sec-w">
     <span class="eyebrow rv" style="justify-content:center">Our Approach</span>
     <h2 class="sec-h rv" style="text-align:center">We install the system.<br><span class="muted">You run the business.</span></h2>
@@ -353,6 +420,83 @@
       <div class="stat-item"><div class="stat-n">100<sub>%</sub></div><div class="stat-l">done-for-you — you don't touch any tech</div></div>
       <div class="stat-item"><div class="stat-n">0</div><div class="stat-l">ongoing management needed from you</div></div>
       <div class="stat-item"><div class="stat-n">30<sub>min</sub></div><div class="stat-l">your total time to go live</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="sec" style="background:var(--bg2)">
+  <div class="sec-w">
+    <span class="eyebrow rv" style="justify-content:center">Credentials</span>
+    <h2 class="sec-h rv" style="text-align:center">Building the knowledge<br><span class="muted">to back the work.</span></h2>
+    <p class="sec-p rv" style="text-align:center;max-width:480px;margin:10px auto 40px">Active learning roadmap — certifications in progress alongside client work. Each one maps to a specific capability gap.</p>
+    <div class="cert-grid rv">
+      <div class="cert-card tilt">
+        <div class="cert-phase">Phase 2 · 3–6 months</div>
+        <div class="cert-badge pending">In Progress</div>
+        <div class="cert-logo google-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        </div>
+        <div class="cert-name">Google Professional<br>ML Engineer</div>
+        <div class="cert-skills">
+          <span class="cert-skill">TensorFlow</span>
+          <span class="cert-skill">ML Pipelines</span>
+          <span class="cert-skill">Supervised Learning</span>
+          <span class="cert-skill">Model Deployment</span>
+        </div>
+        <div class="cert-why">Bridges automation agency work into applied ML engineering — the credential that makes clients take the technical depth seriously.</div>
+      </div>
+
+      <div class="cert-card tilt">
+        <div class="cert-phase">Phase 3 · 6–12 months</div>
+        <div class="cert-badge pending">Pending</div>
+        <div class="cert-logo nvidia-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#76B900"/><path d="M9.5 7v10M14.5 7v10M7 9.5h10M7 14.5h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="cert-name">NVIDIA Generative AI<br>&amp; Deep Learning</div>
+        <div class="cert-skills">
+          <span class="cert-skill">GPU Optimization</span>
+          <span class="cert-skill">Generative Models</span>
+          <span class="cert-skill">Advanced Architectures</span>
+        </div>
+        <div class="cert-why">Positions the work beyond prototype territory — demonstrates ability to scale AI systems on real infrastructure.</div>
+      </div>
+
+      <div class="cert-card tilt">
+        <div class="cert-phase">Phase 3 · 6–12 months</div>
+        <div class="cert-badge pending">Pending</div>
+        <div class="cert-logo ibm-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#1F70C1"/><path d="M5 8h14M5 12h14M5 16h14M8 8v8M16 8v8" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="cert-name">IBM AI Engineering<br>Professional Certificate</div>
+        <div class="cert-skills">
+          <span class="cert-skill">Deep Learning</span>
+          <span class="cert-skill">Reinforcement Learning</span>
+          <span class="cert-skill">ML Engineering</span>
+        </div>
+        <div class="cert-why">Adds structured rigor and RL fundamentals — complements Google ML by covering enterprise engineering practices.</div>
+      </div>
+
+      <div class="cert-card tilt cert-card-featured">
+        <div class="cert-phase">Phase 4 · 12–18 months</div>
+        <div class="cert-badge pending">Planned</div>
+        <div class="cert-logo stanford-logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="#8C1515" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 2v15M3 7l9 5 9-5" stroke="#8C1515" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cert-name">Stanford AI<br>Professional Program</div>
+        <div class="cert-skills">
+          <span class="cert-skill">Graduate-level ML</span>
+          <span class="cert-skill">Deep Learning</span>
+          <span class="cert-skill">NLP</span>
+          <span class="cert-skill">Elite Credential</span>
+        </div>
+        <div class="cert-why">Moves the positioning from "automation founder" to "AI professional with Stanford credentials" — the investor-deck signal.</div>
+      </div>
+    </div>
+
+    <div class="cert-note rv">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Certifications are scheduled around live client work — applied systems ship first, credentials follow.
     </div>
   </div>
 </section>

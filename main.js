@@ -746,56 +746,66 @@ if(auditForm){
 /* ─── PROOF DETAIL PANEL ─── */
 (function(){
   const PD=[
-    {industry:'DNA Testing Lab',tag:'Medical',metric:'340%',metricLabel:'Conversion rate increase',tl:'21 days',sys:'WhatsApp AI + CRM',
+    {industry:'Medical / Testing Lab',tag:'Medical',metric:'340%',metricLabel:'Projected conversion increase',tl:'21 days',sys:'WhatsApp AI + CRM',
      before:{response:'4 hours',conversion:'12%',missed:'68%',bookings:'~40/mo'},
      after:{response:'47 seconds',conversion:'53%',missed:'2%',bookings:'~174/mo'},
      bars:[{l:'Lead Response Time',b:100,a:2,bl:'4 hours',al:'47 sec'},{l:'Conversion Rate',b:12,a:53,bl:'12%',al:'53%'},{l:'Missed Inquiries',b:68,a:2,bl:'68%',al:'2%'}],
-     roi:'2,800%',revenue:'+J$2.4M/mo',payback:'< 7 days'},
+     roi:'2,800%',revenue:'+4× revenue',payback:'< 7 days',
+     why:['68% of inquiries went unanswered after hours — each one a lost booking at ~$44 avg','Response time is the #1 conversion lever in medical scheduling: studies show 78% of patients book the first provider who responds','Moving from 4-hour to 47-second response closes the gap before the lead goes cold or calls a competitor','Full coverage (24/7) alone captures the 40%+ of inbound that comes outside business hours']},
     {industry:'Residential Brokerage',tag:'Real Estate',metric:'$28K',metricLabel:'Commission, single recovered lead',tl:'10 days',sys:'AI Voice + Booking Engine',
      before:{response:'Next morning',conversion:'—',missed:'43%',bookings:'Manual'},
      after:{response:'23 seconds',conversion:'+220%',missed:'0%',bookings:'Automated'},
      bars:[{l:'Response Time',b:100,a:1,bl:'Next morning',al:'23 seconds'},{l:'After-Hours Coverage',b:0,a:100,bl:'None',al:'Full 24/7'},{l:'Missed Calls Captured',b:0,a:100,bl:'0%',al:'43% recovered'}],
-     roi:'5,600%',revenue:'+$28K/lead',payback:'1 day'},
+     roi:'5,600%',revenue:'+$28K/lead',payback:'1 day',
+     why:['Real estate moves on speed — buyers and sellers contact multiple agents simultaneously; first response wins','43% of inbound came outside business hours with zero coverage — pure lost commissions','A single recovered $28K commission pays for the system 80× over','AI voice agent qualifies intent and books showings without agent involvement, freeing time for closings']},
     {industry:'Dental Clinic',tag:'Medical',metric:'62%',metricLabel:'Reduction in missed appointments',tl:'14 days',sys:'SMS + Follow-Up AI',
      before:{response:'Business hours',conversion:'28%',missed:'62%',bookings:'Phone only'},
      after:{response:'< 20 seconds',conversion:'66%',missed:'8%',bookings:'AI 24/7'},
      bars:[{l:'Appointment No-Shows',b:62,a:8,bl:'62%',al:'8%'},{l:'New Patient Conversion',b:28,a:66,bl:'28%',al:'66%'},{l:'After-Hours Bookings',b:0,a:100,bl:'Zero',al:'Full coverage'}],
-     roi:'840%',revenue:'+$4.2K/mo',payback:'12 days'},
+     roi:'840%',revenue:'+$4.2K/mo',payback:'12 days',
+     why:['62% no-show rate is eliminated by automated reminders 24h and 2h before appointment','New patient inquiries sent after hours previously hit voicemail and never converted — AI captures them instantly','SMS confirmation + reminder sequences reduce cognitive load on patient, increasing follow-through','Dental avg patient value ~$800–$2,400 — recovering 5 missed appointments/month easily justifies system cost']},
     {industry:'Personal Injury Firm',tag:'Legal',metric:'3.8×',metricLabel:'Intake qualification rate',tl:'30 days',sys:'AI Intake Pipeline',
      before:{response:'2–4 hours',conversion:'22%',missed:'55%',bookings:'Paralegal calls'},
      after:{response:'31 seconds',conversion:'84%',missed:'4%',bookings:'AI intake'},
      bars:[{l:'Response Time',b:100,a:3,bl:'2–4 hours',al:'31 seconds'},{l:'Qualified Case Rate',b:22,a:84,bl:'22%',al:'84%'},{l:'After-Hours Capture',b:0,a:100,bl:'None',al:'Full'}],
-     roi:'1,240%',revenue:'+$62K/mo est.',payback:'9 days'},
+     roi:'1,240%',revenue:'+$62K/mo est.',payback:'9 days',
+     why:['55% of PI inquiries arrive outside office hours — the AI intake works overnight','2–4hr response means leads call the next firm; 31-second response means they stay and book','AI asks qualifying questions (injury type, fault, medical treatment) — only viable cases reach attorneys','At $25K average case value, one additional qualified case/month = 70× system cost recovered']},
     {industry:'HVAC Company',tag:'Home Services',metric:'47s',metricLabel:'Response time vs 3hr previous',tl:'10 days',sys:'Missed Call Recovery',
      before:{response:'3 hours avg',conversion:'—',missed:'71%',bookings:'Phone tag'},
      after:{response:'47 seconds',conversion:'+190%',missed:'3%',bookings:'Same-day'},
      bars:[{l:'Response Time',b:100,a:1,bl:'3 hours',al:'47 seconds'},{l:'Same-Day Bookings',b:18,a:76,bl:'18%',al:'76%'},{l:'Missed Job Recovery',b:0,a:100,bl:'0%',al:'71% recovered'}],
-     roi:'3,600%',revenue:'+$18K/mo',payback:'4 days'},
+     roi:'3,600%',revenue:'+$18K/mo',payback:'4 days',
+     why:['HVAC is urgency-driven — broken AC in summer means the customer books whoever answers first','71% of calls were missed during busy install seasons when techs were in the field','AI captures the call, qualifies (emergency vs routine), and books a slot — no human needed','Average HVAC job $350–$800; recovering 20+ missed jobs/month is +$7K–$16K directly']},
     {industry:'Commercial Real Estate',tag:'Real Estate',metric:'+22',metricLabel:'Qualified showings in 30 days',tl:'21 days',sys:'AI Booking Engine',
      before:{response:'Same day',conversion:'14%',missed:'38%',bookings:'Manual'},
      after:{response:'< 1 minute',conversion:'45%',missed:'1%',bookings:'Automated'},
      bars:[{l:'Leads Responded To',b:62,a:99,bl:'62%',al:'99%'},{l:'Showing Conversion',b:14,a:45,bl:'14%',al:'45%'},{l:'Qualification Speed',b:100,a:4,bl:'1–2 days',al:'< 30 min'}],
-     roi:'1,680%',revenue:'+$84K pipeline',payback:'11 days'},
+     roi:'1,680%',revenue:'+$84K pipeline',payback:'11 days',
+     why:['Commercial inquiries require qualification (budget, timeline, business type) — AI handles this in real time','38% of weekend inquiries went cold before Monday — AI captures and qualifies 24/7','Instant showing booking (calendar sync) removes friction from the highest-intent leads','Each commercial deal is worth $50K–$500K+ in commission; one additional deal = 100× system cost']},
     {industry:'Business Consultant',tag:'Consulting',metric:'94%',metricLabel:'Reduction in unqualified calls',tl:'14 days',sys:'Lead Qualification AI',
      before:{response:'Same day',conversion:'12%',missed:'—',bookings:'All inbound'},
      after:{response:'27 seconds',conversion:'53%',missed:'—',bookings:'Qualified only'},
      bars:[{l:'Unqualified Calls',b:78,a:6,bl:'78% of calls',al:'6% of calls'},{l:'Strategy Session Rate',b:12,a:53,bl:'12%',al:'53%'},{l:'Response Time',b:100,a:3,bl:'Hours',al:'27 seconds'}],
-     roi:'2,400%',revenue:'+$12K/mo',payback:'6 days'},
+     roi:'2,400%',revenue:'+$12K/mo',payback:'6 days',
+     why:['78% of inbound were price-shoppers or mismatched clients — burning billable time','AI pre-qualifies: budget, current challenge, timeline — only serious leads book a call','Freed consultant time can be used for delivery or higher-value client acquisition','Strategy session close rate jumps when leads arrive pre-educated and pre-sold through the AI conversation']},
     {industry:'Roofing Company',tag:'Home Services',metric:'$18K',metricLabel:'Revenue recovered in 14 days',tl:'10 days',sys:'Missed Call + SMS',
      before:{response:'Next day',conversion:'—',missed:'64%',bookings:'Call-backs'},
      after:{response:'< 30 seconds',conversion:'+210%',missed:'2%',bookings:'Automated'},
      bars:[{l:'Missed Call Recovery',b:0,a:100,bl:'None',al:'64% recovered'},{l:'Estimate Bookings',b:100,a:310,bl:'Baseline',al:'+210%'},{l:'After-Hours Revenue',b:0,a:100,bl:'$0',al:'$18K/14 days'}],
-     roi:'3,600%',revenue:'+$18K/14 days',payback:'5 days'},
+     roi:'3,600%',revenue:'+$18K/14 days',payback:'5 days',
+     why:['Roofing leads spike after storms — high urgency, high competition — first response books the job','64% of calls missed during peak season meant crews had idle days while phones rang unanswered','AI sends immediate SMS with estimate booking link — lead converted before checking competitor','Average roof job $8K–$25K; recovering 2 additional jobs/month is +$16K–$50K directly']},
     {industry:'Immigration Firm',tag:'Legal',metric:'2.9×',metricLabel:'Increase in retained consultations',tl:'21 days',sys:'AI Intake + Follow-Up',
      before:{response:'24 hours',conversion:'31%',missed:'59%',bookings:'Email/phone'},
      after:{response:'< 45 seconds',conversion:'89%',missed:'3%',bookings:'Automated'},
      bars:[{l:'Consultation Retention',b:31,a:89,bl:'31%',al:'89%'},{l:'Response Time',b:100,a:2,bl:'24 hours',al:'< 45 sec'},{l:'After-Hours Coverage',b:0,a:100,bl:'0%',al:'100%'}],
-     roi:'560%',revenue:'+$28K/mo',payback:'18 days'},
+     roi:'560%',revenue:'+$28K/mo',payback:'18 days',
+     why:['Immigration clients are anxious and often contact multiple firms — instant response signals competence and trustworthiness','59% of inquiries came outside office hours through referral networks and online search','AI handles intake in English and Spanish — immediately collecting visa type, country, urgency','Retainer value $3K–$15K; recovering 3 additional retained clients/month = +$9K–$45K']},
     {industry:'Financial Advisor',tag:'Consulting',metric:'8.4×',metricLabel:'ROI on full system at 90 days',tl:'30 days',sys:'Full Iron Logic System',
      before:{response:'Next business day',conversion:'—',missed:'52%',bookings:'Assistant'},
      after:{response:'< 20 seconds',conversion:'+380%',missed:'1%',bookings:'AI 24/7'},
      bars:[{l:'Response Time',b:100,a:1,bl:'Next day',al:'< 20 sec'},{l:'Qualified Appointments',b:100,a:480,bl:'Baseline',al:'+380%'},{l:'After-Hours Bookings',b:0,a:100,bl:'None',al:'Full coverage'}],
-     roi:'8,400%',revenue:'+$42K/mo',payback:'7 days'}
+     roi:'8,400%',revenue:'+$42K/mo',payback:'7 days',
+     why:['High-net-worth prospects contact advisors on evenings and weekends — next-day response loses them to firms with immediate availability','AI pre-qualifies AUM, investment goals, risk tolerance — only aligned prospects book discovery calls','Automated follow-up sequence re-engages cold leads with educational content — converting 30-day-old inquiries','At $5K–$50K AUM fee per client, one additional client per month = 14–140× system cost recovered']}
   ];
 
   const detailOverlay=document.getElementById('detail-overlay');
@@ -862,6 +872,13 @@ if(auditForm){
       `<div class="dp-kpi"><div class="dp-kpi-n">${d.revenue}</div><div class="dp-kpi-l">Added Revenue</div></div>`+
       `<div class="dp-kpi"><div class="dp-kpi-n">${d.payback}</div><div class="dp-kpi-l">Payback Period</div></div>`;
 
+    // Why we project this
+    const whyEl=document.getElementById('dp-why');
+    if(whyEl&&d.why){
+      whyEl.innerHTML=`<div class="dp-why-title">Why we project this</div>`+
+        d.why.map(w=>`<div class="dp-why-item"><span class="dp-why-dot">→</span><span>${w}</span></div>`).join('');
+    }else if(whyEl){whyEl.innerHTML='';}
+
     detailOverlay.classList.add('open');
     document.body.style.overflow='hidden';
 
@@ -880,6 +897,151 @@ if(auditForm){
     const pc=e.target.closest('.pc[data-proof]');
     if(pc)openDetail(+pc.dataset.proof);
   });
+})();
+
+/* ─── ANALYTICS CHARTS ─── */
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  function se(tag,a){const e=document.createElementNS(NS,tag);Object.entries(a||{}).forEach(([k,v])=>e.setAttribute(k,v));return e;}
+  function linreg(xs,ys){
+    const n=xs.length,mx=xs.reduce((a,b)=>a+b,0)/n,my=ys.reduce((a,b)=>a+b,0)/n;
+    const num=xs.reduce((s,x,i)=>s+(x-mx)*(ys[i]-my),0),den=xs.reduce((s,x)=>s+(x-mx)**2,0);
+    const m=num/den,b=my-m*mx;
+    const ss_res=ys.reduce((s,y,i)=>s+(y-(m*xs[i]+b))**2,0),ss_tot=ys.reduce((s,y)=>s+(y-my)**2,0);
+    return{m,b,r2:1-ss_res/ss_tot};
+  }
+
+  function drawConv(){
+    const svg=document.getElementById('chart-conv');if(!svg)return;
+    const W=320,H=180,pl=42,pr=12,pt=16,pb=36,cw=W-pl-pr,ch=H-pt-pb;
+    const weeks=[1,2,3,4,5,6,7,8],conv=[13,17,23,30,37,43,48,52];
+    const {m,b,r2}=linreg(weeks,conv);
+    const xMin=1,xMax=8,yMin=0,yMax=60;
+    const tx=x=>pl+(x-xMin)/(xMax-xMin)*cw,ty=y=>pt+ch-(y-yMin)/(yMax-yMin)*ch;
+    // grid
+    [0,15,30,45,60].forEach(y=>{
+      svg.appendChild(se('line',{x1:pl,y1:ty(y),x2:pl+cw,y2:ty(y),stroke:'rgba(17,24,39,.06)','stroke-width':'1'}));
+      const t=se('text',{x:pl-6,y:ty(y)+4,'text-anchor':'end','font-size':'9',fill:'rgba(17,24,39,.35)','font-family':'DM Mono,monospace'});
+      t.textContent=y+'%';svg.appendChild(t);
+    });
+    weeks.forEach(w=>{
+      const t=se('text',{x:tx(w),y:H-pb+14,'text-anchor':'middle','font-size':'9',fill:'rgba(17,24,39,.35)','font-family':'DM Mono,monospace'});
+      t.textContent='W'+w;svg.appendChild(t);
+    });
+    // confidence band
+    const bpts=weeks.map(w=>({x:tx(w),yu:ty(m*w+b-3),yl:ty(m*w+b+3)}));
+    const bpath=bpts.map((p,i)=>(i===0?'M':'L')+p.x+','+p.yu).join(' ')+' '+[...bpts].reverse().map(p=>'L'+p.x+','+p.yl).join(' ')+' Z';
+    svg.appendChild(se('path',{d:bpath,fill:'rgba(220,38,38,.07)',stroke:'none'}));
+    // regression line animated
+    const lx1=tx(xMin),ly1=ty(m*xMin+b),lx2=tx(xMax),ly2=ty(m*xMax+b);
+    const len=Math.hypot(lx2-lx1,ly2-ly1);
+    const rl=se('line',{x1:lx1,y1:ly1,x2:lx2,y2:ly2,stroke:'#dc2626','stroke-width':'2','stroke-linecap':'round','stroke-dasharray':len,'stroke-dashoffset':len});
+    svg.appendChild(rl);
+    // scatter points
+    conv.forEach((c,i)=>{
+      const jitter=(i%3===0?1.2:i%3===1?-1.5:0.6);
+      const dot=se('circle',{cx:tx(weeks[i]),cy:ty(c+jitter),r:'4',fill:'#dc2626',opacity:'0',stroke:'#fff','stroke-width':'1.5'});
+      svg.appendChild(dot);
+      setTimeout(()=>{dot.style.transition='opacity .3s';dot.setAttribute('opacity','1');},i*70+200);
+    });
+    // R² label
+    const ann=se('text',{x:W-pr-2,y:pt+12,'text-anchor':'end','font-size':'9',fill:'rgba(220,38,38,.8)','font-family':'DM Mono,monospace','font-weight':'600'});
+    ann.textContent='R²='+r2.toFixed(2);svg.appendChild(ann);
+    setTimeout(()=>{rl.style.transition='stroke-dashoffset 1.3s cubic-bezier(.16,1,.3,1)';rl.setAttribute('stroke-dashoffset','0');},300);
+  }
+
+  function drawResp(){
+    const svg=document.getElementById('chart-resp');if(!svg)return;
+    const W=320,H=180,pl=82,pr=16,pt=14,pb=26,cw=W-pl-pr,ch=H-pt-pb;
+    const metrics=[
+      {label:'Response Time',before:100,after:0.3,bLabel:'4 hours',aLabel:'47 sec'},
+      {label:'Missed Leads',before:68,after:2,bLabel:'68%',aLabel:'2%'},
+      {label:'Conversion',before:12,after:53,bLabel:'12%',aLabel:'53%'},
+      {label:'Coverage',before:32,after:100,bLabel:'32%',aLabel:'100%'},
+    ];
+    const bh=12,gap=ch/metrics.length;
+    metrics.forEach((m,i)=>{
+      const cy=pt+i*gap+gap/2;
+      const lbl=se('text',{x:pl-8,y:cy+4,'text-anchor':'end','font-size':'9.5',fill:'rgba(17,24,39,.65)','font-family':'DM Mono,monospace'});
+      lbl.textContent=m.label;svg.appendChild(lbl);
+      const bW=m.before/100*cw;
+      const bBar=se('rect',{x:pl,y:cy-bh-3,width:'0',height:bh,fill:'rgba(17,24,39,.1)',rx:'4'});
+      svg.appendChild(bBar);
+      const bv=se('text',{x:pl+bW+5,y:cy-3,'font-size':'8.5',fill:'rgba(17,24,39,.4)','font-family':'DM Mono,monospace'});
+      bv.textContent=m.bLabel;svg.appendChild(bv);
+      const aW=m.after/100*cw;
+      const aBar=se('rect',{x:pl,y:cy+3,width:'0',height:bh,fill:'#dc2626',rx:'4',opacity:'.85'});
+      svg.appendChild(aBar);
+      const av=se('text',{x:pl+aW+5,y:cy+bh,'font-size':'8.5',fill:'#dc2626','font-family':'DM Mono,monospace','font-weight':'600'});
+      av.textContent=m.aLabel;svg.appendChild(av);
+      setTimeout(()=>{
+        bBar.style.transition='width .8s cubic-bezier(.16,1,.3,1)';bBar.setAttribute('width',bW);
+        aBar.style.transition='width .9s .1s cubic-bezier(.16,1,.3,1)';aBar.setAttribute('width',aW);
+      },i*100+150);
+    });
+    const ly=H-8;
+    [[pl,'rgba(17,24,39,.1)','Before'],[pl+56,'#dc2626','After AI']].forEach(([x,c,lbl])=>{
+      svg.appendChild(se('rect',{x,y:ly-7,width:10,height:7,fill:c,rx:'2',opacity:c==='#dc2626'?'.85':'1'}));
+      const t=se('text',{x:x+14,y:ly,'font-size':'8.5',fill:c==='#dc2626'?c:'rgba(17,24,39,.4)','font-family':'DM Mono,monospace'});
+      t.textContent=lbl;svg.appendChild(t);
+    });
+  }
+
+  function drawRev(){
+    const svg=document.getElementById('chart-rev');if(!svg)return;
+    const W=640,H=160,pl=48,pr=16,pt=18,pb=32,cw=W-pl-pr,ch=H-pt-pb;
+    const days=Array.from({length:90},(_,i)=>i+1);
+    const proj=d=>8*(1-Math.exp(-d/18));
+    const cost=0.35;
+    const yMax=10;
+    const tx=d=>pl+(d-1)/89*cw,ty=v=>pt+ch-v/yMax*ch;
+    [0,2.5,5,7.5,10].forEach(v=>{
+      svg.appendChild(se('line',{x1:pl,y1:ty(v),x2:pl+cw,y2:ty(v),stroke:'rgba(17,24,39,.05)','stroke-width':'1'}));
+      const t=se('text',{x:pl-6,y:ty(v)+4,'text-anchor':'end','font-size':'8',fill:'rgba(17,24,39,.35)','font-family':'DM Mono,monospace'});
+      t.textContent='$'+v+'K';svg.appendChild(t);
+    });
+    [1,15,30,45,60,75,90].forEach(d=>{
+      const t=se('text',{x:tx(d),y:H-pb+14,'text-anchor':'middle','font-size':'8',fill:'rgba(17,24,39,.35)','font-family':'DM Mono,monospace'});
+      t.textContent='D'+d;svg.appendChild(t);
+    });
+    const beY=ty(cost);
+    svg.appendChild(se('line',{x1:pl,y1:beY,x2:pl+cw,y2:beY,stroke:'rgba(17,24,39,.2)','stroke-width':'1','stroke-dasharray':'5,4'}));
+    const belt=se('text',{x:pl+4,y:beY-4,'font-size':'8',fill:'rgba(17,24,39,.4)','font-family':'DM Mono,monospace'});
+    belt.textContent='System cost';svg.appendChild(belt);
+    // shaded area
+    const apath=days.map((d,i)=>(i===0?'M':'L')+tx(d)+','+ty(Math.max(proj(d),cost))).join(' ')+' L'+tx(90)+','+ty(cost)+' L'+tx(1)+','+ty(cost)+' Z';
+    svg.appendChild(se('path',{d:apath,fill:'rgba(220,38,38,.07)',stroke:'none'}));
+    // curve
+    const cpath=days.map((d,i)=>(i===0?'M':'L')+tx(d)+','+ty(proj(d))).join(' ');
+    const curve=se('path',{d:cpath,fill:'none',stroke:'#dc2626','stroke-width':'2.5','stroke-linecap':'round','stroke-linejoin':'round','stroke-dasharray':'2000','stroke-dashoffset':'2000'});
+    svg.appendChild(curve);
+    // regression annotation
+    const sx=[1,10,20,30,45,60,75,90],sy=sx.map(proj);
+    const {r2}=linreg(sx,sy);
+    const ann=se('text',{x:W-pr-4,y:pt+12,'text-anchor':'end','font-size':'8.5',fill:'rgba(220,38,38,.75)','font-family':'DM Mono,monospace','font-weight':'600'});
+    ann.textContent='R²='+r2.toFixed(2)+' · Projected monthly Δ revenue';svg.appendChild(ann);
+    // breakeven dot
+    const beDay=10;
+    const bdot=se('circle',{cx:tx(beDay),cy:ty(proj(beDay)),r:'4',fill:'#dc2626',stroke:'#fff','stroke-width':'2',opacity:'0'});
+    svg.appendChild(bdot);
+    const bcall=se('text',{x:tx(beDay)+8,y:ty(proj(beDay))-5,'font-size':'8',fill:'#dc2626','font-family':'DM Mono,monospace','font-weight':'600',opacity:'0'});
+    bcall.textContent='Breakeven ~D10';svg.appendChild(bcall);
+    setTimeout(()=>{
+      curve.style.transition='stroke-dashoffset 2.2s cubic-bezier(.16,1,.3,1)';
+      curve.setAttribute('stroke-dashoffset','0');
+    },200);
+    setTimeout(()=>{
+      bdot.style.transition='opacity .3s';bdot.setAttribute('opacity','1');
+      bcall.style.transition='opacity .3s';bcall.setAttribute('opacity','1');
+    },2000);
+  }
+
+  const grid=document.querySelector('.analytics-grid');
+  if(!grid)return;
+  let drawn=false;
+  new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting&&!drawn){drawn=true;drawConv();drawResp();drawRev();}
+  },{threshold:0.2}).observe(grid);
 })();
 
 /* ─── HAMBURGER NAV ─── */
