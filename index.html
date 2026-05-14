@@ -250,10 +250,11 @@
       <h1 class="hero-h rv">
         Your leads won't wait.<br>
         They're already talking to<br>
-        <span style="color:var(--red);display:inline-block" id="cycle-word">someone else.</span>
+        <span class="word-cycle" id="cycle-wrap"><span class="cycle-word" id="cycle-word">someone else.</span><span class="cycle-bar" id="cycle-bar"></span></span>
       </h1>
       <script>
         var _cw=document.getElementById('cycle-word');
+        var _bar=document.getElementById('cycle-bar');
         var _ci=0;
         var _cwords=['someone else.','your competitor.','whoever replied first.','the business that answered.',
           'the next Google result.','a faster reply.','the one who showed up.','a business that never sleeps.',
@@ -269,8 +270,11 @@
           'Iron Logic\'s next client.'];
         setInterval(function(){
           _ci=(_ci+1)%_cwords.length;
-          _cw.textContent=_cwords[_ci];
-        },2000);
+          _bar.classList.remove('sweep');
+          void _bar.offsetWidth;
+          _bar.classList.add('sweep');
+          setTimeout(function(){_cw.textContent=_cwords[_ci];},290);
+        },2200);
       </script>
       <p class="hero-p rv">Iron Logic installs AI that replies to every WhatsApp and Instagram message in seconds — capturing leads, booking appointments, and closing sales automatically. 24/7, no staff needed.</p>
       <div class="hero-ctas rv">
