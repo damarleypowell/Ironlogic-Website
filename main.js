@@ -626,8 +626,20 @@ if(auditForm){
 
   const legacyWord=document.getElementById('cycle-word');
   if(legacyWord&&!legacyWord.closest('[data-words]')){
-    startCycle(legacyWord,document.getElementById('cycle-bar'),
-      ['elsewhere.','to a competitor.','without replying.','without booking.','without coming back.'],2800);
+    startCycle(legacyWord,document.getElementById('cycle-bar'),[
+      'someone else.','your competitor.','whoever replied first.','the business that answered.',
+      'the next Google result.','a faster reply.','the one who showed up.','a business that never sleeps.',
+      'whoever picked up.','another provider.','the business that was ready.','the one with auto-reply.',
+      'your rival.','a reply in seconds.','the business down the road.','the one that followed up.',
+      'a smarter system.','whoever answered at 2am.','the other option.','the business that never misses.',
+      'the faster business.','the one that got there first.','the competition.','the one who stayed open.',
+      'a business that always replies.','the one with better timing.','a competitor with AI.',
+      'the one that didn\'t make them wait.','whoever had a system.','the next business on their list.',
+      'the one that followed through.','your rival\'s AI.','the faster option.',
+      'the one that replied at midnight.','the reply that beat you.','the one that never closes.',
+      'the business you\'re not yet.','the one that captured the lead.','the one that booked the slot.',
+      'Iron Logic\'s next client.'
+    ],2800);
   }
 })();
 
