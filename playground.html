@@ -179,8 +179,8 @@
     <div style="margin-top:24px">
       <div class="plab plab-wide">
         <div class="plab-hdr">
-          <div class="plab-title">Mini LLM — DistilGPT-2 (runs in your browser)</div>
-          <div class="plab-subtitle">Real transformer model · 82M parameters · WebAssembly inference · no server</div>
+          <div class="plab-title">Mini LLM — LaMini-Flan-T5 (runs in your browser)</div>
+          <div class="plab-subtitle">Instruction-tuned transformer · 248M parameters · WebAssembly inference · no server</div>
         </div>
         <div class="plab-formula">Transformer attention · BPE tokenisation · autoregressive generation · temperature sampling</div>
 
@@ -222,12 +222,12 @@
         </div>
 
         <div class="plab-stats" style="margin-top:16px">
-          <div class="pstat"><div class="pstat-n">82M</div><div class="pstat-l">Parameters</div></div>
-          <div class="pstat"><div class="pstat-n">50k</div><div class="pstat-l">BPE vocab</div></div>
-          <div class="pstat"><div class="pstat-n">6</div><div class="pstat-l">Attn layers</div></div>
-          <div class="pstat"><div class="pstat-n">768</div><div class="pstat-l">Hidden dim</div></div>
+          <div class="pstat"><div class="pstat-n">248M</div><div class="pstat-l">Parameters</div></div>
+          <div class="pstat"><div class="pstat-n">32k</div><div class="pstat-l">SentencePiece vocab</div></div>
+          <div class="pstat"><div class="pstat-n">Enc-Dec</div><div class="pstat-l">Architecture</div></div>
+          <div class="pstat"><div class="pstat-n">~100MB</div><div class="pstat-l">Quantized size</div></div>
         </div>
-        <div class="plab-note">DistilGPT-2 is a distilled version of OpenAI's GPT-2, running entirely in your browser via WebAssembly. No API key, no server. The model file downloads from Hugging Face on first load and is cached — subsequent loads are instant. Temperature controls randomness: 0.1 = conservative, 2.0 = chaotic.</div>
+        <div class="plab-note">LaMini-Flan-T5 is an instruction-tuned T5 model fine-tuned on 2.58M instruction-response pairs. Unlike raw GPT-style models, it actually follows prompts — ask it a question and it answers. Runs entirely in your browser via WebAssembly. Downloads from Hugging Face on first load (~100MB) and is cached — subsequent loads are instant.</div>
       </div>
     </div>
 
@@ -265,7 +265,7 @@ loadBtn.addEventListener('click',async()=>{
   loadBtn.textContent='Loading…';
   statusEl.textContent='Downloading model from Hugging Face…';
   try{
-    generator=await pipeline('text-generation','Xenova/distilgpt2',{
+    generator=await pipeline('text2text-generation','Xenova/LaMini-Flan-T5-248M',{
       progress_callback:(p)=>{
         if(p.status==='progress'&&p.progress!=null){
           const pct=Math.round(p.progress);
