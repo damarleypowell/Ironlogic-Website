@@ -267,12 +267,14 @@ loadBtn.addEventListener('click',async()=>{
   try{
     generator=await pipeline('text-generation','Xenova/distilgpt2',{
       progress_callback:(p)=>{
-        if(p.status==='downloading'||p.status==='progress'){
-          const pct=p.progress?Math.round(p.progress):0;
+        if(p.status==='progress'&&p.progress!=null){
+          const pct=Math.round(p.progress);
           progressEl.style.width=pct+'%';
-          statusEl.textContent=`Downloading… ${pct}% (${(p.loaded/1e6).toFixed(1)} MB / ${(p.total/1e6).toFixed(1)} MB)`;
+          const loaded=p.loaded?`${(p.loaded/1e6).toFixed(1)} MB`:'';
+          const total=p.total?` / ${(p.total/1e6).toFixed(1)} MB`:'';
+          statusEl.textContent=`Downloading… ${pct}%${loaded?' ('+loaded+total+')':''}`;
         }
-        if(p.status==='done'){progressEl.style.width='100%';}
+        if(p.status==='ready'){progressEl.style.width='100%';}
       }
     });
     loadBtn.textContent='✓ Model loaded';
