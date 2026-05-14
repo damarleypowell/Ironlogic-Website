@@ -495,7 +495,7 @@ function resetModal(){
   document.getElementById('modal-form-view').style.display='';
   document.getElementById('modal-success-view').style.display='none';
   const f=document.getElementById('audit-form');
-  if(f)f.reset();
+  if(f){f.reset();f.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('active'));}
 }
 function showStep(n){
   currentStep=n;
@@ -516,14 +516,31 @@ function validateStep(n){
   let ok=true;
   required.forEach(el=>{
     if(!el.value.trim()){
-      el.style.borderColor='var(--red)';
-      el.style.boxShadow='0 0 0 3px rgba(220,38,38,.15)';
       ok=false;
-      setTimeout(()=>{el.style.borderColor='';el.style.boxShadow=''},2000);
+      if(el.type==='hidden'){
+        const grid=step.querySelector(`.opt-grid[data-target="${el.id}"]`);
+        if(grid){grid.classList.add('shake');setTimeout(()=>grid.classList.remove('shake'),500);}
+      } else {
+        el.style.borderColor='var(--red)';
+        el.style.boxShadow='0 0 0 3px rgba(220,38,38,.15)';
+        setTimeout(()=>{el.style.borderColor='';el.style.boxShadow=''},2000);
+      }
     }
   });
   return ok;
 }
+
+// Option button pickers
+document.querySelectorAll('.opt-grid').forEach(grid=>{
+  const hiddenInput=grid.dataset.target?document.getElementById(grid.dataset.target):null;
+  grid.querySelectorAll('.opt-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      grid.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      if(hiddenInput)hiddenInput.value=btn.dataset.value;
+    });
+  });
+});
 
 if(overlay){overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()})}
 if(modalClose){modalClose.addEventListener('click',()=>{closeModal();setTimeout(resetModal,400)})}
