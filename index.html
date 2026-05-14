@@ -250,11 +250,12 @@
       <h1 class="hero-h rv">
         Your leads won't wait.<br>
         They're already talking to<br>
-        <span class="word-cycle" id="word-cycle" aria-live="polite"><span class="cycle-word" id="cycle-word">someone else.</span><span class="cycle-bar" id="cycle-bar"></span></span>
+        <span style="color:var(--red);display:inline-block" id="cycle-word">someone else.</span>
       </h1>
       <script>
-      (function(){
-        var words=['someone else.','your competitor.','whoever replied first.','the business that answered.',
+        var _cw=document.getElementById('cycle-word');
+        var _ci=0;
+        var _cwords=['someone else.','your competitor.','whoever replied first.','the business that answered.',
           'the next Google result.','a faster reply.','the one who showed up.','a business that never sleeps.',
           'whoever picked up.','another provider.','the business that was ready.','the one with auto-reply.',
           'your rival.','a reply in seconds.','the business down the road.','the one that followed up.',
@@ -266,15 +267,12 @@
           'the one that replied at midnight.','the reply that beat you.','the one that never closes.',
           'the business you\'re not yet.','the one that captured the lead.','the one that booked the slot.',
           'Iron Logic\'s next client.'];
-        var idx=0;
-        var wordEl=document.getElementById('cycle-word');
-        var barEl=document.getElementById('cycle-bar');
+        _cw.style.transition='opacity 0.3s';
         setInterval(function(){
-          idx=(idx+1)%words.length;
-          if(barEl){barEl.classList.remove('sweep');void barEl.offsetWidth;barEl.classList.add('sweep');}
-          setTimeout(function(){wordEl.textContent=words[idx];},250);
-        },2800);
-      })();
+          _ci=(_ci+1)%_cwords.length;
+          _cw.style.opacity='0';
+          setTimeout(function(){_cw.textContent=_cwords[_ci];_cw.style.opacity='1';},320);
+        },2500);
       </script>
       <p class="hero-p rv">Iron Logic installs AI that replies to every WhatsApp and Instagram message in seconds — capturing leads, booking appointments, and closing sales automatically. 24/7, no staff needed.</p>
       <div class="hero-ctas rv">
