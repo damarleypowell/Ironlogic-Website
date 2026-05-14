@@ -738,7 +738,7 @@ footer{background:var(--ink);padding:72px 40px 40px}
   .hero-ctas .btn-play{justify-content:center;padding:13px 20px;border-radius:14px}
   .hero-trust{gap:10px;flex-wrap:wrap}
   .trust-item{font-size:12.5px}
-  .word-cycle{display:inline}
+  .word-cycle{display:inline-block}
 
   /* SECTIONS */
   .sec{padding:80px 24px}

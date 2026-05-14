@@ -179,60 +179,55 @@
     <div style="margin-top:24px">
       <div class="plab plab-wide">
         <div class="plab-hdr">
-          <div class="plab-title">Mini LLM — Bigram Language Model</div>
-          <div class="plab-subtitle">Trains on your text in-browser · Predicts next character using learned probability tables</div>
+          <div class="plab-title">Mini LLM — DistilGPT-2 (runs in your browser)</div>
+          <div class="plab-subtitle">Real transformer model · 82M parameters · WebAssembly inference · no server</div>
         </div>
-        <div class="plab-formula">P(cₙ | cₙ₋₁) — bigram probabilities · softmax sampling · temperature control</div>
+        <div class="plab-formula">Transformer attention · BPE tokenisation · autoregressive generation · temperature sampling</div>
+
+        <!-- Load row -->
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+          <button class="plab-btn" id="llm-load">Load DistilGPT-2 →</button>
+          <div style="flex:1;min-width:160px">
+            <div style="height:4px;border-radius:2px;background:var(--border);overflow:hidden">
+              <div id="llm-progress-bar" style="height:100%;width:0%;background:var(--red);transition:width .3s"></div>
+            </div>
+            <div id="llm-load-status" style="font-family:var(--mono);font-size:10px;color:var(--ink4);margin-top:5px">Model not loaded · ~82 MB download · cached after first load</div>
+          </div>
+        </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-          <div>
-            <div style="font-family:var(--mono);font-size:11px;color:var(--ink4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">Training text (edit me)</div>
-            <textarea id="llm-corpus" style="width:100%;height:120px;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--bg2);resize:vertical;outline:none;line-height:1.6">Hey, are you open on Saturday? I need to book a haircut. Do you take walk-ins or is it appointment only? What time do you close? Also how much does a full cut and beard trim cost?</textarea>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <button class="plab-btn" id="llm-train">Train model →</button>
-              <div id="llm-train-status" style="font-family:var(--mono);font-size:10px;color:var(--ink4);display:flex;align-items:center"></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="ctrl-row">
+              <span class="ctrl-label">Temperature</span>
+              <input class="ctrl-slider" id="llm-temp" type="range" min="0.1" max="2" value="0.8" step="0.05">
+              <span class="ctrl-val" id="llm-temp-val">0.80</span>
+            </div>
+            <div class="ctrl-row">
+              <span class="ctrl-label">Max new tokens</span>
+              <input class="ctrl-slider" id="llm-len" type="range" min="10" max="120" value="60" step="5">
+              <span class="ctrl-val" id="llm-len-val">60</span>
             </div>
           </div>
-          <div>
-            <div style="font-family:var(--mono);font-size:11px;color:var(--ink4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">Generation controls</div>
-            <div style="display:flex;flex-direction:column;gap:10px">
-              <div class="ctrl-row">
-                <span class="ctrl-label">Temperature</span>
-                <input class="ctrl-slider" id="llm-temp" type="range" min="0.1" max="3" value="1" step="0.05">
-                <span class="ctrl-val" id="llm-temp-val">1.0</span>
-              </div>
-              <div class="ctrl-row">
-                <span class="ctrl-label">Generate length</span>
-                <input class="ctrl-slider" id="llm-len" type="range" min="20" max="300" value="100" step="10">
-                <span class="ctrl-val" id="llm-len-val">100</span>
-              </div>
-              <div class="ctrl-row" style="align-items:flex-start;flex-direction:column;gap:6px">
-                <span class="ctrl-label">Seed text</span>
-                <input type="text" id="llm-seed" value="Hey" style="width:100%;border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--bg2);outline:none">
-              </div>
-              <button class="plab-btn" id="llm-gen">Generate text →</button>
-            </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-family:var(--mono);font-size:11px;color:var(--ink4);text-transform:uppercase;letter-spacing:.05em">Prompt</div>
+            <textarea id="llm-seed" style="flex:1;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-family:var(--mono);font-size:12px;color:var(--ink);background:var(--bg2);outline:none;resize:none;line-height:1.6;min-height:56px">Hey, are you open on Saturday?</textarea>
+            <button class="plab-btn" id="llm-gen">Generate →</button>
           </div>
-        </div>
-
-        <!-- Probability heatmap -->
-        <div style="margin-top:20px">
-          <div style="font-family:var(--mono);font-size:11px;color:var(--ink4);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">Bigram probability heatmap — last seed character</div>
-          <canvas id="canvas-heatmap" height="140" style="border-radius:10px"></canvas>
         </div>
 
         <!-- Output -->
         <div style="margin-top:16px">
           <div style="font-family:var(--mono);font-size:11px;color:var(--ink4);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">Generated output</div>
-          <div id="llm-output" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-family:var(--mono);font-size:13px;color:var(--ink2);line-height:1.7;min-height:60px;white-space:pre-wrap;word-break:break-word">Train the model first, then generate.</div>
+          <div id="llm-output" style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-family:var(--mono);font-size:13px;color:var(--ink2);line-height:1.7;min-height:80px;white-space:pre-wrap;word-break:break-word">Load the model first, then generate.</div>
         </div>
 
         <div class="plab-stats" style="margin-top:16px">
-          <div class="pstat"><div class="pstat-n" id="llm-vocab">—</div><div class="pstat-l">Vocab size</div></div>
-          <div class="pstat"><div class="pstat-n" id="llm-bigrams">—</div><div class="pstat-l">Bigram pairs</div></div>
-          <div class="pstat"><div class="pstat-n" id="llm-entropy">—</div><div class="pstat-l">Avg entropy (bits)</div></div>
+          <div class="pstat"><div class="pstat-n">82M</div><div class="pstat-l">Parameters</div></div>
+          <div class="pstat"><div class="pstat-n">50k</div><div class="pstat-l">BPE vocab</div></div>
+          <div class="pstat"><div class="pstat-n">6</div><div class="pstat-l">Attn layers</div></div>
+          <div class="pstat"><div class="pstat-n">768</div><div class="pstat-l">Hidden dim</div></div>
         </div>
-        <div class="plab-note">This is a bigram language model — the simplest form of an LLM. It learns which characters tend to follow each other in your text, then samples from those probabilities to generate new text. Real LLMs like GPT use transformer attention across thousands of tokens instead of single characters, but the core idea — learning P(next | context) — is identical. Temperature controls randomness: low = predictable, high = creative/chaotic.</div>
+        <div class="plab-note">DistilGPT-2 is a distilled version of OpenAI's GPT-2, running entirely in your browser via WebAssembly. No API key, no server. The model file downloads from Hugging Face on first load and is cached — subsequent loads are instant. Temperature controls randomness: 0.1 = conservative, 2.0 = chaotic.</div>
       </div>
     </div>
 
@@ -253,6 +248,74 @@
 </footer>
 
 <script src="main.js"></script>
+<script type="module">
+import{pipeline,env}from'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2';
+env.allowLocalModels=false;
+
+let generator=null;
+const loadBtn=document.getElementById('llm-load');
+const genBtn=document.getElementById('llm-gen');
+const statusEl=document.getElementById('llm-load-status');
+const progressEl=document.getElementById('llm-progress-bar');
+const outputEl=document.getElementById('llm-output');
+
+loadBtn.addEventListener('click',async()=>{
+  if(generator)return;
+  loadBtn.disabled=true;
+  loadBtn.textContent='Loading…';
+  statusEl.textContent='Downloading model from Hugging Face…';
+  try{
+    generator=await pipeline('text-generation','Xenova/distilgpt2',{
+      progress_callback:(p)=>{
+        if(p.status==='downloading'||p.status==='progress'){
+          const pct=p.progress?Math.round(p.progress):0;
+          progressEl.style.width=pct+'%';
+          statusEl.textContent=`Downloading… ${pct}% (${(p.loaded/1e6).toFixed(1)} MB / ${(p.total/1e6).toFixed(1)} MB)`;
+        }
+        if(p.status==='done'){progressEl.style.width='100%';}
+      }
+    });
+    loadBtn.textContent='✓ Model loaded';
+    statusEl.textContent='DistilGPT-2 ready · cached for future visits';
+    outputEl.textContent='Model ready. Enter a prompt and click Generate.';
+    progressEl.style.width='100%';
+  }catch(e){
+    loadBtn.disabled=false;
+    loadBtn.textContent='Retry load →';
+    statusEl.textContent='Error: '+e.message;
+  }
+});
+
+genBtn.addEventListener('click',async()=>{
+  if(!generator){outputEl.textContent='Load the model first.';return;}
+  const prompt=document.getElementById('llm-seed').value.trim()||'Hey';
+  const temp=+document.getElementById('llm-temp').value;
+  const maxNew=+document.getElementById('llm-len').value;
+  genBtn.disabled=true;
+  genBtn.textContent='Generating…';
+  outputEl.textContent='';
+  try{
+    const result=await generator(prompt,{
+      max_new_tokens:maxNew,
+      temperature:temp,
+      do_sample:temp>0.01,
+      repetition_penalty:1.1
+    });
+    const text=result[0].generated_text;
+    // Typewriter
+    let i=0;
+    const t=setInterval(()=>{
+      outputEl.textContent+=text[i];i++;
+      if(i>=text.length)clearInterval(t);
+    },14);
+  }catch(e){
+    outputEl.textContent='Error: '+e.message;
+  }finally{
+    genBtn.disabled=false;
+    genBtn.textContent='Generate →';
+  }
+});
+</script>
 <script>
 (function(){
   const INK='rgba(17,24,39,';
@@ -525,124 +588,7 @@
   drawBayes();
 
   // redraw on resize
-  window.addEventListener('resize',()=>{genRegData();drawReg();drawGD(gdPath);drawBayes();if(llmTrained)drawHeatmap(lastSeedChar);});
-
-  // ── 4. MINI BIGRAM LLM ──
-  let bigramModel={};   // {char: {nextChar: count}}
-  let llmTrained=false;
-  let lastSeedChar=' ';
-
-  function trainLLM(){
-    const corpus=document.getElementById('llm-corpus').value;
-    if(corpus.length<10)return;
-    bigramModel={};
-    for(let i=0;i<corpus.length-1;i++){
-      const c=corpus[i],n=corpus[i+1];
-      if(!bigramModel[c])bigramModel[c]={};
-      bigramModel[c][n]=(bigramModel[c][n]||0)+1;
-    }
-    // Convert counts to probabilities
-    const vocab=new Set(corpus.split('')).size;
-    const pairs=Object.values(bigramModel).reduce((s,v)=>s+Object.keys(v).length,0);
-    // Entropy
-    let totalH=0,totalCount=0;
-    Object.values(bigramModel).forEach(nextMap=>{
-      const tot=Object.values(nextMap).reduce((a,b)=>a+b,0);
-      Object.values(nextMap).forEach(c=>{
-        const p=c/tot;
-        totalH-=p*Math.log2(p);
-        totalCount++;
-      });
-    });
-    document.getElementById('llm-vocab').textContent=vocab;
-    document.getElementById('llm-bigrams').textContent=pairs;
-    document.getElementById('llm-entropy').textContent=(totalH/Math.max(totalCount,1)).toFixed(2);
-    document.getElementById('llm-train-status').textContent='✓ Trained on '+corpus.length+' chars';
-    llmTrained=true;
-    lastSeedChar=corpus[0]||' ';
-    drawHeatmap(lastSeedChar);
-  }
-
-  function sampleNext(char,temp){
-    const nexts=bigramModel[char];
-    if(!nexts){
-      // Fall back to random character from vocabulary
-      const keys=Object.keys(bigramModel);
-      return keys[Math.floor(Math.random()*keys.length)]||' ';
-    }
-    const entries=Object.entries(nexts);
-    const logits=entries.map(([,c])=>Math.log(c)/temp);
-    const maxL=Math.max(...logits);
-    const exps=logits.map(l=>Math.exp(l-maxL));
-    const sum=exps.reduce((a,b)=>a+b,0);
-    const probs=exps.map(e=>e/sum);
-    const r=Math.random();
-    let acc=0;
-    for(let i=0;i<probs.length;i++){
-      acc+=probs[i];
-      if(r<acc)return entries[i][0];
-    }
-    return entries[entries.length-1][0];
-  }
-
-  function generateText(){
-    if(!llmTrained){document.getElementById('llm-output').textContent='Train the model first.';return;}
-    const temp=+document.getElementById('llm-temp').value;
-    const len=+document.getElementById('llm-len').value;
-    const seed=document.getElementById('llm-seed').value||' ';
-    let out=seed;
-    let cur=seed[seed.length-1];
-    for(let i=0;i<len;i++){
-      const next=sampleNext(cur,temp);
-      out+=next;
-      cur=next;
-    }
-    const el=document.getElementById('llm-output');
-    el.textContent='';
-    // Typewriter effect
-    let ci=0;
-    const timer=setInterval(()=>{
-      el.textContent+=out[ci];
-      ci++;
-      if(ci>=out.length)clearInterval(timer);
-    },18);
-    lastSeedChar=cur;
-    drawHeatmap(lastSeedChar);
-  }
-
-  function drawHeatmap(seedChar){
-    const c=setupCanvas('canvas-heatmap');if(!c)return;
-    const{ctx,W,H}=c;
-    ctx.clearRect(0,0,W,H);
-    if(!llmTrained)return;
-    const nexts=bigramModel[seedChar]||{};
-    const allChars=Object.keys(Object.values(bigramModel).reduce((a,v)=>{Object.keys(v).forEach(k=>a[k]=1);return a},{})).sort();
-    if(!allChars.length)return;
-    const tot=Object.values(nexts).reduce((a,b)=>a+b,0)||1;
-    const maxProb=Math.max(...allChars.map(ch=>(nexts[ch]||0)/tot),0.001);
-    const cols=Math.min(allChars.length,Math.floor(W/24));
-    const rows=Math.ceil(allChars.length/cols);
-    const cw=W/cols,rh=Math.min(H/rows,28);
-    allChars.forEach((ch,i)=>{
-      const col=i%cols,row=Math.floor(i/cols);
-      const p=(nexts[ch]||0)/tot;
-      const intensity=p/maxProb;
-      const x=col*cw,y=row*rh;
-      // Cell background
-      ctx.fillStyle=`rgba(220,38,38,${intensity*0.85+0.03})`;
-      ctx.fillRect(x+1,y+1,cw-2,rh-2);
-      // Character label
-      ctx.fillStyle=intensity>0.4?'#fff':'rgba(17,24,39,.6)';
-      ctx.font=`${Math.max(8,Math.min(11,cw-4))}px DM Mono,monospace`;
-      ctx.textAlign='center';
-      ctx.textBaseline='middle';
-      const label=ch===' '?'·':ch==='\n'?'↵':ch;
-      ctx.fillText(label,x+cw/2,y+rh/2);
-    });
-    // Title overlay
-    ctx.fillStyle='rgba(17,24,39,.55)';ctx.font='9px DM Mono,monospace';ctx.textAlign='left';ctx.textBaseline='top';
-    ctx.fillText('After "'+seedChar+'" →',4,4);
-  }
+  window.addEventListener('resize',()=>{genRegData();drawReg();drawGD(gdPath);drawBayes();});
 
   document.getElementById('llm-temp').addEventListener('input',()=>{
     document.getElementById('llm-temp-val').textContent=(+document.getElementById('llm-temp').value).toFixed(2);
@@ -650,8 +596,6 @@
   document.getElementById('llm-len').addEventListener('input',()=>{
     document.getElementById('llm-len-val').textContent=document.getElementById('llm-len').value;
   });
-  document.getElementById('llm-train').addEventListener('click',trainLLM);
-  document.getElementById('llm-gen').addEventListener('click',generateText);
 })();
 </script>
 </body>

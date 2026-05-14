@@ -595,12 +595,6 @@ if(auditForm){
       // Fade out
       wordEl.style.opacity='0';
       wordEl.style.transform='translateY(-6px)';
-      // Also try bar sweep if it exists
-      if(barEl){
-        barEl.classList.remove('sweep');
-        void barEl.offsetWidth;
-        barEl.classList.add('sweep');
-      }
       setTimeout(()=>{
         wordEl.textContent=words[idx];
         wordEl.style.transition='none';
