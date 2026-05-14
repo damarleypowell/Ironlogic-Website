@@ -599,45 +599,41 @@ if(auditForm){
   });
 }
 
-/* ─── WORD CYCLE (generic) ─── */
+/* ─── WORD CYCLE ─── */
 (function(){
-  function startCycle(wordEl,barEl,words,interval){
+  function startCycle(wordEl,words,ms){
     if(!wordEl||!words.length)return;
     let idx=0;
-    // Ensure initial word is set
     wordEl.textContent=words[0];
-    wordEl.style.transition='opacity .22s,transform .22s';
-    function next(){
+    setInterval(()=>{
       idx=(idx+1)%words.length;
-      // Fade out
+      // fade + slide out
+      wordEl.style.transition='opacity .2s ease,transform .2s ease';
       wordEl.style.opacity='0';
-      wordEl.style.transform='translateY(-6px)';
+      wordEl.style.transform='translateY(-8px)';
       setTimeout(()=>{
-        wordEl.textContent=words[idx];
+        // snap below with no transition, swap text
         wordEl.style.transition='none';
-        wordEl.style.transform='translateY(6px)';
-        void wordEl.offsetWidth;
-        wordEl.style.transition='opacity .22s,transform .22s';
-        wordEl.style.opacity='1';
-        wordEl.style.transform='translateY(0)';
+        wordEl.style.transform='translateY(8px)';
+        wordEl.textContent=words[idx];
+        // two frames later: animate in
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          wordEl.style.transition='opacity .2s ease,transform .2s ease';
+          wordEl.style.opacity='1';
+          wordEl.style.transform='translateY(0)';
+        }));
       },220);
-    }
-    setInterval(next,interval||2400);
+    },ms||2400);
   }
 
-  document.querySelectorAll('.word-cycle[data-words]').forEach(container=>{
-    const wordEl=container.querySelector('.cycle-word');
-    const barEl=container.querySelector('.cycle-bar');
-    if(!wordEl)return;
-    const words=container.dataset.words.split('|');
-    startCycle(wordEl,barEl,words,+(container.dataset.interval||2400));
+  document.querySelectorAll('.word-cycle[data-words]').forEach(c=>{
+    const w=c.querySelector('.cycle-word');
+    if(w)startCycle(w,c.dataset.words.split('|'),+(c.dataset.interval||2400));
   });
 
-  // Legacy hero cycle (index.html)
   const legacyWord=document.getElementById('cycle-word');
   if(legacyWord&&!legacyWord.closest('[data-words]')){
-    const words=['elsewhere.','to a competitor.','without replying.','without booking.','without coming back.'];
-    startCycle(legacyWord,document.getElementById('cycle-bar'),words,2400);
+    startCycle(legacyWord,['elsewhere.','to a competitor.','without replying.','without booking.','without coming back.'],2400);
   }
 })();
 

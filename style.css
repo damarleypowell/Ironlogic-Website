@@ -83,14 +83,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 /* word cycle */
 .word-cycle{display:inline-block;position:relative;color:var(--red);vertical-align:bottom}
 .cycle-word{display:inline-block}
-.cycle-bar{position:absolute;inset:-3px -4px;background:var(--red);border-radius:4px;transform:scaleX(0);transform-origin:left center;pointer-events:none;z-index:2}
-.cycle-bar.sweep{animation:barWipe .52s cubic-bezier(.77,0,.18,1) forwards}
-@keyframes barWipe{
-  0%{transform-origin:left center;transform:scaleX(0)}
-  42%{transform-origin:left center;transform:scaleX(1)}
-  58%{transform-origin:right center;transform:scaleX(1)}
-  100%{transform-origin:right center;transform:scaleX(0)}
-}
+.cycle-bar{display:none}
 .hero-p{font-size:18px;color:var(--ink2);line-height:1.7;max-width:480px;margin-bottom:36px;font-weight:400}
 .hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:48px}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#fff;background:var(--red);border:none;padding:13px 26px;border-radius:12px;cursor:pointer;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s;letter-spacing:-.01em}
