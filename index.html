@@ -267,12 +267,10 @@
           'the one that replied at midnight.','the reply that beat you.','the one that never closes.',
           'the business you\'re not yet.','the one that captured the lead.','the one that booked the slot.',
           'Iron Logic\'s next client.'];
-        _cw.style.transition='opacity 0.3s';
         setInterval(function(){
           _ci=(_ci+1)%_cwords.length;
-          _cw.style.opacity='0';
-          setTimeout(function(){_cw.textContent=_cwords[_ci];_cw.style.opacity='1';},320);
-        },2500);
+          _cw.textContent=_cwords[_ci];
+        },2000);
       </script>
       <p class="hero-p rv">Iron Logic installs AI that replies to every WhatsApp and Instagram message in seconds — capturing leads, booking appointments, and closing sales automatically. 24/7, no staff needed.</p>
       <div class="hero-ctas rv">
