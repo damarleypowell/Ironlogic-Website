@@ -1426,10 +1426,12 @@ a.ow-web-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(220,38,38
   /* Serve layout */
   .serve-layout{grid-template-columns:1fr}
   /* Demo */
-  .demo-content{grid-template-columns:1fr;gap:40px}
-  .demo-right{display:none}
+  .demo-content{grid-template-columns:1fr;gap:32px}
+  .demo-right{display:flex;justify-content:center}
+  .demo-left{order:2}
+  .demo-right{order:1}
   /* WA phone */
-  .wa-phone{width:100%;max-width:100%;border-radius:16px}
+  .wa-phone{width:100%;max-width:100%;border-radius:16px;height:460px}
   /* ROI */
   .roi-wrap{grid-template-columns:1fr}
   /* Clarity */

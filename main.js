@@ -585,35 +585,48 @@ if(auditForm){
 /* ─── WORD CYCLE (generic) ─── */
 (function(){
   function startCycle(wordEl,barEl,words,interval){
+    if(!wordEl||!words.length)return;
     let idx=0;
+    // Ensure initial word is set
+    wordEl.textContent=words[0];
+    wordEl.style.transition='opacity .22s,transform .22s';
     function next(){
       idx=(idx+1)%words.length;
+      // Fade out
+      wordEl.style.opacity='0';
+      wordEl.style.transform='translateY(-6px)';
+      // Also try bar sweep if it exists
       if(barEl){
         barEl.classList.remove('sweep');
         void barEl.offsetWidth;
         barEl.classList.add('sweep');
       }
-      setTimeout(()=>{ wordEl.textContent=words[idx]; },barEl?260:0);
+      setTimeout(()=>{
+        wordEl.textContent=words[idx];
+        wordEl.style.transition='none';
+        wordEl.style.transform='translateY(6px)';
+        void wordEl.offsetWidth;
+        wordEl.style.transition='opacity .22s,transform .22s';
+        wordEl.style.opacity='1';
+        wordEl.style.transform='translateY(0)';
+      },220);
     }
     setInterval(next,interval||2400);
   }
 
-  // Named cycles via data-cycle-id on .word-cycle containers
   document.querySelectorAll('.word-cycle[data-words]').forEach(container=>{
     const wordEl=container.querySelector('.cycle-word');
     const barEl=container.querySelector('.cycle-bar');
     if(!wordEl)return;
     const words=container.dataset.words.split('|');
-    const interval=+(container.dataset.interval||2400);
-    startCycle(wordEl,barEl,words,interval);
+    startCycle(wordEl,barEl,words,+(container.dataset.interval||2400));
   });
 
-  // Legacy hero cycle (index.html — no data-words, uses id="cycle-word")
+  // Legacy hero cycle (index.html)
   const legacyWord=document.getElementById('cycle-word');
   if(legacyWord&&!legacyWord.closest('[data-words]')){
     const words=['elsewhere.','to a competitor.','without replying.','without booking.','without coming back.'];
-    const legacyBar=document.getElementById('cycle-bar');
-    startCycle(legacyWord,legacyBar,words,2400);
+    startCycle(legacyWord,document.getElementById('cycle-bar'),words,2400);
   }
 })();
 
