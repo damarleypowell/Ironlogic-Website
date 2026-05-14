@@ -252,6 +252,30 @@
         They're already talking to<br>
         <span class="word-cycle" id="word-cycle" aria-live="polite"><span class="cycle-word" id="cycle-word">someone else.</span><span class="cycle-bar" id="cycle-bar"></span></span>
       </h1>
+      <script>
+      (function(){
+        var words=['someone else.','your competitor.','whoever replied first.','the business that answered.',
+          'the next Google result.','a faster reply.','the one who showed up.','a business that never sleeps.',
+          'whoever picked up.','another provider.','the business that was ready.','the one with auto-reply.',
+          'your rival.','a reply in seconds.','the business down the road.','the one that followed up.',
+          'a smarter system.','whoever answered at 2am.','the other option.','the business that never misses.',
+          'the faster business.','the one that got there first.','the competition.','the one who stayed open.',
+          'a business that always replies.','the one with better timing.','a competitor with AI.',
+          'the one that didn\'t make them wait.','whoever had a system.','the next business on their list.',
+          'the one that followed through.','your rival\'s AI.','the faster option.',
+          'the one that replied at midnight.','the reply that beat you.','the one that never closes.',
+          'the business you\'re not yet.','the one that captured the lead.','the one that booked the slot.',
+          'Iron Logic\'s next client.'];
+        var idx=0;
+        var wordEl=document.getElementById('cycle-word');
+        var barEl=document.getElementById('cycle-bar');
+        setInterval(function(){
+          idx=(idx+1)%words.length;
+          if(barEl){barEl.classList.remove('sweep');void barEl.offsetWidth;barEl.classList.add('sweep');}
+          setTimeout(function(){wordEl.textContent=words[idx];},250);
+        },2800);
+      })();
+      </script>
       <p class="hero-p rv">Iron Logic installs AI that replies to every WhatsApp and Instagram message in seconds — capturing leads, booking appointments, and closing sales automatically. 24/7, no staff needed.</p>
       <div class="hero-ctas rv">
         <a href="#" data-modal="open" class="btn-primary mag">Get Free Setup Call <span class="arr">→</span></a>
