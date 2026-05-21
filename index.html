@@ -473,6 +473,189 @@
   </div>
 </section>
 
+<!-- DATA VISUALIZATIONS -->
+<section id="data" class="sec" style="background:#f8f9fa">
+  <div class="sec-w">
+    <span class="eyebrow rv" style="justify-content:center">The Numbers</span>
+    <h2 class="sec-h rv" style="text-align:center">Why speed is the only<br><span class="muted">metric that matters.</span></h2>
+
+    <div class="dv-grid rv" style="margin-top:52px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+
+      <!-- Chart 1: Response Time Comparison -->
+      <div class="dv-card" style="grid-column:span 2">
+        <div class="dv-card-hdr">
+          <div>
+            <div class="dv-label">Response Time · Industry Benchmark</div>
+            <div class="dv-title">How fast you respond determines whether you get the deal.</div>
+          </div>
+          <div class="dv-badge">Based on service industry data</div>
+        </div>
+        <div class="dv-bars" style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
+          <div class="dv-bar-row">
+            <div class="dv-bar-label">Industry average response</div>
+            <div class="dv-bar-track"><div class="dv-bar-fill dv-bad" style="--w:88%" data-label="5+ hours"></div></div>
+            <div class="dv-bar-stat bad">5+ hours</div>
+          </div>
+          <div class="dv-bar-row">
+            <div class="dv-bar-label">Top 10% of businesses</div>
+            <div class="dv-bar-track"><div class="dv-bar-fill dv-mid" style="--w:34%" data-label="~45 min"></div></div>
+            <div class="dv-bar-stat mid">~45 min</div>
+          </div>
+          <div class="dv-bar-row">
+            <div class="dv-bar-label">Iron Logic AI system</div>
+            <div class="dv-bar-track"><div class="dv-bar-fill dv-good" style="--w:3%" data-label="22s"></div></div>
+            <div class="dv-bar-stat good">22 seconds</div>
+          </div>
+        </div>
+        <div class="dv-insight" style="margin-top:20px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#dc2626" stroke-width="1.4"/><path d="M7 4v3.5M7 9.5v.5" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Leads contacted within 5 minutes are <strong>21× more likely to convert</strong> than those reached after 30 minutes. — MIT / Kellogg research
+        </div>
+      </div>
+
+      <!-- Chart 2: Lead Fate Funnel -->
+      <div class="dv-card">
+        <div class="dv-card-hdr">
+          <div>
+            <div class="dv-label">Lead Fate · Without a System</div>
+            <div class="dv-title">Where your inbound leads actually go.</div>
+          </div>
+        </div>
+        <div class="dv-funnel" style="margin-top:28px">
+          <div class="dv-funnel-row" style="--pct:100%;--col:#e5e7eb">
+            <div class="dv-funnel-bar"><div class="dv-funnel-fill"></div></div>
+            <div class="dv-funnel-meta"><span class="dv-funnel-n">100</span><span class="dv-funnel-l">Leads inquire</span></div>
+          </div>
+          <div class="dv-funnel-row" style="--pct:62%;--col:#fca5a5">
+            <div class="dv-funnel-bar"><div class="dv-funnel-fill"></div></div>
+            <div class="dv-funnel-meta"><span class="dv-funnel-n bad">62</span><span class="dv-funnel-l">Never replied to (after hours, busy)</span></div>
+          </div>
+          <div class="dv-funnel-row" style="--pct:22%;--col:#f87171">
+            <div class="dv-funnel-bar"><div class="dv-funnel-fill"></div></div>
+            <div class="dv-funnel-meta"><span class="dv-funnel-n bad">22</span><span class="dv-funnel-l">Replied but too slow — already moved on</span></div>
+          </div>
+          <div class="dv-funnel-row" style="--pct:11%;--col:#22c55e">
+            <div class="dv-funnel-bar"><div class="dv-funnel-fill" style="background:#22c55e"></div></div>
+            <div class="dv-funnel-meta"><span class="dv-funnel-n" style="color:#15803d">11</span><span class="dv-funnel-l">Convert to paying clients</span></div>
+          </div>
+        </div>
+        <div class="dv-insight" style="margin-top:20px">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#dc2626" stroke-width="1.4"/><path d="M7 4v3.5M7 9.5v.5" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <strong>89 of 100 leads</strong> never become clients — not because of price, but because of timing.
+        </div>
+      </div>
+
+      <!-- Chart 3: Revenue Impact Over Time -->
+      <div class="dv-card">
+        <div class="dv-card-hdr">
+          <div>
+            <div class="dv-label">Revenue Recovery · Month-over-Month</div>
+            <div class="dv-title">What happens when every lead gets a reply.</div>
+          </div>
+        </div>
+        <div class="dv-chart" style="margin-top:28px;position:relative;height:160px">
+          <svg width="100%" height="160" viewBox="0 0 400 160" preserveAspectRatio="none" style="display:block">
+            <!-- Grid lines -->
+            <line x1="0" y1="40" x2="400" y2="40" stroke="#e5e7eb" stroke-width="1"/>
+            <line x1="0" y1="80" x2="400" y2="80" stroke="#e5e7eb" stroke-width="1"/>
+            <line x1="0" y1="120" x2="400" y2="120" stroke="#e5e7eb" stroke-width="1"/>
+            <!-- Without system (flat/declining) -->
+            <polyline points="0,110 67,112 133,115 200,118 267,116 333,119 400,122" fill="none" stroke="#e5e7eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- With Iron Logic (growing) -->
+            <defs>
+              <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#dc2626" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#dc2626" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <polygon points="0,110 67,95 133,75 200,55 267,40 333,28 400,18 400,160 0,160" fill="url(#revGrad)"/>
+            <polyline points="0,110 67,95 133,75 200,55 267,40 333,28 400,18" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Month labels -->
+            <text x="0" y="155" font-size="10" fill="#9ca3af" font-family="monospace">Mo 1</text>
+            <text x="60" y="155" font-size="10" fill="#9ca3af" font-family="monospace">Mo 2</text>
+            <text x="127" y="155" font-size="10" fill="#9ca3af" font-family="monospace">Mo 3</text>
+            <text x="193" y="155" font-size="10" fill="#9ca3af" font-family="monospace">Mo 4</text>
+            <text x="260" y="155" font-size="10" fill="#9ca3af" font-family="monospace">Mo 5</text>
+            <text x="326" y="155" font-size="10" fill="#9ca3af" font-family="monospace">Mo 6</text>
+          </svg>
+        </div>
+        <div class="dv-legend" style="margin-top:12px;display:flex;gap:20px">
+          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:20px;height:2.5px;background:#dc2626;border-radius:2px"></div>With Iron Logic</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:20px;height:2.5px;background:#e5e7eb;border-radius:2px"></div>Without system</div>
+        </div>
+      </div>
+
+      <!-- Chart 4: Industry Conversion Benchmarks -->
+      <div class="dv-card" style="grid-column:span 2">
+        <div class="dv-card-hdr">
+          <div>
+            <div class="dv-label">Conversion Rate · By Industry</div>
+            <div class="dv-title">Average lead-to-client conversion — manual vs. AI-assisted follow-up.</div>
+          </div>
+          <div class="dv-badge">Industry benchmarks</div>
+        </div>
+        <div class="dv-industry-chart" style="margin-top:28px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:end">
+          <div class="dv-col">
+            <div class="dv-col-bars">
+              <div class="dv-col-bar manual" style="--h:52px" title="Manual: 11%"></div>
+              <div class="dv-col-bar ai" style="--h:104px" title="AI: 28%"></div>
+            </div>
+            <div class="dv-col-labels">
+              <div class="dv-col-vals"><span class="manual-val">11%</span><span class="ai-val">28%</span></div>
+              <div class="dv-col-name">Real Estate</div>
+            </div>
+          </div>
+          <div class="dv-col">
+            <div class="dv-col-bars">
+              <div class="dv-col-bar manual" style="--h:44px" title="Manual: 9%"></div>
+              <div class="dv-col-bar ai" style="--h:98px" title="AI: 26%"></div>
+            </div>
+            <div class="dv-col-labels">
+              <div class="dv-col-vals"><span class="manual-val">9%</span><span class="ai-val">26%</span></div>
+              <div class="dv-col-name">Medical / Dental</div>
+            </div>
+          </div>
+          <div class="dv-col">
+            <div class="dv-col-bars">
+              <div class="dv-col-bar manual" style="--h:38px" title="Manual: 8%"></div>
+              <div class="dv-col-bar ai" style="--h:86px" title="AI: 22%"></div>
+            </div>
+            <div class="dv-col-labels">
+              <div class="dv-col-vals"><span class="manual-val">8%</span><span class="ai-val">22%</span></div>
+              <div class="dv-col-name">Law Firms</div>
+            </div>
+          </div>
+          <div class="dv-col">
+            <div class="dv-col-bars">
+              <div class="dv-col-bar manual" style="--h:48px" title="Manual: 10%"></div>
+              <div class="dv-col-bar ai" style="--h:108px" title="AI: 29%"></div>
+            </div>
+            <div class="dv-col-labels">
+              <div class="dv-col-vals"><span class="manual-val">10%</span><span class="ai-val">29%</span></div>
+              <div class="dv-col-name">Home Services</div>
+            </div>
+          </div>
+          <div class="dv-col">
+            <div class="dv-col-bars">
+              <div class="dv-col-bar manual" style="--h:42px" title="Manual: 9%"></div>
+              <div class="dv-col-bar ai" style="--h:96px" title="AI: 25%"></div>
+            </div>
+            <div class="dv-col-labels">
+              <div class="dv-col-vals"><span class="manual-val">9%</span><span class="ai-val">25%</span></div>
+              <div class="dv-col-name">Consultants</div>
+            </div>
+          </div>
+        </div>
+        <div class="dv-legend" style="margin-top:20px;display:flex;gap:20px">
+          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:12px;height:12px;background:#e5e7eb;border-radius:3px"></div>Manual follow-up</div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink3)"><div style="width:12px;height:12px;background:#dc2626;border-radius:3px"></div>AI-assisted follow-up</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- WHAT WE ARE NOT -->
 <section id="not" class="sec" style="background:#f8f9fa">
   <div class="sec-w">
@@ -564,6 +747,20 @@
 </footer>
 
 <script src="main.js"></script>
+<script>
+(function(){
+  var dvObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.querySelectorAll('.dv-bar-fill,.dv-funnel-fill,.dv-col-bar').forEach(function(el){
+        el.classList.add('animate');
+      });
+      dvObs.unobserve(e.target);
+    });
+  },{threshold:0.2});
+  document.querySelectorAll('.dv-card').forEach(function(c){dvObs.observe(c);});
+})();
+</script>
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </body>
 </html>
