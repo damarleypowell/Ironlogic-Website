@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="640" height="160" fill="#111827" rx="12"/>
+
+  <!-- Mark — 3× scale -->
+  <rect x="36" y="6"  width="90" height="90" fill="#C8201A" rx="6"/>
+  <rect x="6"  y="42" width="66" height="66" fill="#E8735A" rx="5"/>
+  <rect x="36" y="42" width="36" height="36" fill="#111827"/>
+
+  <!-- Wordmark white -->
+  <text
+    x="155" y="108"
+    font-family="'Playfair Display', Georgia, 'Times New Roman', serif"
+    font-size="72"
+    font-weight="500"
+    fill="#ffffff"
+    letter-spacing="-2"
+  >IronLogic</text>
+</svg>

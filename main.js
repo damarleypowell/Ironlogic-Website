@@ -64,54 +64,114 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
   };
 
   const FB={
-    re:{buy:["We have morning and afternoon slots this week. Which day works for you?","We're open Mon–Sat 9am–7pm. Want me to check what's available?"],sell:["No problem! Walk-ins welcome, or I can book you a specific slot. What service are you looking for?","Sure — haircut, shape-up, or the full package? And which day works best?"],price:["Haircut is J$1,500 · Shape-up J$800 · Full cut + beard J$2,200. Which service are you going with?","Prices start from J$800. The full cut + beard combo is J$2,200. What are you going for?"],timeline:["We can usually fit you in same day or next day. Morning or afternoon better for you?","We're pretty flexible — what day are you thinking, and morning or afternoon?"],book:["I have Saturday 10am or 1pm available. Which works for you?","How about Friday 3pm or Saturday morning at 10am?"],confirm:["Locked in! ✅ We'll send you a reminder the day before. See you then! ✂️","Booked! 👍 Looking forward to seeing you. Any cancellations, just message us here."],identity:null,default:["Looking to book a cut, or got a question about pricing or hours?","What can I help with — booking, pricing, or services?"]},
-    dental:{pain:["We have morning and evening classes this week. Want a free trial session first?","No worries — we offer a free trial so you can check the vibe before committing. Interested?"],routine:["Monthly membership is J$8,000 — that's unlimited access to all equipment and group classes. Want to try a free session first?","We have Zumba, CrossFit, and Boxing classes. Which one sounds like you?"],price:["Monthly membership: J$8,000 · Day pass: J$1,200 · Free trial session available. Want to book the trial?","Trial session is free — no commitment. Membership after is J$8,000/month. Want to book a trial?"],book:["I have a free trial slot Tuesday 6am or Thursday 5pm. Which works?","We have Saturday morning at 8am or Wednesday evening at 5pm. Which is better?"],confirm:["Trial session booked! 💪 See you then — just wear comfortable clothes and bring water.","Confirmed! Come as you are — we'll show you around and get you into the right class."],identity:null,default:["Interested in joining, asking about classes, or want to book a free trial?","What are you looking to do — lose weight, build muscle, or just stay active?"]},
-    law:{accident:["We can seat up to 10 people — what date and time are you thinking?","We're open daily 11am–10pm. How many people in your party and which day?"],injury:["No problem! Jerk chicken, curry goat, oxtail — what's calling you today?","We have dine-in, takeout, and delivery. What are you in the mood for?"],price:["Our plates start from J$1,200. The full Jerk experience combo is J$2,800. Want to see the full menu?","Jerk chicken from J$1,200 · Oxtail J$1,800 · Vegetarian options available too. What sounds good?"],book:["I can book you for Saturday at 7pm — how many people?","Sunday brunch at 12pm is great — shall I reserve a table? How many guests?"],confirm:["Table reserved! 🍽️ See you then — we'll have your spot ready. Any dietary needs?","Confirmed! Your table will be set. Let us know if anything changes."],identity:null,default:["Looking to make a reservation, check the menu, or order for delivery?","What can I help with — dine-in, takeout, or catering?"]},
-    hvac:{ac:["We have full set, gel manicure, and pedicure. Which service are you going for?","Full set is J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000 · Nail art from J$500 extra. What are you thinking?"],heat:["We have slots Tue–Sat 9am–6pm. Which day works for you?","Morning or afternoon better for you? I can check what's available this week."],price:["Full set J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000. Any nail art is J$500+ depending on design. Which service?","Prices: Full set J$3,500 · Gel J$2,500 · Pedicure J$2,000. Want to book?"],book:["I have Saturday 11am or 2pm available. Which slot works?","How about Thursday 3pm or Friday 10am? Both have availability."],confirm:["Appointment confirmed! 💅 We'll send a reminder. See you soon!","Booked! 👏 If you have nail art inspo, send us a pic beforehand. See you then!"],identity:null,default:["Looking to book an appointment, check prices, or ask about our services?","What can I help with — booking, pricing, or availability?"]},
-    consult:{revenue:["What kind of business do you run? I can give you the right info straight away.","Happy to help! Are you asking about pricing, availability, or something specific?"],leads:["What service are you interested in? I can check availability right now.","No problem — are you looking to book, get a price, or find out more?"],growth:["We're open and ready to help. What are you looking for today?","Great! What service do you need and which day works for you?"],price:["The setup call is free and takes about 30 minutes. From there we build your system and you pay monthly. Want to book a call?","First call is free — no commitment. We only move forward if it makes sense for your business. Want to book?"],book:["I have a free setup call available Tuesday 2pm or Thursday 11am. Which works?","How about Monday 10am or Wednesday 3pm for a free 30-min setup call?"],confirm:["Perfect! 👊 You'll get a confirmation text shortly. See you on the call!","Confirmed — talk soon! We'll prep a few questions before the call."],identity:null,default:["What can I help with — pricing, availability, or booking?","Happy to help! What's your question?"]}
+    re:{
+      greet:["Hey! 👋 Welcome to Marcus Cuts. We do haircuts (J$1,500), shape-ups (J$800), and full cut + beard (J$2,200). Want to book a slot or have a question?","Wassup! ✂️ Marcus Cuts here. Looking to get a cut? I can book you in or answer anything you need."],
+      services:["We offer: Haircut J$1,500 · Shape-up J$800 · Full cut + beard J$2,200. Open Mon–Sat 9am–7pm. Which service are you thinking?","Our services: fresh haircuts, shape-ups, fades, and the full cut + beard combo. Prices start at J$800. What are you going for?"],
+      buy:["Nice — what service? Haircut, shape-up, or the full cut + beard combo? I'll find you the next open slot.","Let's get you booked. Are you going for a haircut, shape-up, or full combo? And what day works for you?"],
+      sell:["Walk-ins are welcome, but booking guarantees your slot. Want me to lock in a time for you?","We usually have same-day availability. Morning or afternoon works better for you?"],
+      price:["Haircut J$1,500 · Shape-up J$800 · Full cut + beard J$2,200. Open Mon–Sat 9am–7pm. Which are you going for?","Prices: Haircut J$1,500 · Shape-up J$800 · Full cut + beard combo J$2,200. Want to book one?"],
+      timeline:["We're open Mon–Sat 9am–7pm. I can check slots for any day this week — morning or afternoon?","Usually same-day or next-day available. Which day are you thinking?"],
+      book:["I have Saturday 10am or 1pm free. Which works?","How about Friday 3pm or Saturday 10am? Both are open."],
+      confirm:["Locked in! ✅ We'll send you a reminder. See you then ✂️","Booked! 👍 If anything changes just message us here."],
+      identity:null,
+      default:["Got you — are you looking to book a cut, check prices, or ask about our services?","Happy to help! Are you booking an appointment or have a question about our services?"]
+    },
+    dental:{
+      greet:["Hey! 💪 Welcome to FitLife Jamaica. Interested in joining, checking out classes, or booking a free trial?","Yo! FitLife here — we've got memberships, group classes (Zumba, CrossFit, Boxing), and a free trial to get started. What's on your mind?"],
+      services:["We offer: Monthly membership J$8,000 · Day pass J$1,200 · Free trial session. Classes: Zumba, CrossFit, Boxing. Want to book the free trial?","FitLife has full gym access, group classes (Zumba, CrossFit, Boxing), and personal training. Membership is J$8,000/mo. Want to come in for a free trial?"],
+      pain:["We have a free trial session — no commitment needed. Want to book one? I can check the schedule.","The free trial is the best way to see if we're the right fit. Interested? I can grab you a slot this week."],
+      routine:["We run Zumba, CrossFit, and Boxing classes throughout the week. Monthly membership covers all of them — J$8,000. Want to book a trial class?","Zumba Mon/Wed/Fri · CrossFit Tue/Thu/Sat · Boxing daily 6am & 5pm. Which sounds like you?"],
+      price:["Monthly membership: J$8,000 · Day pass: J$1,200 · Free trial session. Which works for you?","Membership is J$8,000/month — unlimited access to everything. Free trial first if you want to check it out. Interested?"],
+      book:["Free trial slots: Tuesday 6am or Thursday 5pm. Which works?","Saturday 8am or Wednesday 5pm are both open for a trial. Which day?"],
+      confirm:["Trial booked! 💪 Just wear comfortable clothes and bring water. See you there.","Confirmed! Come as you are — we'll show you around first."],
+      identity:null,
+      default:["Are you looking to join, ask about classes, or book a free trial session?","Happy to help! Is this about membership, classes, or booking a trial?"]
+    },
+    law:{
+      greet:["Yow! 🍽️ Welcome to Jerk Palace. Looking to make a reservation, check the menu, or order for pickup?","Hey! Jerk Palace here — dine-in, takeout, and delivery available. What can I help with?"],
+      services:["We do dine-in reservations, takeout, and delivery. Menu: Jerk chicken from J$1,200 · Oxtail J$1,800 · Curry goat J$1,600 · Vegetarian options available. What sounds good?","Jerk Palace menu highlights: Jerk chicken J$1,200 · Oxtail J$1,800 · Full Jerk combo J$2,800. Open daily 11am–10pm. Want to reserve a table or order?"],
+      accident:["How many people and what time? We can seat up to 10 — larger groups just give us a heads up.","We're open daily 11am–10pm. What day, time, and how many guests?"],
+      injury:["We've got jerk chicken, oxtail, curry goat, rice & peas, and vegetarian plates. What are you feeling?","Jerk chicken is our signature 🔥 — also oxtail, curry goat, and veggie options. Dine-in or takeout?"],
+      price:["Jerk chicken from J$1,200 · Oxtail J$1,800 · Curry goat J$1,600 · Full combo J$2,800. Delivery available too. What are you ordering?","Plates start at J$1,200. The full Jerk experience combo is J$2,800 and it's worth it. Dine-in or delivery?"],
+      book:["I can reserve Saturday 7pm — how many guests?","Sunday brunch 12pm works great. How many people?"],
+      confirm:["Table reserved! 🍽️ We'll have your spot ready. Any dietary needs to know about?","Confirmed! See you then. Let us know if anything changes."],
+      identity:null,
+      default:["Are you looking to make a reservation, check the menu, or order for delivery?","Happy to help! Is this about dining in, takeout, or catering?"]
+    },
+    hvac:{
+      greet:["Hi gorgeous! 💅 Welcome to Glam Nails. Looking to book, check prices, or ask about our services?","Hey! Glam Nails here — we do full sets, gel manicures, pedicures, and nail art. Want to book a slot?"],
+      services:["Our services: Full set J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000 · Nail art from J$500 extra. Open Tue–Sat 9am–6pm. Which one are you going for?","We offer full acrylic sets, gel manis, pedicures, and custom nail art. Prices start at J$2,000. What are you thinking?"],
+      ac:["Full set J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000 · Nail art designs from J$500 extra. Which one?","Going for a full set? That's J$3,500. Gel mani J$2,500. Want to book a slot for this week?"],
+      heat:["Open Tue–Sat 9am–6pm. Which day works best for you — and morning or afternoon?","I can check availability for any day this week. What are you thinking?"],
+      price:["Full set J$3,500 · Gel manicure J$2,500 · Pedicure J$2,000 · Nail art from J$500 extra. Which service?","Prices: Full set J$3,500 · Gel J$2,500 · Pedicure J$2,000. Want to book?"],
+      book:["Saturday 11am or 2pm are both open. Which works?","Thursday 3pm or Friday 10am — either one available. Which do you prefer?"],
+      confirm:["Confirmed! 💅 We'll send a reminder. See you soon!","Booked! 👏 If you have nail art inspo, send us a pic beforehand."],
+      identity:null,
+      default:["Are you looking to book, check prices, or ask about a specific service?","Happy to help! Booking, pricing, or availability — what do you need?"]
+    },
+    consult:{
+      greet:["Hey! 👋 Thanks for reaching out. What kind of business do you run and how can I help?","Hi! Happy to answer questions about pricing, availability, or how we work. What's on your mind?"],
+      services:["We build AI systems that reply to your leads on WhatsApp and Instagram — 24/7, in seconds. We also do full website builds, booking automation, and CRM integration. Want to know more?","Iron Logic builds: AI WhatsApp/Instagram responders · Booking automation · Website builds · CRM integration. Most systems go live in 3–5 days. Which of those interests you?"],
+      revenue:["We build AI systems that reply to your leads on WhatsApp & Instagram in seconds, 24/7 — so you never miss a booking. Interested in learning how it works for your business?","The setup takes 3–5 days. We handle everything — you just see the results. Want to book a free call to see if it's a fit?"],
+      leads:["We capture leads from WhatsApp, Instagram, and your website — qualify them automatically, and book appointments without any staff involvement. Sound interesting?","Our AI handles every message instantly — lead capture, qualification, booking. Works 24/7. Want to see how it'd work for your business?"],
+      growth:["That's exactly what we help with. Our AI systems make sure every lead gets a fast, professional response — so you convert more without hiring. Want a free setup call?","Growth usually comes down to speed — responding to leads fast before they go somewhere else. We automate that entire process. Want to talk?"],
+      price:["The first setup call is free — no commitment. After that it's a monthly fee based on what you need. Want to book a 30-min call to get a proper quote?","Free call to scope it out, then a monthly retainer. Most clients are set up in 3–5 days. Want to book?"],
+      book:["Free setup call available Tuesday 2pm or Thursday 11am. Which works?","Monday 10am or Wednesday 3pm — both open for a free 30-min call. Which one?"],
+      confirm:["Perfect! 👊 You'll get a confirmation shortly. Talk soon!","Confirmed — see you on the call! We'll prep some questions beforehand."],
+      identity:null,
+      default:["Happy to help! Are you asking about pricing, how we work, or want to book a free call?","What can I help with — how the AI works, pricing, or getting started?"]
+    }
   };
 
   function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
 
+  function pickFresh(arr,lastMsg){
+    if(arr.length<2)return arr[0];
+    const filtered=arr.filter(r=>r!==lastMsg);
+    return pick(filtered.length?filtered:arr);
+  }
+
   function classify(msg,ind){
-    msg=msg.toLowerCase();
-    if(/who are you|are you (an )?ai|are you (a )?bot|are you human|are you real|what are you/i.test(msg))return'identity';
+    const m=msg.toLowerCase();
+    if(/who are you|are you (an )?ai|are you (a )?bot|are you human|are you real|what are you/i.test(m))return'identity';
+    if(/^(hi+|hey+|hello+|yo+|sup|wassup|what.?s up|good (morning|afternoon|evening)|hola)\b/i.test(m))return'greet';
+    if(/service|what do you (do|offer)|what (can|do) you|what.?s (on offer|available)|tell me (more|about)|what (are|you got)/i.test(m))return'services';
     if(ind==='re'){
-      if(/walk.?in|slot|cut|haircut|trim|fade|shape|style/i.test(msg))return'buy';
-      if(/how long|wait|walk in|same day|today/i.test(msg))return'sell';
-      if(/price|cost|much|rate|charge|fee|how much/i.test(msg))return'price';
-      if(/when|open|hour|available|today|tomorrow|weekend/i.test(msg))return'timeline';
+      if(/cut|haircut|trim|fade|shape.?up|style|barber/i.test(m))return'buy';
+      if(/walk.?in|same.?day|wait|how long/i.test(m))return'sell';
+      if(/price|cost|much|rate|charge|fee|how much/i.test(m))return'price';
+      if(/when|open|hour|available|tomorrow|weekend|time/i.test(m))return'timeline';
     }else if(ind==='dental'){
-      if(/trial|free|try|test|first time|visit|join|tour/i.test(msg))return'pain';
-      if(/class|zumba|crossfit|boxing|group|schedule|program/i.test(msg))return'routine';
-      if(/price|cost|much|membership|monthly|fee|rate/i.test(msg))return'price';
+      if(/trial|free|try|first time|join|sign.?up/i.test(m))return'pain';
+      if(/class|zumba|crossfit|boxing|group|schedule|program/i.test(m))return'routine';
+      if(/price|cost|much|membership|monthly|fee|rate/i.test(m))return'price';
     }else if(ind==='law'){
-      if(/reserv|table|seat|book|dine|dinner|lunch|brunch|group|party|people/i.test(msg))return'accident';
-      if(/menu|food|dish|jerk|oxtail|curry|chicken|vegetarian|option/i.test(msg))return'injury';
-      if(/price|cost|how much|rate|charge|delivery|fee/i.test(msg))return'price';
+      if(/reserv|table|seat|dine|dinner|lunch|brunch|group|party|how many|people/i.test(m))return'accident';
+      if(/menu|food|dish|jerk|oxtail|curry|chicken|vegetarian|eat|order/i.test(m))return'injury';
+      if(/price|cost|how much|rate|charge|delivery|fee/i.test(m))return'price';
     }else if(ind==='hvac'){
-      if(/nail|full set|gel|acrylic|manicure|pedicure|nail art|design/i.test(msg))return'ac';
-      if(/when|available|slot|open|hour|day|week|saturday|sunday/i.test(msg))return'heat';
-      if(/price|cost|much|rate|charge|fee|how much/i.test(msg))return'price';
+      if(/nail|full set|gel|acrylic|manicure|pedicure|nail art|design/i.test(m))return'ac';
+      if(/when|available|slot|open|hour|day|week|saturday|sunday/i.test(m))return'heat';
+      if(/price|cost|much|rate|charge|fee|how much/i.test(m))return'price';
     }else if(ind==='consult'){
-      if(/how|work|tell me|explain|more|info|what do/i.test(msg))return'revenue';
-      if(/lead|traffic|client|customer|prospect|market|message/i.test(msg))return'leads';
-      if(/grow|scale|expand|help|business|problem|issue/i.test(msg))return'growth';
-      if(/price|cost|fee|much|invest|charge|service|plan/i.test(msg))return'price';
+      if(/how.*(work|it work)|explain|tell me|what.?s the process|more info/i.test(m))return'revenue';
+      if(/lead|message|reply|respond|whatsapp|instagram|dm/i.test(m))return'leads';
+      if(/grow|scale|more client|more customer|sales|revenue|booking/i.test(m))return'growth';
+      if(/price|cost|fee|much|invest|charge|plan|monthly/i.test(m))return'price';
     }
-    if(/book|schedul|appoint|slot|time|available|meeting|call|visit|consult|session/i.test(msg))return'book';
-    if(/yes|sure|okay|ok|perfect|great|works|confirm|deal|let.s|sounds good|go ahead|lock/i.test(msg))return'confirm';
+    if(/book|schedul|appoint|slot|time|available|meeting|call|visit|consult|session/i.test(m))return'book';
+    if(/^(yes|sure|okay|ok|perfect|great|sounds good|go ahead|lock|let.?s do|i.?m in|deal)\b/i.test(m))return'confirm';
     return'default';
   }
 
-  function getFallback(msg,ind){
+  function getFallback(msg,ind,lastBotMsg){
     const intent=classify(msg,ind);
     const fb=FB[ind];
     if(intent==='identity'){
       const n=IND[ind];
       return`I'm an AI assistant — built by Iron Logic so ${n.name.split('·')[0].trim()}can respond to every lead instantly, 24/7. Now, how can I help you? 😊`;
     }
-    return pick(fb[intent]||fb.default);
+    return pickFresh(fb[intent]||fb.default, lastBotMsg);
   }
 
   async function getAI(text,history,ind){
@@ -137,7 +197,8 @@ document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
       });
       if(res.ok){const d=await res.json();if(d.reply)return d.reply;}
     }catch(e){}
-    return getFallback(text,ind);
+    const lastBot=history.filter(h=>h.role==='assistant').slice(-1)[0]?.content||'';
+    return getFallback(text,ind,lastBot);
   }
 
   function speakResponse(text){
@@ -495,11 +556,13 @@ const modalClose=document.getElementById('modal-close');
 let currentStep=1;
 
 function openModal(){
+  if(!overlay)return;
   overlay.classList.add('open');
   document.body.style.overflow='hidden';
   setTimeout(()=>{const el=document.getElementById('f-name');if(el)el.focus()},350);
 }
 function closeModal(){
+  if(!overlay)return;
   overlay.classList.remove('open');
   document.body.style.overflow='';
 }
@@ -689,7 +752,6 @@ if(auditForm){
   document.addEventListener('mouseleave',e=>{
     if(fired||e.clientY>10)return;
     fired=true;
-    // only fire if user has scrolled enough to have seen content
     if(window.scrollY<300)return;
     ov.classList.add('open');
   });
@@ -900,8 +962,15 @@ if(auditForm){
         d.why.map(w=>`<div class="dp-why-item"><span class="dp-why-dot">→</span><span>${w}</span></div>`).join('');
     }else if(whyEl){whyEl.innerHTML='';}
 
-    detailOverlay.classList.add('open');
+    // Lock scroll without losing position
+    const sy=window.scrollY;
+    document.body.style.top='-'+sy+'px';
+    document.body.style.position='fixed';
+    document.body.style.width='100%';
     document.body.style.overflow='hidden';
+    detailOverlay._scrollY=sy;
+
+    detailOverlay.classList.add('open');
 
     // Animate bars in after panel appears
     setTimeout(()=>{
@@ -912,7 +981,15 @@ if(auditForm){
   }
 
   window._openDetail=openDetail;
-  function closeDetail(){detailOverlay.classList.remove('open');document.body.style.overflow='';}
+  function closeDetail(){
+    detailOverlay.classList.remove('open');
+    const sy=detailOverlay._scrollY||0;
+    document.body.style.position='';
+    document.body.style.top='';
+    document.body.style.width='';
+    document.body.style.overflow='';
+    window.scrollTo(0,sy);
+  }
   if(dpClose)dpClose.addEventListener('click',closeDetail);
   if(detailOverlay)detailOverlay.addEventListener('click',e=>{if(e.target===detailOverlay)closeDetail()});
   document.addEventListener('click',e=>{
@@ -1170,6 +1247,49 @@ if(auditForm){
 
   btnSimple.addEventListener('click',()=>showView('simple'));
   btnTech.addEventListener('click',()=>showView('tech'));
+})();
+
+/* ─── PROJECT PREVIEW MODAL ─── */
+(function(){
+  const ov=document.getElementById('proj-overlay');
+  const modal=document.getElementById('proj-modal');
+  const closeBtn=document.getElementById('proj-close');
+  const urlBar=document.getElementById('proj-url-bar');
+  const visitBtn=document.getElementById('proj-visit-btn');
+  const screenshot=document.getElementById('proj-screenshot');
+  const nameEl=document.getElementById('proj-modal-name');
+  const typeEl=document.getElementById('proj-modal-type');
+  const ctaEl=document.getElementById('proj-modal-cta');
+  if(!ov)return;
+
+  function openProj(url,name,type){
+    urlBar.textContent=url.replace(/^https?:\/\//,'');
+    visitBtn.href=url;
+    ctaEl.href=url;
+    screenshot.src='https://image.thum.io/get/width/1200/crop/800/'+url;
+    screenshot.alt=name;
+    nameEl.textContent=name;
+    typeEl.textContent=type;
+    ov.style.opacity='1';
+    ov.style.pointerEvents='auto';
+    modal.style.transform='translateY(0) scale(1)';
+    document.body.style.overflow='hidden';
+  }
+  function closeProj(){
+    ov.style.opacity='0';
+    ov.style.pointerEvents='none';
+    modal.style.transform='translateY(24px) scale(.97)';
+    document.body.style.overflow='';
+    setTimeout(()=>{screenshot.src='';},350);
+  }
+  if(closeBtn)closeBtn.addEventListener('click',closeProj);
+  ov.addEventListener('click',e=>{if(e.target===ov)closeProj();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ov.style.pointerEvents==='auto')closeProj();});
+  document.addEventListener('click',e=>{
+    const card=e.target.closest('[data-proj-preview]');
+    if(!card)return;
+    openProj(card.dataset.projUrl,card.dataset.projName,card.dataset.projType);
+  });
 })();
 
 /* ─── BUTTON RIPPLE EFFECT ─── */

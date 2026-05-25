@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Export Banner</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#1a1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:28px;font-family:sans-serif;padding:40px}
+
+  #banner{
+    width:1584px;
+    height:396px;
+    background:#0d1117;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    transform-origin:top left;
+  }
+
+  #banner::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:48px 48px;
+    pointer-events:none;
+  }
+
+  .blob{
+    position:absolute;
+    width:1200px;height:800px;
+    background:radial-gradient(ellipse, rgba(200,32,26,.22) 0%, transparent 65%);
+    left:50%;top:50%;transform:translate(-50%,-50%);
+    pointer-events:none;
+  }
+
+  .center{
+    position:relative;z-index:2;
+    display:flex;flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:0;
+  }
+
+  .top-row{
+    display:flex;align-items:center;gap:16px;
+    margin-bottom:18px;
+  }
+
+  .mark svg{width:48px;height:48px}
+
+  .wordmark{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:26px;font-weight:500;
+    color:rgba(255,255,255,.7);
+    letter-spacing:-.02em;
+  }
+
+  .headline{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:96px;font-weight:600;
+    color:#fff;line-height:1.0;letter-spacing:-.05em;
+    margin-bottom:18px;
+  }
+
+  .headline .accent{color:#dc2626}
+
+  .sub{
+    font-family:-apple-system,'Inter',sans-serif;
+    font-size:24px;font-weight:400;
+    color:rgba(255,255,255,.55);
+    letter-spacing:-.01em;
+    margin-bottom:24px;
+    line-height:1.4;
+  }
+
+  .chips{display:flex;gap:10px;align-items:center;justify-content:center;}
+
+  .chip{
+    font-family:'DM Mono','Courier New',monospace;
+    font-size:14px;font-weight:500;
+    letter-spacing:.06em;
+    padding:8px 20px;border-radius:100px;
+    border:1px solid rgba(255,255,255,.15);
+    color:rgba(255,255,255,.6);
+    background:rgba(255,255,255,.06);
+  }
+
+  .chip.red{
+    border-color:rgba(220,38,38,.5);
+    color:#f87171;
+    background:rgba(220,38,38,.12);
+  }
+
+  .url{
+    font-family:'DM Mono','Courier New',monospace;
+    font-size:13px;font-weight:500;
+    color:rgba(255,255,255,.22);
+    letter-spacing:.14em;text-transform:uppercase;
+    margin-top:16px;
+  }
+
+  #btn{
+    padding:14px 40px;background:#dc2626;color:#fff;
+    border:none;border-radius:10px;font-size:16px;font-weight:700;
+    cursor:pointer;letter-spacing:.02em;transition:background .15s;
+  }
+  #btn:hover{background:#b91c1c}
+  #status{color:rgba(255,255,255,.4);font-size:13px;font-family:monospace}
+</style>
+</head>
+<body>
+
+<div id="banner">
+  <div class="blob"></div>
+
+  <div class="center">
+    <div class="top-row">
+      <div class="mark">
+        <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="2"  width="30" height="30" fill="#C8201A" rx="3"/>
+          <rect x="2"  y="14" width="22" height="22" fill="#E8735A" rx="2.5"/>
+          <rect x="12" y="14" width="12" height="12" fill="#111827"/>
+        </svg>
+      </div>
+      <div class="wordmark">IronLogic</div>
+    </div>
+    <div class="eyebrow">AI Revenue Automation</div>
+    <div class="headline">Your leads expect <span class="accent">instant replies.</span></div>
+    <div class="sub">We build AI systems that respond for you — 24/7, on WhatsApp &amp; Instagram.</div>
+    <div class="chips">
+      <span class="chip red">Voice AI</span>
+      <span class="chip">WhatsApp Bots</span>
+      <span class="chip">Auto-Booking</span>
+      <span class="chip">Lead Qualification</span>
+    </div>
+    <div class="url">ironlogic.cc</div>
+  </div>
+</div>
+
+<button id="btn">⬇ Download PNG</button>
+<div id="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  // Scale banner to fit screen for preview
+  const banner = document.getElementById('banner');
+  const scale = Math.min(1, (window.innerWidth - 80) / 1584);
+  banner.style.transform = `scale(${scale})`;
+  banner.style.marginBottom = `-${396 * (1 - scale)}px`;
+
+  document.getElementById('btn').addEventListener('click', async function(){
+    const status = document.getElementById('status');
+    this.disabled = true;
+    this.textContent = 'Generating…';
+    status.textContent = 'Please wait…';
+    try {
+      // Reset scale for capture
+      banner.style.transform = 'scale(1)';
+      banner.style.marginBottom = '0';
+      const canvas = await html2canvas(banner, {
+        scale: 3,
+        width: 1584,
+        height: 396,
+        useCORS: true,
+        logging: false,
+        backgroundColor: null
+      });
+      // Restore scale
+      banner.style.transform = `scale(${scale})`;
+      banner.style.marginBottom = `-${396 * (1 - scale)}px`;
+      const a = document.createElement('a');
+      a.download = 'ironlogic-linkedin-banner.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+      this.textContent = '✓ Downloaded!';
+      status.textContent = 'Saved as ironlogic-linkedin-banner.png';
+      setTimeout(() => { this.textContent = '⬇ Download PNG'; this.disabled = false; }, 3000);
+    } catch(e) {
+      banner.style.transform = `scale(${scale})`;
+      this.textContent = '⬇ Download PNG';
+      this.disabled = false;
+      status.textContent = 'Error: ' + e.message;
+    }
+  });
+</script>
+</body>
+</html>

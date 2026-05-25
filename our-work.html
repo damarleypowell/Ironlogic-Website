@@ -120,16 +120,42 @@
   </div>
 </div>
 
+<!-- PROJECT PREVIEW MODAL -->
+<div id="proj-overlay" style="position:fixed;inset:0;z-index:950;background:rgba(0,0,0,.75);backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:24px">
+  <div id="proj-modal" style="background:#fff;border-radius:16px;width:100%;max-width:900px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.16,1,.3,1)">
+    <div style="background:#f0f0f0;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;border-bottom:1px solid #e0e0e0">
+      <div style="display:flex;gap:5px;flex-shrink:0"><span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:block"></span><span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:block"></span><span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:block"></span></div>
+      <div id="proj-url-bar" style="flex:1;background:#fff;border-radius:6px;padding:4px 12px;font-size:11px;font-family:var(--mono);color:var(--ink3);border:1px solid #e0e0e0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis"></div>
+      <a id="proj-visit-btn" href="#" target="_blank" rel="noopener" style="font-size:13px;color:var(--red);text-decoration:none;font-weight:600;white-space:nowrap;font-family:var(--mono)">Visit site ↗</a>
+      <button id="proj-close" style="width:28px;height:28px;border-radius:7px;background:rgba(0,0,0,.07);border:none;cursor:pointer;font-size:16px;color:var(--ink3);display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1">×</button>
+    </div>
+    <div style="overflow-y:auto;flex:1">
+      <img id="proj-screenshot" src="" alt="" loading="lazy" style="width:100%;display:block;border-bottom:1px solid var(--border)">
+      <div style="padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div><div id="proj-modal-name" style="font-size:18px;font-weight:700;letter-spacing:-.03em;color:var(--ink)"></div><div id="proj-modal-type" style="font-size:12px;color:var(--ink3);font-family:var(--mono);margin-top:3px"></div></div>
+        <a id="proj-modal-cta" href="#" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none">Visit Site →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- OUR WORK -->
 <section id="our-work" class="sec" style="background:var(--bg)">
   <div class="sec-w">
+
+    <!-- Section Header -->
+    <div class="rv" style="margin-bottom:48px">
+      <span class="eyebrow">Our Work</span>
+      <h2 class="sec-h" style="margin-top:12px">Systems we've built.<br><span class="muted">Results that speak for themselves.</span></h2>
+    </div>
+
     <!-- Tier 1 label -->
     <div class="ow-tier rv"><span class="ow-tier-label">Featured Projects</span></div>
 
     <!-- Fysique Factory — Hero Card -->
-    <div class="ow-hero rv tilt">
+    <div class="ow-hero rv" data-proj-preview data-proj-url="https://www.fysiquefactory.fit/" data-proj-name="Fysique Factory" data-proj-type="Website · Payments · Email Automation">
       <div class="ow-hero-left">
-        <span class="ow-hero-badge">Live</span>
+        <span class="ow-hero-badge">● Live</span>
         <div>
           <div class="ow-hero-name">Fysique Factory</div>
           <div class="ow-hero-type">Website + Payments + Email Automation</div>
@@ -138,7 +164,12 @@
           <div class="ow-hero-metric"><span class="ow-m-num">100%</span><span class="ow-m-label">subscription payments automated — zero manual admin</span></div>
           <div class="ow-hero-metric"><span class="ow-m-num">5 days</span><span class="ow-m-label">from blank canvas to live production site</span></div>
         </div>
-        <div class="ow-card-chips" style="margin-top:auto">
+        <div class="ow-psr" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.1);padding-top:20px">
+          <div class="ow-psr-item" style="padding:10px 0"><div class="ow-psr-label problem">Problem</div><div class="ow-psr-text" style="color:rgba(255,255,255,.6)">Manual bookings, payments, follow-ups · No online presence</div></div>
+          <div class="ow-psr-item" style="padding:10px 0;border-top:1px solid rgba(255,255,255,.08)"><div class="ow-psr-label solution">Solution</div><div class="ow-psr-text" style="color:rgba(255,255,255,.6)">Full website + Stripe subscriptions + email automation + analytics</div></div>
+          <div class="ow-psr-item" style="padding:10px 0;border-top:1px solid rgba(255,255,255,.08)"><div class="ow-psr-label result">Result</div><div class="ow-psr-text" style="color:rgba(255,255,255,.6)">Members self-manage · Zero manual admin · 100% automated</div></div>
+        </div>
+        <div class="ow-card-chips" style="margin-top:16px">
           <span class="ow-chip" style="color:rgba(255,255,255,.48);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">Website</span>
           <span class="ow-chip" style="color:rgba(255,255,255,.48);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">Stripe</span>
           <span class="ow-chip" style="color:rgba(255,255,255,.48);background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)">Automation</span>
@@ -146,15 +177,17 @@
         </div>
       </div>
       <div class="ow-hero-right">
-        <div class="ow-psr">
-          <div class="ow-psr-item"><div class="ow-psr-label problem">Problem</div><div class="ow-psr-text">Manual bookings, payments, and follow-ups · No online presence · Constantly overwhelmed</div></div>
-          <div class="ow-psr-item"><div class="ow-psr-label solution">Solution</div><div class="ow-psr-text">Full website build + Stripe subscriptions + email automation + live analytics dashboard</div></div>
-          <div class="ow-psr-item"><div class="ow-psr-label result">Result</div><div class="ow-psr-text">Subscriptions automated · Members self-manage · Zero manual admin · <a href="https://www.fysiquefactory.fit/" target="_blank" rel="noopener" style="color:var(--red);text-decoration:none">Visit site →</a></div></div>
+        <div class="ow-thumb-browser">
+          <div class="ow-bw-bar"><div class="ow-bw-dots"><span></span><span></span><span></span></div><div class="ow-bw-url">fysiquefactory.fit</div></div>
+          <div class="ow-thumb-img-wrap">
+            <img src="https://image.thum.io/get/width/900/crop/600/https://www.fysiquefactory.fit/" alt="Fysique Factory screenshot" loading="lazy">
+            <div class="ow-thumb-overlay"><span>Click to preview →</span></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Gotham + Dark card -->
+    <!-- Gotham -->
     <div class="ow-mid-grid">
       <div class="ow-card dark rv tilt">
         <div class="ow-card-head">
@@ -168,10 +201,7 @@
           <div class="ow-psr-item"><div class="ow-psr-label result">Result</div><div class="ow-psr-text">First AI investment platform for Caribbean markets · JSE analytics pioneer</div></div>
         </div>
         <div class="ow-card-chips">
-          <span class="ow-chip">ML Predictions</span>
-          <span class="ow-chip">Voice AI</span>
-          <span class="ow-chip">JSE + US Markets</span>
-          <span class="ow-chip">50+ Indicators</span>
+          <span class="ow-chip">ML Predictions</span><span class="ow-chip">Voice AI</span><span class="ow-chip">JSE + US Markets</span><span class="ow-chip">50+ Indicators</span>
         </div>
       </div>
     </div>
@@ -196,22 +226,53 @@
     <!-- Tier 3 -->
     <div class="ow-tier rv" style="margin-top:64px"><span class="ow-tier-label">Recent Website Builds</span></div>
     <div class="ow-web-grid rv">
-      <a class="ow-web-card" href="https://highway-auto-repair.vercel.app/" target="_blank" rel="noopener" style="text-decoration:none">
+      <div class="ow-web-card" data-proj-preview data-proj-url="https://highway-auto-repair.vercel.app/" data-proj-name="Highway Auto Repair" data-proj-type="Auto Service · Landing Page">
+        <div class="ow-thumb-browser mini">
+          <div class="ow-bw-bar"><div class="ow-bw-dots"><span></span><span></span><span></span></div><div class="ow-bw-url">highway-auto-repair.vercel.app</div></div>
+          <div class="ow-thumb-img-wrap mini">
+            <img src="https://image.thum.io/get/width/600/crop/380/https://highway-auto-repair.vercel.app/" alt="Highway Auto Repair" loading="lazy">
+            <div class="ow-thumb-overlay mini"><span>Preview →</span></div>
+          </div>
+        </div>
         <div class="ow-web-name">Highway Auto Repair</div>
         <div class="ow-web-type">Auto Service · Landing Page</div>
-        <div class="ow-web-link">Visit site →</div>
-      </a>
-      <a class="ow-web-card" href="https://drtuning-website.vercel.app/" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="ow-web-link">View Preview →</div>
+      </div>
+      <div class="ow-web-card" data-proj-preview data-proj-url="https://drtuning-website.vercel.app/" data-proj-name="Dr. Tuning" data-proj-type="Automotive Performance · Web App">
+        <div class="ow-thumb-browser mini">
+          <div class="ow-bw-bar"><div class="ow-bw-dots"><span></span><span></span><span></span></div><div class="ow-bw-url">drtuning-website.vercel.app</div></div>
+          <div class="ow-thumb-img-wrap mini">
+            <img src="https://image.thum.io/get/width/600/crop/380/https://drtuning-website.vercel.app/" alt="Dr. Tuning" loading="lazy">
+            <div class="ow-thumb-overlay mini"><span>Preview →</span></div>
+          </div>
+        </div>
         <div class="ow-web-name">Dr. Tuning</div>
         <div class="ow-web-type">Automotive Performance · Web App</div>
-        <div class="ow-web-link">Visit site →</div>
-      </a>
-      <a class="ow-web-card" href="https://www.fysiquefactory.fit/" target="_blank" rel="noopener" style="text-decoration:none">
+        <div class="ow-web-link">View Preview →</div>
+      </div>
+      <div class="ow-web-card" data-proj-preview data-proj-url="https://www.fysiquefactory.fit/" data-proj-name="Fysique Factory" data-proj-type="Gym · Full Site Build">
+        <div class="ow-thumb-browser mini">
+          <div class="ow-bw-bar"><div class="ow-bw-dots"><span></span><span></span><span></span></div><div class="ow-bw-url">fysiquefactory.fit</div></div>
+          <div class="ow-thumb-img-wrap mini">
+            <img src="https://image.thum.io/get/width/600/crop/380/https://www.fysiquefactory.fit/" alt="Fysique Factory" loading="lazy">
+            <div class="ow-thumb-overlay mini"><span>Preview →</span></div>
+          </div>
+        </div>
         <div class="ow-web-name">Fysique Factory</div>
         <div class="ow-web-type">Gym · Full Site Build</div>
-        <div class="ow-web-link">Visit site →</div>
-      </a>
-      <div class="ow-web-card own"><div class="ow-web-name">IronLogic.ai</div><div class="ow-web-type">Agency · Marketing Site</div><div class="ow-own-pill">This Site</div></div>
+        <div class="ow-web-link">View Preview →</div>
+      </div>
+      <div class="ow-web-card own">
+        <div class="ow-thumb-browser mini">
+          <div class="ow-bw-bar"><div class="ow-bw-dots"><span></span><span></span><span></span></div><div class="ow-bw-url">ironlogic.ai</div></div>
+          <div class="ow-thumb-img-wrap mini" style="background:var(--ink);display:flex;align-items:center;justify-content:center">
+            <svg width="40" height="40" viewBox="0 0 44 44" fill="none"><rect x="12" y="2" width="30" height="30" fill="#C8201A"/><rect x="2" y="14" width="22" height="22" fill="#E8735A"/><rect x="12" y="14" width="12" height="12" fill="#111827"/></svg>
+          </div>
+        </div>
+        <div class="ow-web-name">IronLogic.ai</div>
+        <div class="ow-web-type">Agency · Marketing Site</div>
+        <div class="ow-own-pill">This Site</div>
+      </div>
     </div>
 
     <!-- Footer CTA -->

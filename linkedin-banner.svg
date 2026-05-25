@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&amp;family=DM+Mono:wght@500&amp;display=swap');
+    </style>
+    <radialGradient id="blob" cx="80%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#C8201A" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8201A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1584" height="396" fill="#0d1117"/>
+
+  <!-- Grid -->
+  <rect width="1584" height="396" fill="url(#grid)"/>
+
+  <!-- Red glow -->
+  <rect width="1584" height="396" fill="url(#blob)"/>
+
+  <!-- Divider -->
+  <line x1="792" y1="60" x2="792" y2="336" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+  <!-- LEFT SIDE -->
+
+  <!-- Eyebrow -->
+  <text x="80" y="118"
+    font-family="'DM Mono', 'Courier New', monospace"
+    font-size="13" font-weight="500"
+    fill="rgba(255,255,255,0.4)"
+    letter-spacing="3">AI REVENUE AUTOMATION</text>
+
+  <!-- Headline line 1 -->
+  <text x="80" y="192"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="68" font-weight="600"
+    fill="#ffffff"
+    letter-spacing="-2">Your leads expect</text>
+
+  <!-- Headline line 2 — accent -->
+  <text x="80" y="268"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="68" font-weight="600"
+    fill="#dc2626"
+    letter-spacing="-2">instant replies.</text>
+
+  <!-- Subline -->
+  <text x="80" y="308"
+    font-family="'Inter', -apple-system, sans-serif"
+    font-size="18"
+    fill="rgba(255,255,255,0.45)"
+    letter-spacing="-0.2">We build AI systems that respond for you — 24/7, on WhatsApp &amp; Instagram.</text>
+
+  <!-- Chips -->
+  <!-- Voice AI -->
+  <rect x="80" y="328" width="92" height="30" rx="15" fill="rgba(220,38,38,0.1)" stroke="rgba(220,38,38,0.4)" stroke-width="1"/>
+  <text x="126" y="348" font-family="'DM Mono','Courier New',monospace" font-size="12" font-weight="500" fill="#ef4444" text-anchor="middle" letter-spacing="1">VOICE AI</text>
+
+  <!-- WhatsApp Bots -->
+  <rect x="184" y="328" width="138" height="30" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+  <text x="253" y="348" font-family="'DM Mono','Courier New',monospace" font-size="12" font-weight="500" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="1">WHATSAPP BOTS</text>
+
+  <!-- Auto-Booking -->
+  <rect x="334" y="328" width="128" height="30" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+  <text x="398" y="348" font-family="'DM Mono','Courier New',monospace" font-size="12" font-weight="500" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="1">AUTO-BOOKING</text>
+
+  <!-- Lead Qualification -->
+  <rect x="474" y="328" width="172" height="30" rx="15" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.14)" stroke-width="1"/>
+  <text x="560" y="348" font-family="'DM Mono','Courier New',monospace" font-size="12" font-weight="500" fill="rgba(255,255,255,0.6)" text-anchor="middle" letter-spacing="1">LEAD QUALIFICATION</text>
+
+  <!-- RIGHT SIDE — Logo mark scaled to 180×180 -->
+  <g transform="translate(900, 88) scale(4.09)">
+    <rect x="12" y="2"  width="30" height="30" fill="#C8201A" rx="3"/>
+    <rect x="2"  y="14" width="22" height="22" fill="#E8735A" rx="2.5"/>
+    <rect x="12" y="14" width="12" height="12" fill="#111827"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="1110" y="228"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="56" font-weight="500"
+    fill="rgba(255,255,255,0.92)"
+    letter-spacing="-1.5">IronLogic</text>
+
+  <!-- URL -->
+  <text x="1114" y="262"
+    font-family="'DM Mono','Courier New',monospace"
+    font-size="14" font-weight="500"
+    fill="rgba(255,255,255,0.3)"
+    letter-spacing="2">IRONLOGIC.AI</text>
+</svg>
