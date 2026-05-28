@@ -27,7 +27,7 @@
   --ease-out:cubic-bezier(0,0,.2,1);
 }
 html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;min-width:320px}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;position:relative;-webkit-font-smoothing:antialiased;min-width:320px}
 ::selection{background:var(--red);color:#fff}
 
 /* PROGRESS */
@@ -147,7 +147,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hi
 @keyframes tick{to{transform:translateX(-50%)}}
 
 /* SECTION PRIMITIVES */
-.sec{padding:120px 40px;content-visibility:auto;contain-intrinsic-size:0 600px}
+.sec{padding:120px 40px}
 .sec-w{max-width:1200px;margin:0 auto}
 .sec-w.narrow{max-width:800px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:12px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
@@ -876,8 +876,7 @@ body{animation:pageIn .55s var(--ease) both}
 #hero .hero-left>*:nth-child(4){animation-delay:.18s}
 
 /* ─── GLOBAL AMBIENT BACKGROUND ─── */
-body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 35% at 85% 8%,rgba(220,38,38,.035),transparent),radial-gradient(ellipse 45% 55% at 8% 85%,rgba(99,102,241,.025),transparent);animation:ambientShift 25s ease-in-out infinite alternate}
-@keyframes ambientShift{0%{opacity:.5}50%{opacity:1}100%{opacity:.65}}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 35% at 85% 8%,rgba(220,38,38,.03),transparent),radial-gradient(ellipse 45% 55% at 8% 85%,rgba(99,102,241,.02),transparent);opacity:.8}
 
 /* ─── VISUAL ENHANCEMENTS ─── */
 
@@ -890,31 +889,16 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
   mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,#000 40%,transparent 100%);
 }
 
-/* Featured system card — pulsing red glow */
-.sc.featured{position:relative;isolation:isolate;animation:featuredGlow 3s ease-in-out infinite}
-@keyframes featuredGlow{
-  0%,100%{box-shadow:0 0 0 1.5px rgba(220,38,38,.3),0 8px 32px rgba(220,38,38,.08)}
-  50%{box-shadow:0 0 0 1.5px rgba(220,38,38,.6),0 12px 48px rgba(220,38,38,.18)}
-}
+/* Featured system card — static red glow (animation removed for perf) */
+.sc.featured{position:relative;isolation:isolate;box-shadow:0 0 0 1.5px rgba(220,38,38,.4),0 10px 40px rgba(220,38,38,.14)}
 
-/* Hero aurora — slowly rotating color wash */
+/* Hero aurora — static color wash (rotation removed for perf) */
 .hero-aurora{
   position:absolute;inset:0;pointer-events:none;
-  background:conic-gradient(
-    from 0deg at 65% 35%,
-    transparent 0deg,
-    rgba(220,38,38,.09) 40deg,
-    transparent 80deg,
-    rgba(99,102,241,.06) 160deg,
-    transparent 220deg,
-    rgba(20,184,166,.05) 280deg,
-    rgba(220,38,38,.07) 330deg,
-    transparent 360deg
-  );
-  animation:auroraRotate 18s linear infinite;
-  transform-origin:65% 35%
+  background:radial-gradient(ellipse 60% 50% at 65% 35%,rgba(220,38,38,.07),transparent 70%),
+             radial-gradient(ellipse 40% 40% at 20% 70%,rgba(99,102,241,.05),transparent 70%);
+  will-change:auto
 }
-@keyframes auroraRotate{to{transform:rotate(360deg)}}
 
 /* Card shine sweep on hover */
 .sc,.pc,.cm{overflow:hidden}
@@ -925,12 +909,7 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 }
 .sc:hover::after,.pc:hover::after{left:160%}
 
-/* Dark section noise texture */
-#demo-section::after,#testi::after,footer::after{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity:.35
-}
+/* Dark section noise texture — removed SVG filter for perf */
 #demo-section,#testi,footer{position:relative}
 #demo-section .demo-content,#testi .testi-inner,#testi .testi-bg,.footer-inner{position:relative;z-index:1}
 
@@ -1097,7 +1076,7 @@ footer{background:linear-gradient(180deg,#0d1117 0%,var(--ink) 100%)}
 .demo-voice-row{gap:8px}
 .demo-ai-badge{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:rgba(37,211,102,.9);letter-spacing:.02em;white-space:nowrap}
 .demo-ai-dot-live{width:7px;height:7px;border-radius:50%;background:rgba(37,211,102,.9);flex-shrink:0;animation:aiPulse 1.8s ease-in-out infinite}
-@keyframes aiPulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(37,211,102,.4)}50%{opacity:.7;box-shadow:0 0 0 4px rgba(37,211,102,0)}}
+@keyframes aiPulse{0%,100%{opacity:1}50%{opacity:.6}}
 
 /* ─── GLOBAL RADIUS SOFTENING ─── */
 /* Buttons */
@@ -1561,7 +1540,7 @@ a.ow-web-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(220,38,38
 .delay-3{transition-delay:.3s}
 /* Float animation on key stats */
 @keyframes floatBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.hero-float{animation:floatBob 3.5s ease-in-out infinite}
+.hero-float{animation:floatBob 3.5s ease-in-out infinite;will-change:transform}
 /* Shimmer on counter numbers */
 @keyframes shimmerNum{0%{opacity:.7}50%{opacity:1}100%{opacity:.7}}
 .res-n{animation:shimmerNum 2.5s ease infinite}
@@ -1855,5 +1834,6 @@ body{background:linear-gradient(180deg,rgba(253,240,238,.6) 0%,#fff 200px)}
 .bw-logo:hover{border-color:rgba(220,38,38,.4);color:#f4f4f5}
 @keyframes bwScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media(max-width:768px){
-  .bw-stats{grid-template-columns:repeat(2,1fr)!important}
+  .bw-stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .bw-stat{padding:28px 16px}
 }
