@@ -559,15 +559,20 @@ if(hasHover){
 /* ─── HERO BLOB MOUSE PARALLAX ─── */
 const blobs=document.querySelectorAll('.hero-blob');
 if(hasHover&&blobs.length){
-  let rafBlob=0,blobCx=0,blobCy=0;
+  let rafBlob=0,blobCx=0,blobCy=0,heroVisible=true;
+  const heroEl=document.getElementById('hero');
+  if(heroEl){
+    new IntersectionObserver(([e])=>{heroVisible=e.isIntersecting;},{threshold:0}).observe(heroEl);
+  }
   document.addEventListener('mousemove',e=>{
+    if(!heroVisible)return;
     blobCx=e.clientX/window.innerWidth-.5;
     blobCy=e.clientY/window.innerHeight-.5;
     if(rafBlob)return;
     rafBlob=requestAnimationFrame(()=>{
       rafBlob=0;
       blobs.forEach((b,i)=>{
-        const s=(i+1)*10;
+        const s=(i+1)*8;
         b.style.transform=`translate(${blobCx*s}px,${blobCy*s}px)`;
       });
     });
