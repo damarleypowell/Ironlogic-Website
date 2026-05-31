@@ -813,6 +813,7 @@ if(auditForm){
   const typing=document.getElementById('hc-typing');
   const playBtn=document.getElementById('hc-play-btn');
   const playLabel=document.getElementById('hc-play-label');
+  if(!playBtn||!result)return; // hero chat card removed (Intelligence hero now uses the voice orb)
   let timers=[];
   let loopTimer=null;
 
@@ -1401,4 +1402,89 @@ update();
     });
   };
   document.head.appendChild(s);
+})();
+
+/* ─── VOICE AGENT EMBED — open Retell orb inside the page instead of redirecting ─── */
+(function(){
+  var ov=document.getElementById('voice-embed-overlay');
+  if(!ov)return;
+  var frame=document.getElementById('voice-embed-frame');
+  var closeBtn=document.getElementById('voice-embed-close');
+  var URL='https://agent.retellai.com/orb/agent_e2d547a3fc8bef9012054e35e8?token=bbb5f67fbf65f2dcedaa153e65818352';
+  var loaded=false;
+  function open(){
+    if(!loaded){var f=document.createElement('iframe');f.src=URL;f.allow='microphone; autoplay; clipboard-write';f.title='Iron Logic voice agent';frame.appendChild(f);loaded=true;}
+    ov.classList.add('open');document.body.style.overflow='hidden';
+  }
+  function close(){ov.classList.remove('open');document.body.style.overflow='';if(frame){frame.innerHTML='';loaded=false;}} // destroy iframe so the agent/audio stops
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-voice]');
+    if(t){e.preventDefault();open();}
+  });
+  if(closeBtn)closeBtn.addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+})();
+
+/* ─── META ADS BACKGROUND (Marketing mode) — build cards if container exists & empty ─── */
+(function(){
+  var wrap=document.getElementById('mkt-ads-bg');
+  if(!wrap||wrap.children.length)return;
+  var ads=[
+    ['Med Spa','Book your free consult →','CTR 4.2%','CPL $6','#2563eb,#22d3ee'],
+    ['Law Firm','Free case review today','CTR 3.8%','CPL $11','#1d4ed8,#3b82f6'],
+    ['HVAC Co.','Same-day service →','CTR 5.1%','CPL $4','#0ea5e9,#22d3ee'],
+    ['Dental','New-patient special','CTR 4.6%','CPL $8','#2563eb,#60a5fa'],
+    ['Roofing','Free roof inspection','CTR 3.9%','CPL $9','#1e40af,#38bdf8'],
+    ['Realty','Tour homes this week','CTR 4.4%','CPL $7','#0284c7,#22d3ee']
+  ];
+  function card(a){
+    return '<div class="ad-card"><div class="ad-hd"><span class="ad-dot"></span>'+a[0]+' · Sponsored</div>'+
+      '<div class="ad-cr" style="background:linear-gradient(135deg,'+a[4]+')"></div>'+
+      '<div class="ad-bd">'+a[1]+'</div>'+
+      '<div class="ad-mt"><span>'+a[2]+'</span><span>'+a[3]+'</span></div></div>';
+  }
+  for(var c=0;c<3;c++){
+    var col=document.createElement('div');
+    col.className='ads-col ads-col-'+c;
+    var set='';
+    for(var i=0;i<ads.length;i++){set+=card(ads[(i+c*2)%ads.length]);}
+    col.innerHTML=set+set;
+    wrap.appendChild(col);
+  }
+})();
+
+/* ─── BRAND MODE TOGGLE — in-place recolor + content swap with a color sweep ─── */
+(function(){
+  var tg=document.getElementById('brand-toggle');
+  if(!tg)return;
+  // deep-link: index.html#marketing opens straight into Marketing mode
+  if(location.hash==='#marketing'||location.hash==='#mkt'){
+    document.body.classList.add('theme-marketing');
+    tg.querySelectorAll('[data-mode]').forEach(function(b){b.classList.toggle('active',b.dataset.mode==='marketing');});
+  }
+  var busy=false;
+  tg.addEventListener('click',function(e){
+    var btn=e.target.closest('[data-mode]');
+    if(!btn||busy)return;
+    var wantMkt=btn.dataset.mode==='marketing';
+    if(wantMkt===document.body.classList.contains('theme-marketing'))return; // already there
+    busy=true;
+    var color=wantMkt?'#2563eb':'#e01d12';
+    var r=btn.getBoundingClientRect();
+    var sweep=document.createElement('div');
+    sweep.className='theme-sweep';
+    sweep.style.background=color;
+    sweep.style.left=(r.left+r.width/2)+'px';
+    sweep.style.top=(r.top+r.height/2)+'px';
+    document.body.appendChild(sweep);
+    requestAnimationFrame(function(){sweep.classList.add('go');});
+    // swap theme while the screen is fully covered
+    setTimeout(function(){
+      document.body.classList.toggle('theme-marketing',wantMkt);
+      tg.querySelectorAll('[data-mode]').forEach(function(b){b.classList.toggle('active',b===btn);});
+    },360);
+    setTimeout(function(){sweep.classList.add('out');},560);
+    setTimeout(function(){sweep.remove();busy=false;},1050);
+  });
 })();
