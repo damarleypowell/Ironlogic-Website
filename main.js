@@ -1203,35 +1203,48 @@ if(auditForm){
   const overlay=document.getElementById('play-overlay');
   const closeBtn=document.getElementById('play-close');
   if(!playBtn||!overlay)return;
-  const msgs=['pm-0','pm-typing','pm-1','pm-2','pm-typing2','pm-3'];
-  const pps=['pps-0','pps-1','pps-2','pps-3','pps-4'];
-  const timings=[400,800,2200,3400,3900,5100];
-  const pipeTimings=[800,1100,1400,1700,2000];
-  let playing=false;
-  function reset(){
-    msgs.forEach(id=>{const el=document.getElementById(id);if(el){el.classList.remove('show');}});
-    pps.forEach(id=>{const el=document.getElementById(id);if(el)el.className='pps-step';});
-    playing=false;
+  const foot=document.getElementById('play-foot');
+  const all=['pm-0','pm-typing','pm-1','pm-2','pm-typing2','pm-3'];
+  let playing=false, timers=[];
+
+  // Lightweight Web Audio blips — no asset files needed
+  let actx=null;
+  function tone(freq,dur,type,vol){
+    try{
+      if(!actx)actx=new (window.AudioContext||window.webkitAudioContext)();
+      const o=actx.createOscillator(),g=actx.createGain();
+      o.type=type||'sine';o.frequency.value=freq;
+      o.connect(g);g.connect(actx.destination);
+      const t=actx.currentTime;
+      g.gain.setValueAtTime(0,t);
+      g.gain.linearRampToValueAtTime(vol||0.06,t+0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+(dur||0.12));
+      o.start(t);o.stop(t+(dur||0.12)+0.02);
+    }catch(e){}
   }
+  const sndOut=()=>tone(660,0.10,'sine',0.05);                       // customer sends
+  const sndIn =()=>tone(420,0.12,'triangle',0.05);                   // AI replies
+  function sndBooked(){tone(587,0.12,'sine',0.06);setTimeout(()=>tone(880,0.18,'sine',0.06),110);} // success chime
+
+  function set(id,on){const el=document.getElementById(id);if(el)el.classList.toggle('show',!!on);}
+  function reset(){timers.forEach(clearTimeout);timers=[];all.forEach(id=>set(id,false));if(foot)foot.classList.remove('show');playing=false;}
+  function at(t,fn){timers.push(setTimeout(fn,t));}
+
   function play(){
     if(playing)return;
-    playing=true;
-    reset();
-    timings.forEach((t,i)=>{
-      setTimeout(()=>{const el=document.getElementById(msgs[i]);if(el)el.classList.add('show');},t);
-    });
-    pipeTimings.forEach((t,i)=>{
-      setTimeout(()=>{
-        pps.forEach((id,j)=>{
-          const el=document.getElementById(id);
-          if(!el)return;
-          if(j<i)el.className='pps-step done';
-          else if(j===i)el.className='pps-step active';
-          else el.className='pps-step';
-        });
-      },t);
-    });
-    setTimeout(()=>{pps.forEach(id=>{const el=document.getElementById(id);if(el)el.className='pps-step done';});},2400);
+    playing=true;reset();playing=true;
+    // 1) customer message
+    at(400,()=>{set('pm-0',true);sndOut();});
+    // 2) AI typing → reply (typing hides when reply lands)
+    at(1100,()=>set('pm-typing',true));
+    at(2600,()=>{set('pm-typing',false);set('pm-1',true);sndIn();});
+    // 3) customer confirms
+    at(3700,()=>{set('pm-2',true);sndOut();});
+    // 4) AI typing → booking confirmation
+    at(4400,()=>set('pm-typing2',true));
+    at(5800,()=>{set('pm-typing2',false);set('pm-3',true);sndBooked();});
+    // 5) result line
+    at(6500,()=>{if(foot)foot.classList.add('show');});
   }
   playBtn.addEventListener('click',()=>{
     overlay.classList.add('open');
@@ -1363,4 +1376,29 @@ document.addEventListener('click',function(e){
 },{passive:true});
 
 update();
+})();
+
+/* ─── BOTPRESS AI CHAT BUBBLE (site-wide, quiet — no auto teaser) ─── */
+(function(){
+  if(window.__ironChat)return; window.__ironChat=true;
+  var s=document.createElement('script');
+  s.src='https://cdn.botpress.cloud/webchat/v3.3/inject.js';
+  s.defer=true;
+  s.onload=function(){
+    if(!window.botpress)return;
+    window.botpress.init({
+      botId:'61033f75-5183-4949-81a9-ab8f62f1f6cd',
+      clientId:'84815010-2068-4116-acf0-0237e3aeab1c',
+      configuration:{
+        botName:'Iron Logic',
+        color:'#e01d12',
+        variant:'solid',
+        themeMode:'light',
+        fontFamily:'inter',
+        radius:1.5,
+        composerPlaceholder:'Ask me a question…'
+      }
+    });
+  };
+  document.head.appendChild(s);
 })();

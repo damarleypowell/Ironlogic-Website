@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif}
+
+  .banner{
+    width:1584px;
+    height:396px;
+    background:#0d1117;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    flex-shrink:0;
+  }
+
+  /* Grid */
+  .banner::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:48px 48px;
+  }
+
+  /* Red glow blob */
+  .blob{
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(200,32,26,.18) 0%, transparent 70%);
+    right:-100px;
+    top:-200px;
+    pointer-events:none;
+  }
+
+  /* Left content */
+  .left{
+    position:relative;
+    z-index:2;
+    padding:0 80px;
+    flex:1;
+  }
+
+  .eyebrow{
+    font-family:'DM Mono', 'Courier New', monospace;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.4);
+    margin-bottom:18px;
+  }
+
+  .headline{
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:62px;
+    font-weight:600;
+    color:#ffffff;
+    line-height:1.08;
+    letter-spacing:-.03em;
+    margin-bottom:20px;
+  }
+
+  .headline .accent{color:#dc2626}
+
+  .sub{
+    font-family:-apple-system, 'Inter', sans-serif;
+    font-size:18px;
+    color:rgba(255,255,255,.5);
+    letter-spacing:-.01em;
+    margin-bottom:28px;
+    line-height:1.5;
+  }
+
+  .chips{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+
+  .chip{
+    font-family:'DM Mono','Courier New',monospace;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.06em;
+    padding:6px 14px;
+    border-radius:100px;
+    border:1px solid rgba(255,255,255,.15);
+    color:rgba(255,255,255,.6);
+    background:rgba(255,255,255,.05);
+  }
+
+  .chip.red{
+    border-color:rgba(220,38,38,.4);
+    color:#ef4444;
+    background:rgba(220,38,38,.08);
+  }
+
+  /* Right — logo mark */
+  .right{
+    position:relative;
+    z-index:2;
+    padding-right:80px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:16px;
+    flex-shrink:0;
+  }
+
+  .mark svg{
+    width:160px;
+    height:160px;
+  }
+
+  .wordmark{
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:28px;
+    font-weight:500;
+    color:rgba(255,255,255,.9);
+    letter-spacing:-.02em;
+    text-align:right;
+  }
+
+  .tagline{
+    font-family:'DM Mono','Courier New',monospace;
+    font-size:11px;
+    color:rgba(255,255,255,.3);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-align:right;
+  }
+
+  /* Divider line */
+  .divider{
+    position:absolute;
+    left:50%;
+    top:60px;
+    bottom:60px;
+    width:1px;
+    background:linear-gradient(to bottom, transparent, rgba(255,255,255,.08) 30%, rgba(255,255,255,.08) 70%, transparent);
+    z-index:1;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="banner">
+  <div class="blob"></div>
+  <div class="divider"></div>
+
+  <div class="left">
+    <div class="eyebrow">AI Revenue Automation</div>
+    <div class="headline">
+      Your leads expect<br><span class="accent">instant replies.</span>
+    </div>
+    <div class="sub">We build the AI systems that respond for you — 24/7.</div>
+    <div class="chips">
+      <span class="chip red">Voice AI</span>
+      <span class="chip">WhatsApp Bots</span>
+      <span class="chip">Auto-Booking</span>
+      <span class="chip">Lead Qualification</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="mark">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="12" y="2" width="30" height="30" fill="#C8201A" rx="3"/>
+        <rect x="2" y="14" width="22" height="22" fill="#E8735A" rx="2.5"/>
+        <rect x="12" y="14" width="12" height="12" fill="#111827"/>
+      </svg>
+    </div>
+    <div class="wordmark">IronLogic</div>
+    <div class="tagline">ironlogic.ai</div>
+  </div>
+</div>
+</body>
+</html>
