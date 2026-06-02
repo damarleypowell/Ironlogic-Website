@@ -1458,11 +1458,7 @@ update();
 (function(){
   var tg=document.getElementById('brand-toggle');
   if(!tg)return;
-  // deep-link: index.html#marketing opens straight into Marketing mode
-  if(location.hash==='#marketing'||location.hash==='#mkt'){
-    document.body.classList.add('theme-marketing');
-    tg.querySelectorAll('[data-mode]').forEach(function(b){b.classList.toggle('active',b.dataset.mode==='marketing');});
-  }
+  // Marketing not offered yet — deep-link disabled. (Re-enable the #marketing block to bring it back.)
   var busy=false;
   tg.addEventListener('click',function(e){
     var btn=e.target.closest('[data-mode]');
