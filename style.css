@@ -1798,9 +1798,13 @@ body{background:var(--bg)}
 .about-founder-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:40px}
 .about-founder-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .about-founder-right{height:100%}
+.about-founder-build{margin-top:26px}
+.afb-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--red);margin-bottom:8px}
+.afb-list{font-size:14px;line-height:1.75;color:var(--ink3)}
+.about-founder-photo{width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;border-radius:20px;border:1px solid var(--border);box-shadow:var(--shadow-lg);display:block;background:var(--bg3);margin:0 auto}
 @media(max-width:768px){
-  .about-founder-grid{grid-template-columns:1fr;gap:32px}
-  .about-founder-right{display:none}
+  .about-founder-grid{grid-template-columns:1fr;gap:28px}
+  .about-founder-right{max-width:300px;margin:0 auto}
 }
 
 
